@@ -1,0 +1,5 @@
+.grid {
+  background: var(--primary-color);
+  color: var(surface-0);
+  /* color: var(--text-color); */
+}

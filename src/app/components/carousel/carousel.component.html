@@ -1,0 +1,48 @@
+<p>carousel works!</p>
+
+<div class="card">
+  <p-carousel
+    [value]="listImages"
+    [numVisible]="3"
+    [numScroll]="3"
+    [autoplayInterval]="5000"
+    [responsiveOptions]="responsiveOptions"
+    [circular]="true"
+  >
+    <ng-template let-itemImagen pTemplate="item">
+      <div
+        class="border-1 surface-border border-round m-2 text-center py-5 px-3"
+      >
+        <div class="mb-3">
+          <img
+            [src]="itemImagen.url"
+            [alt]="itemImagen._id"
+            class="w-10/12 h-96 shadow-2 border-4 border-indigo-600"
+          />
+        </div>
+        <div>
+          <h4 class="mb-1">{{ "Item: 004789" }}</h4>
+          <h4 class="mb-1">{{ "Linea: Arte" }}</h4>
+          <h6 class="mt-0 mb-3">{{ "Descripcion" }}</h6>
+          <p>{{ itemImagen.inventoryStatus }}</p>
+          <p-tag
+            [value]="itemImagen.filename"
+            [severity]="getSeverity(itemImagen.filename)"
+          ></p-tag>
+          <div class="car-buttons mt-5">
+            <p-button
+              type="button"
+              styleClass="p-button-secondary p-button-rounded mr-2"
+              icon="pi pi-search"
+            ></p-button>
+            <p-button
+              type="button"
+              styleClass="p-button-success p-button-rounded mr-2"
+              icon="pi pi-star-fill"
+            ></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
