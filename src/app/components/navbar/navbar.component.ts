@@ -76,8 +76,9 @@ export class NavbarComponent {
         icon: 'pi pi-fw pi-user',
         items: [
           {
-            label: 'New',
+            label: 'Login',
             icon: 'pi pi-fw pi-user-plus',
+            routerLink: ['login'],
           },
           {
             label: 'Delete',

@@ -12,6 +12,14 @@ export interface Archive {
   deleted?:    boolean;
   userAdmin:   UserAdmin[];
 }
+export interface Post {
+  id?:         string;
+  item:        string;
+  description: string;
+  line:        string;
+  category:    string;
+  archive:     string;
+}
 
 export interface UserAdmin {
   _id:       string;

@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ToastModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
@@ -29,10 +30,13 @@ export default class LoginComponent {
       this.authSvc.login(email, password).subscribe(
         (resOk) => {
           this.messageService.add({
-            severity: 'success',
-            summary: 'Exito',
-            detail: 'Has iniciado sesion',
+            severity: 'info',
+            summary: 'Exitoso',
+            detail: 'Inicio de sesión exitoso',
           });
+          setTimeout(() => {
+            this.router.navigate(['/carousel']);
+          }, 1000 * 3);
         },
         (resFail) => {
           this.messageService.add({
@@ -40,6 +44,7 @@ export default class LoginComponent {
             summary: 'Eroor',
             detail: 'No se pudo iniciar sesion',
           });
+          console.log('Error');
         }
       );
     }

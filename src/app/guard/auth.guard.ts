@@ -18,12 +18,13 @@ export class AuthGuard {
     return this.authSvc.validarToken().pipe(
       tap((valid) => {
         if (!valid) {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Service Message',
-            detail: 'Via MessageService',
-          });
-          this.router.navigate(['/carousel']);
+          console.log('Invalid');
+          // this.messageService.add({
+          //   severity: 'success',
+          //   summary: 'Service Message',
+          //   detail: 'Via MessageService',
+          // });
+          this.router.navigate(['/']);
         }
       })
     );
@@ -35,13 +36,13 @@ export class AuthGuard {
     return this.authSvc.validarToken().pipe(
       tap((valid) => {
         if (!valid) {
-          console.log(123);
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Service Message',
-            detail: 'Via MessageService',
-          });
-          this.router.navigate(['/carousel']);
+          console.log('Invalid');
+          // this.messageService.add({
+          //   severity: 'success',
+          //   summary: 'Service Message',
+          //   detail: 'Via MessageService',
+          // });
+          this.router.navigate(['/']);
         }
       })
     );

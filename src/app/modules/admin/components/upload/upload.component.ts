@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export default class UploadComponent {
   fileRaw: any;
+  fileName!: string;
   flag: boolean = true;
   private readonly messageService = inject(MessageService);
   private readonly router = inject(Router);
@@ -22,8 +23,11 @@ export default class UploadComponent {
 
   getFile(event: Event) {
     const { files } = event.target as HTMLInputElement;
+    console.log(files?.[0]);
+
     if (files !== null) {
       this.fileRaw = files?.[0];
+      this.fileName = files?.[0].name;
       this.flag = false;
     }
   }

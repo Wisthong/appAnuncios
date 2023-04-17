@@ -1,5 +1,11 @@
 .grid {
-  background: var(--primary-color);
+  background: #0096c7;
+  /* background: var(--primary-color); */
   color: var(surface-0);
   /* color: var(--text-color); */
+}
+
+.select {
+  border: 4px solid;
+  border-image: linear-gradient(45deg, red, blue) 1;
 }
