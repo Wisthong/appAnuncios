@@ -5,27 +5,41 @@ import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'carousel',
+    pathMatch: 'full',
+  },
+  {
     path: 'carousel',
     component: CarouselComponent,
     title: 'Carousel',
   },
   {
-    path: 'upload',
+    path: 'admin',
     loadComponent() {
-      return import('./modules/admin/components/upload/upload.component');
+      return import('./modules/admin/components/navbar/navbar.component');
     },
-    title: 'Upload',
-    canActivate: [() => inject(AuthGuard).canActivate()],
-    canMatch: [() => inject(AuthGuard).canMatchFn()],
-  },
-  {
-    path: 'forms',
-    loadComponent() {
-      return import('./modules/admin/components/forms/forms.component');
-    },
-    title: 'Forms',
-    canActivate: [() => inject(AuthGuard).canActivate()],
-    canMatch: [() => inject(AuthGuard).canMatchFn()],
+    title: 'Admin',
+    children: [
+      {
+        path: 'upload',
+        loadComponent() {
+          return import('./modules/admin/components/upload/upload.component');
+        },
+        title: 'Upload',
+        canActivate: [() => inject(AuthGuard).canActivate()],
+        canMatch: [() => inject(AuthGuard).canMatchFn()],
+      },
+      {
+        path: 'forms',
+        loadComponent() {
+          return import('./modules/admin/components/forms/forms.component');
+        },
+        title: 'Forms',
+        canActivate: [() => inject(AuthGuard).canActivate()],
+        canMatch: [() => inject(AuthGuard).canMatchFn()],
+      },
+    ],
   },
   {
     path: 'login',

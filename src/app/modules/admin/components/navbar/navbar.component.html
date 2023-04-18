@@ -1,0 +1,23 @@
+<p>navbar works! admin</p>
+
+<div class="card">
+  <p-menubar [model]="items">
+    <ng-template pTemplate="start">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/primeng.svg"
+        height="40"
+        class="mr-2"
+      />
+    </ng-template>
+    <ng-template pTemplate="end">
+      <p-button
+        (onClick)="onRedirigir()"
+        icon="pi pi-user"
+        styleClass="p-button-rounded p-button-info p-button-outlined"
+      ></p-button>
+      <!-- <input type="text" pInputText placeholder="Buscar" class="w-full" /> -->
+    </ng-template>
+  </p-menubar>
+</div>
+
+<router-outlet></router-outlet>

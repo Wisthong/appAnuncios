@@ -35,7 +35,7 @@ export default class LoginComponent {
             detail: 'Inicio de sesión exitoso',
           });
           setTimeout(() => {
-            this.router.navigate(['/carousel']);
+            this.router.navigate(['/admin']);
           }, 1000 * 3);
         },
         (resFail) => {

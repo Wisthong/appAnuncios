@@ -1,13 +1,17 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { PrimengModule } from './../../../primeng/primeng.module';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar',
+  standalone: true,
+  imports: [CommonModule, PrimengModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export default class NavbarComponent {
   items!: MenuItem[];
   private readonly router = inject(Router);
 

@@ -3,7 +3,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "primeng/resources/themes/md-light-indigo/theme.css";
+@import "primeng/resources/themes/vela-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
+html,
+body {
+  /* background-color: var(--highlight-bg); */
+  background-color: var(--primary-color);
+  font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--text-color);
+}
+
+p {
+  color: var(--text-secondary-color);
+}

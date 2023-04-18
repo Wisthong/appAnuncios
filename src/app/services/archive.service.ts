@@ -2,7 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Archive, Post, ResponseTrue } from '../model/auth.interface';
+import {
+  Archive,
+  Post,
+  PostArray,
+  ResponseTrue,
+} from '../model/auth.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +31,13 @@ export class ArchiveService {
 
   createPost(body: Post): Observable<any> {
     return this.http.post(this.apiUrl + '/posts', body);
+  }
+
+  postArrayResponde(): Observable<Post[]> {
+    return this.http.get<PostArray>(this.apiUrl + '/posts').pipe(
+      map(({ data }) => {
+        return data;
+      })
+    );
   }
 }

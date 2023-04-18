@@ -6,6 +6,7 @@ import { Archive } from 'src/app/model/auth.interface';
 import { ArchiveService } from 'src/app/services/archive.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forms',
@@ -23,6 +24,7 @@ export default class FormsComponent {
 
   private readonly productService = inject(ArchiveService);
   private readonly messageService = inject(MessageService);
+  private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
 
   postForm = this.fb.nonNullable.group({
@@ -37,7 +39,7 @@ export default class FormsComponent {
     const observer$ = this.productService.getAllImages().subscribe(
       (resOk) => {
         this.listImages = resOk;
-        console.log(this.listImages);
+        // console.log(this.listImages);
       },
       (resFail) => {
         console.log('🟢🟢🟢');
@@ -62,7 +64,14 @@ export default class FormsComponent {
       const body = this.postForm.getRawValue();
       this.productService.createPost(body).subscribe(
         (resOk) => {
-          console.log('🍏🍏🍏');
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Exito',
+            detail: 'Has creado un post',
+          });
+          setTimeout(() => {
+            this.router.navigate(['/carousel']);
+          }, 1000 * 3);
         },
         (resFail) => {
           console.log('💔💔💔');
