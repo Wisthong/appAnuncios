@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Archive, Posts } from 'src/app/model/auth.interface';
+import { Posts } from 'src/app/model/auth.interface';
 import { ArchiveService } from 'src/app/services/archive.service';
 
 @Component({

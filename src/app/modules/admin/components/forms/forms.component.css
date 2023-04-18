@@ -1,9 +1,3 @@
-.grid {
-  background: #0096c7;
-  /* background: var(--primary-color); */
-  color: var(surface-0);
-  /* color: var(--text-color); */
-}
 
 .select {
   border: 4px solid;

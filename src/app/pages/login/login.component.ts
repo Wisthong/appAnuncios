@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -38,15 +39,21 @@ export default class LoginComponent {
             this.router.navigate(['/admin']);
           }, 1000 * 3);
         },
-        (resFail) => {
+        ({ error }: HttpErrorResponse) => {
           this.messageService.add({
             severity: 'error',
             summary: 'Eroor',
-            detail: 'No se pudo iniciar sesion',
+            detail: error.message,
           });
           console.log('Error');
         }
       );
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Faltan campos por llenar',
+      });
     }
   }
 }

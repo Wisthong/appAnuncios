@@ -7,6 +7,7 @@ import { ArchiveService } from 'src/app/services/archive.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-forms',
@@ -70,15 +71,24 @@ export default class FormsComponent {
             detail: 'Has creado un post',
           });
           setTimeout(() => {
-            this.router.navigate(['/carousel']);
+            this.router.navigate(['/admin']);
           }, 1000 * 3);
         },
-        (resFail) => {
-          console.log('💔💔💔');
+        ({ error }: HttpErrorResponse) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Eroor',
+            detail: error.message,
+          });
+          console.log('Error');
         }
       );
     } else {
-      console.log('No');
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Faltan campos por llenar',
+      });
     }
   }
 }

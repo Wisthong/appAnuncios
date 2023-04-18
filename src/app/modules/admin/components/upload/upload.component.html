@@ -1,13 +1,9 @@
-<p>upload works!</p>
-
 <div class="grid grid-cols-6">
   <div class="col-start-2 col-span-4">
-    <h1 class="text-center">Cargar Archivos</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
-      debitis, id molestiae dicta quam soluta ab praesentium cumque ea unde
-      officia corrupti excepturi deleniti distinctio! Voluptas incidunt
-      asperiores rem omnis.
+    <h1 class="text-6xl text-center mt-3">Subir archivo</h1>
+    <p class="text-2xl mt-2">
+      En esta sección debes subir la imagen que quieres que aparezca como
+      anuncio ......
     </p>
   </div>
   <div class="col-start-2 col-span-4">
@@ -17,7 +13,7 @@
     <div class="col-span-full">
       <label
         for="cover-photo"
-        class="block text-sm font-medium leading-6 text-gray-900"
+        class="block text-sm font-medium leading-6 text-white"
         >Seleccionar foto</label
       >
       <div
@@ -57,7 +53,10 @@
           </p>
         </div>
       </div>
-      <p *ngIf="fileName !== null" class="text-2xl leading-5 text-gray-800">
+      <p
+        *ngIf="fileName !== null"
+        class="text-base leading-5 text-white font-black"
+      >
         {{ fileName }}
       </p>
     </div>

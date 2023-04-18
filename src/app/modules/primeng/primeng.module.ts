@@ -7,6 +7,8 @@ import { MenubarModule } from 'primeng/menubar';
 import { MessagesModule } from 'primeng/messages';
 import { TagModule } from 'primeng/tag';
 import { FileUploadModule } from 'primeng/fileupload';
+import { TooltipModule } from 'primeng/tooltip';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [],
@@ -18,6 +20,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     TagModule,
     MessagesModule,
     FileUploadModule,
+    TooltipModule,
+    AccordionModule,
   ],
 })
 export class PrimengModule {}

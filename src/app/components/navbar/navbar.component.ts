@@ -16,7 +16,7 @@ export class NavbarComponent {
       {
         label: 'Carousel',
         icon: 'pi pi-fw pi-bookmark',
-        routerLink: 'carousel',
+        routerLink: '',
         // items: [
         //   // {
         //   //   label: 'New',
@@ -144,7 +144,7 @@ export class NavbarComponent {
     ];
   }
 
-  onRedirigir() {
-    this.router.navigate(['login']);
+  onLogin() {
+    this.router.navigate(['/home/login']);
   }
 }

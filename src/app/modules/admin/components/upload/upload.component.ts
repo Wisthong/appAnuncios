@@ -43,7 +43,7 @@ export default class UploadComponent {
           detail: 'Se cargo el archivo',
         });
         setTimeout(() => {
-          this.router.navigate(['/carousel']);
+          this.router.navigate(['/admin']);
         }, 1000 * 3);
       },
       (resFail) => {

@@ -9,7 +9,8 @@
     </ng-template>
     <ng-template pTemplate="end">
       <p-button
-        (onClick)="onRedirigir()"
+        pTooltip="Iniciar sesion"
+        (onClick)="onLogin()"
         icon="pi pi-user"
         styleClass="p-button-rounded p-button-info p-button-outlined"
       ></p-button>
@@ -17,5 +18,5 @@
     </ng-template>
   </p-menubar>
 </div>
-
+<router-outlet/>
 <!-- <app-carousel/> -->
