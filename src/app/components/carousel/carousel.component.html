@@ -1,57 +1,61 @@
-<!-- <app-navbar/> -->
+<div class="grid grid-cols-8">
+  <div class="col-start-2 col-span-6">
+    <!-- <app-navbar/> -->
 
-<div class="mt-2">
-  <h1 class="text-6xl text-center mt-3">Sección de anuncios</h1>
-  <p class="text-2xl mt-2">
-    En el siguiente apartado, podras mirar los anuncios del equipo Universal
-  ......</p>
-</div>
-
-<div class="card" *ngIf="listPosts">
-  <p-carousel
-    [value]="listPosts"
-    [numVisible]="2"
-    [numScroll]="3"
-    [autoplayInterval]="5000"
-    [responsiveOptions]="responsiveOptions"
-    [circular]="true"
-  >
-    <ng-template let-itemPost pTemplate="item">
-      <div
-        class="border-1 surface-border border-round m-2 text-center py-5 px-3"
+    <div class="mt-2">
+      <h1 class="text-6xl text-center mt-3">Sección de anuncios</h1>
+      <p class="text-2xl mt-2">
+        En el siguiente apartado, podras mirar los anuncios del equipo Universal
+        ......
+      </p>
+    </div>
+    <div class="card" *ngIf="listPosts">
+      <p-carousel
+        [value]="listPosts"
+        [numVisible]="2"
+        [numScroll]="3"
+        [autoplayInterval]="5000"
+        [responsiveOptions]="responsiveOptions"
+        [circular]="true"
       >
-        <div class="mb-3">
-          <img
-            [src]="itemPost.archiveJoin[0]!.url"
-            [alt]="itemPost.archiveJoin[0]!.filename"
-            class="w-10/12 h-96 shadow-2 border-4 border-indigo-600"
-          />
-        </div>
-        <div>
-          <h4 class="mb-1">{{ "Item: " + itemPost.item }}</h4>
-          <h4 class="mb-1">{{ "Linea: " + itemPost.line }}</h4>
-          <h6 class="mt-0 mb-3">
-            {{ "Descripcion: " + itemPost.description }}
-          </h6>
-          <p>{{ "Categoria: " + itemPost.category }}</p>
-          <!-- <p-tag
-            [value]="itemPost.filename"
-            [severity]="getSeverity(itemPost.filename)"
-          ></p-tag>
-          <div class="car-buttons mt-5">
-            <p-button
-              type="button"
-              styleClass="p-button-secondary p-button-rounded mr-2"
-              icon="pi pi-search"
-            ></p-button>
-            <p-button
-              type="button"
-              styleClass="p-button-success p-button-rounded mr-2"
-              icon="pi pi-star-fill"
-            ></p-button>
-          </div> -->
-        </div>
-      </div>
-    </ng-template>
-  </p-carousel>
+        <ng-template let-itemPost pTemplate="item">
+          <div
+            class="border-1 surface-border border-round m-2 text-center py-5 px-10"
+          >
+            <div class="mb-3">
+              <img
+                [src]="itemPost.archiveJoin[0]!.url"
+                [alt]="itemPost.archiveJoin[0]!.filename"
+                class="shadow-2xl"
+              />
+            </div>
+            <div>
+              <h4 class="mb-1">{{ "Item: " + itemPost.item }}</h4>
+              <h4 class="mb-1">{{ "Linea: " + itemPost.line }}</h4>
+              <h4 class="mt-0 mb-1">
+                {{ "Descripcion: " + itemPost.description }}
+              </h4>
+              <h4>{{ "Categoria: " + itemPost.category }}</h4>
+              <!-- <p-tag
+                [value]="itemPost.filename"
+                [severity]="getSeverity(itemPost.filename)"
+              ></p-tag>
+              <div class="car-buttons mt-5">
+                <p-button
+                  type="button"
+                  styleClass="p-button-secondary p-button-rounded mr-2"
+                  icon="pi pi-search"
+                ></p-button>
+                <p-button
+                  type="button"
+                  styleClass="p-button-success p-button-rounded mr-2"
+                  icon="pi pi-star-fill"
+                ></p-button>
+              </div> -->
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
 </div>

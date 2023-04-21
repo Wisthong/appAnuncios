@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { AuthGuard } from './guard/auth.guard';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MasterGuard } from './guard/master.guard';
 
 const routes: Routes = [
   {
@@ -33,38 +34,73 @@ const routes: Routes = [
   {
     path: 'admin',
     loadComponent() {
-      return import('./modules/admin/components/navbar/navbar.component');
+      return import('@admin/components/navbar/navbar.component');
     },
+    canActivate: [() => inject(AuthGuard).canActivate()],
+    canMatch: [() => inject(AuthGuard).canMatchFn()],
     title: 'Admin',
     children: [
       {
         path: 'upload',
         loadComponent() {
-          return import('./modules/admin/components/upload/upload.component');
+          return import('@admin/components/upload/upload.component');
         },
         title: 'Upload',
-        canActivate: [() => inject(AuthGuard).canActivate()],
-        canMatch: [() => inject(AuthGuard).canMatchFn()],
       },
       {
         path: '',
         loadComponent() {
-          return import(
-            './modules/admin/components/dashboard/dashboard.component'
-          );
+          return import('@admin/components/dashboard/dashboard.component');
         },
         title: 'Dashboard',
-        canActivate: [() => inject(AuthGuard).canActivate()],
-        canMatch: [() => inject(AuthGuard).canMatchFn()],
       },
       {
         path: 'forms',
         loadComponent() {
-          return import('./modules/admin/components/forms/forms.component');
+          return import('@admin/components/forms/forms.component');
         },
         title: 'Forms',
-        canActivate: [() => inject(AuthGuard).canActivate()],
-        canMatch: [() => inject(AuthGuard).canMatchFn()],
+      },
+    ],
+  },
+
+  //TODO: MASTER
+  {
+    path: 'master',
+    loadComponent() {
+      return import('@master/components/nabvar/nabvar.component');
+    },
+    title: 'Master',
+    canActivate: [() => inject(MasterGuard).canActivate()],
+    canMatch: [() => inject(MasterGuard).canMatchFn()],
+    children: [
+      {
+        path: '',
+        title: 'Dashboard',
+        loadComponent() {
+          return import('@master/components/dashboard/dashboard.component');
+        },
+      },
+      {
+        path: 'posts',
+        title: 'Posts',
+        loadComponent() {
+          return import('@master/components/posts/posts.component');
+        },
+      },
+      {
+        path: 'upload',
+        title: 'Upload',
+        loadComponent() {
+          return import('@master/components/upload/upload.component');
+        },
+      },
+      {
+        path: 'forms',
+        title: 'Formulario',
+        loadComponent() {
+          return import('@master/components/forms/forms.component');
+        },
       },
     ],
   },

@@ -1,4 +1,3 @@
-import { PrimengModule } from './modules/primeng/primeng.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,15 +10,20 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { MessageService } from 'primeng/api';
 import { JwtInterceptor } from './inteceptors/jwt.interceptor';
 import { AuthGuard } from './guard/auth.guard';
+import { MenubarModule } from 'primeng/menubar';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, CarouselComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PrimengModule,
+    MenubarModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CarouselModule,
+    ButtonModule,
   ],
   providers: [
     AuthGuard,

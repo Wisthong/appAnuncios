@@ -27,14 +27,14 @@ export interface UserAdmin {
   lastname:  string;
   email:     string;
   password:  string;
-  role?:     string[];
+  role?:     string;
 }
 
 export interface User {
   name:       string;
   lastname:   string;
   email:      string;
-  role?:      string[];
+  role?:      string;
   password?:  string;
 }
 

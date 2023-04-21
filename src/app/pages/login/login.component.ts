@@ -30,14 +30,28 @@ export default class LoginComponent {
       const { email, password } = this.loginForm.getRawValue();
       this.authSvc.login(email, password).subscribe(
         (resOk) => {
-          this.messageService.add({
-            severity: 'info',
-            summary: 'Exitoso',
-            detail: 'Inicio de sesión exitoso',
-          });
-          setTimeout(() => {
-            this.router.navigate(['/admin']);
-          }, 1000 * 3);
+          if (resOk === 'admin') {
+            this.messageService.add({
+              severity: 'info',
+              summary: 'Exitoso',
+              detail: 'Inicio de sesión exitoso',
+            });
+
+            setTimeout(() => {
+              this.router.navigate(['/admin']);
+            }, 1000 * 3);
+          }
+          if (resOk === 'master') {
+            this.messageService.add({
+              severity: 'info',
+              summary: 'Exitoso',
+              detail: 'Inicio de sesión exitoso',
+            });
+
+            setTimeout(() => {
+              this.router.navigate(['/master']);
+            }, 1000 * 3);
+          }
         },
         ({ error }: HttpErrorResponse) => {
           this.messageService.add({
@@ -45,7 +59,6 @@ export default class LoginComponent {
             summary: 'Eroor',
             detail: error.message,
           });
-          console.log('Error');
         }
       );
     } else {

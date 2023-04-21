@@ -173,7 +173,7 @@
                 </div>
               </div>
               <div class="grid grid-cols-3 gap-4">
-                <div *ngFor="let item of listImages" class="bg-red-700 ...">
+                <div *ngFor="let item of listImages">
                   <img
                     [ngClass]="{ select: select === item._id }"
                     class="w-80 h-80"
@@ -194,7 +194,7 @@
     <div class="mt-6 flex items-center justify-end gap-x-6">
       <p-toast></p-toast>
       <button type="button" class="text-sm font-semibold leading-6">
-        Cancel
+        Cancelar
       </button>
       <button
         type="submit"

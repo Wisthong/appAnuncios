@@ -1,4 +1,3 @@
-import { PrimengModule } from './../../../primeng/primeng.module';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -8,11 +7,11 @@ import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-nabvar',
   standalone: true,
   imports: [CommonModule, MenubarModule, ButtonModule],
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  templateUrl: './nabvar.component.html',
+  styleUrls: ['./nabvar.component.css'],
 })
 export default class NavbarComponent {
   items!: MenuItem[];

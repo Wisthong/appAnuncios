@@ -16,7 +16,7 @@ export class NavbarComponent {
       {
         label: 'Carousel',
         icon: 'pi pi-fw pi-bookmark',
-        routerLink: '',
+        routerLink: '/',
         // items: [
         //   // {
         //   //   label: 'New',

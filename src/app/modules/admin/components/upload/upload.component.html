@@ -46,19 +46,21 @@
                 (change)="getFile($event)"
               />
             </label>
-            <p class="pl-1">or drag and drop</p>
+            <p *ngIf="fileName == null" class="pl-1">Arrastrar o soltar</p>
           </div>
-          <p class="text-xs leading-5 text-gray-100">
+
+          <p *ngIf="fileName != null" class="text-xs leading-5 text-gray-100">
+            {{ fileName }}
+          </p>
+          <p *ngIf="fileName == null" class="text-xs leading-5 text-gray-100">
             PNG, JPG, GIF up to 10MB
           </p>
         </div>
       </div>
-      <p
-        *ngIf="fileName !== null"
-        class="text-base leading-5 text-white font-black"
-      >
+
+      <!-- <p *ngIf="fileName !== null" class="text-base leading-5 text-gray-100 font-semibold">
         {{ fileName }}
-      </p>
+      </p> -->
     </div>
 
     <!-- <input
