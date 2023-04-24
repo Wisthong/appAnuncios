@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Posts } from 'src/app/model/auth.interface';
+import { Post } from 'src/app/model/auth.interface';
 import { ArchiveService } from 'src/app/services/archive.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ArchiveService } from 'src/app/services/archive.service';
 })
 export class CarouselComponent implements OnInit, OnDestroy {
   listObservers$: Array<Subscription> = [];
-  listPosts!: Posts[];
+  listPosts!: Post[];
 
   responsiveOptions!: any[];
 
@@ -37,20 +37,13 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
     this.productService.postArrayResponde().subscribe(
       (resOk) => {
-        this.listPosts = resOk;
+        this.listPosts = resOk.filter((m) => m.status === true);
       },
       (resFail) => {
         //     console.log('🟢🟢🟢');
       }
     );
 
-    // const observer$ = this.productService.getAllImages().subscribe(
-    //   (resOk) => {
-    //     this.listImages = resOk;
-    //   },
-    //   (resFail) => {
-    //   }
-    // );
   }
 
   ngOnDestroy(): void {

@@ -68,7 +68,7 @@ export default class FormsComponent {
           this.messageService.add({
             severity: 'info',
             summary: 'Exito',
-            detail: 'Has creado un post',
+            detail: resOk,
           });
           setTimeout(() => {
             this.router.navigate(['/admin']);

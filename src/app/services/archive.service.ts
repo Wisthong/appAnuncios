@@ -6,6 +6,7 @@ import {
   Archive,
   Post,
   PostArray,
+  ResponsePost,
   ResponseTrue,
 } from '../model/auth.interface';
 
@@ -29,12 +30,32 @@ export class ArchiveService {
     );
   }
 
-  createPost(body: Post): Observable<any> {
-    return this.http.post(this.apiUrl + '/posts', body);
+  createPost(body: Post): Observable<string> {
+    return this.http.post<ResponsePost>(this.apiUrl + '/posts', body).pipe(
+      map(({ message }) => {
+        return message;
+      })
+    );
+  }
+
+  updatePost(id: string, body: Post): Observable<string> {
+    return this.http.put<ResponsePost>(this.apiUrl + '/posts/' + id, body).pipe(
+      map(({ message }) => {
+        return message;
+      })
+    );
   }
 
   postArrayResponde(): Observable<Post[]> {
     return this.http.get<PostArray>(this.apiUrl + '/posts').pipe(
+      map(({ data }) => {
+        return data;
+      })
+    );
+  }
+
+  getPost(id?: string): Observable<Post> {
+    return this.http.get<ResponsePost>(this.apiUrl + '/posts/' + id).pipe(
       map(({ data }) => {
         return data;
       })

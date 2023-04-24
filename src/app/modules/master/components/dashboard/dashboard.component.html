@@ -1,5 +1,3 @@
-<h1>Master</h1>
-
 <div class="grid grid-cols-8">
   <div class="col-start-2 col-span-6">
     <div class="my-5">
@@ -11,21 +9,86 @@
       <p-accordionTab header="Informacion del Usuario">
         <p>
           <i class="pi pi-user" style="font-size: 1rem">
-            Nombre: {{ usuario.name | titlecase }}
-            {{ usuario.lastname | titlecase }}
+            Nombre: {{ user.name | titlecase }}
+            {{ user.lastname | titlecase }}
           </i>
         </p>
         <p>
           <i class="pi pi-user" style="font-size: 1rem">
-            Email: {{ usuario.email | titlecase }}
+            Email: {{ user.email | titlecase }}
           </i>
         </p>
         <p>
           <i class="pi pi-user" style="font-size: 1rem">
-            Rol: {{ usuario.role | titlecase }}
+            Rol: {{ user.role | titlecase }}
           </i>
         </p>
       </p-accordionTab>
     </p-accordion>
+  </div>
+</div>
+
+<div class="grid grid-cols-8">
+  <div class="col-start-2 col-span-6">
+    <!-- <app-navbar/> -->
+
+    <div class="mt-2">
+      <h1 class="text-6xl text-center mt-3">Carousel</h1>
+      <p class="text-2xl mt-2">
+        En el siguiente apartado, podras mirar los anuncios del equipo Universal
+        ......
+      </p>
+    </div>
+    <div class="card" *ngIf="listPosts">
+      <p-carousel
+        [value]="listPosts"
+        [numVisible]="2"
+        [numScroll]="3"
+        [autoplayInterval]="5000"
+        [responsiveOptions]="responsiveOptions"
+        [circular]="true"
+      >
+        <ng-template let-itemPost pTemplate="item">
+          <div
+            class="border-1 surface-border border-round m-2 text-center py-5 px-10"
+          >
+            <div class="mb-3">
+              <a [routerLink]="['./status/' + itemPost._id]">
+                <img
+                  [src]="itemPost.archiveJoin[0]!.url"
+                  [alt]="itemPost.archiveJoin[0]!.filename"
+                  class="shadow-2xl"
+                />
+              </a>
+            </div>
+            <div>
+              <h4 class="mb-1">{{ "Item: " + itemPost.item }}</h4>
+              <h4 class="mb-1">{{ "Linea: " + itemPost.line }}</h4>
+              <h4 class="mt-0 mb-1">
+                {{ "Descripcion: " + itemPost.description }}
+              </h4>
+              <h4>{{ "Categoria: " + itemPost.category }}</h4>
+              <h4>{{ "Estado: " + itemPost.status }}</h4>
+              <!-- <p-tag
+                [value]="itemPost.filename"
+                [severity]="getSeverity(itemPost.filename)"
+              ></p-tag>
+              <div class="car-buttons mt-5">
+                <p-button
+                  type="button"
+                  styleClass="p-button-secondary p-button-rounded mr-2"
+                  icon="pi pi-search"
+                ></p-button>
+                <p-button
+                  type="button"
+                  styleClass="p-button-success p-button-rounded mr-2"
+                  icon="pi pi-star-fill"
+                ></p-button>
+              </div> -->
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
   </div>
 </div>

@@ -102,6 +102,13 @@ const routes: Routes = [
           return import('@master/components/forms/forms.component');
         },
       },
+      {
+        path: 'status/:id',
+        title: 'Cambiar estado de Post',
+        loadComponent() {
+          return import('@master/components/status-post/status-post.component');
+        },
+      },
     ],
   },
 ];

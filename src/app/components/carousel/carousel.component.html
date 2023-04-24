@@ -1,7 +1,5 @@
 <div class="grid grid-cols-8">
   <div class="col-start-2 col-span-6">
-    <!-- <app-navbar/> -->
-
     <div class="mt-2">
       <h1 class="text-6xl text-center mt-3">Sección de anuncios</h1>
       <p class="text-2xl mt-2">
@@ -26,16 +24,16 @@
               <img
                 [src]="itemPost.archiveJoin[0]!.url"
                 [alt]="itemPost.archiveJoin[0]!.filename"
-                class="shadow-2xl"
+                class="shadow-2xl rounded-2xl animate__animated animate__pulse animate__infinite"
               />
             </div>
             <div>
-              <h4 class="mb-1">{{ "Item: " + itemPost.item }}</h4>
-              <h4 class="mb-1">{{ "Linea: " + itemPost.line }}</h4>
-              <h4 class="mt-0 mb-1">
+              <h4 class="mb-1 text-2xl">{{ "Item: " + itemPost.item }}</h4>
+              <h4 class="mb-1 text-2xl">{{ "Linea: " + itemPost.line }}</h4>
+              <h4 class="mt-0 mb-1 text-2xl">
                 {{ "Descripcion: " + itemPost.description }}
               </h4>
-              <h4>{{ "Categoria: " + itemPost.category }}</h4>
+              <h4 class="text-2xl">{{ "Categoria: " + itemPost.category }}</h4>
               <!-- <p-tag
                 [value]="itemPost.filename"
                 [severity]="getSeverity(itemPost.filename)"

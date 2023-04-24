@@ -21,7 +21,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/vela-blue/theme.css",
+              "node_modules/primeng/resources/themes/saga-orange/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "src/styles.css"
             ],
@@ -32,8 +32,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -67,7 +67,10 @@
               "browserTarget": "anuncios:build:production"
             },
             "development": {
-              "browserTarget": "anuncios:build:development"
+              "browserTarget": "anuncios:build:development",
+              "host": "0.0.0.0",
+              "port": 8000,
+              "open": true
             }
           },
           "defaultConfiguration": "development"
