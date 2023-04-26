@@ -7,15 +7,15 @@
 /* @import "primeng/resources/themes/arya-green/theme.css"; */
 /* @import "primeng/resources/themes/lara-dark-indigo/theme.css"; */
 /* @import "primeng/resources/themes/saga-blue/theme.css"; */
-@import "primeng/resources/themes/saga-green/theme.css";
-/* @import "primeng/resources/themes/saga-orange/theme.css"; */
+/* @import "primeng/resources/themes/saga-green/theme.css"; */
+@import "primeng/resources/themes/saga-orange/theme.css";
 /* @import "primeng/resources/themes/vela-blue/theme.css"; */
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
 html,
 body {
-  background-color: #fff;
+  /* background-color: #278; */
   /* background-color: var(--primary-color); */
   font-family: var(--font-family);
 }
@@ -31,6 +31,7 @@ h5 {
 
 p,
 label {
-  color: #0077b6;
+  color: #000;
+  /* color: #0077b6; */
   /* color: var(--text-secondary-color); */
 }

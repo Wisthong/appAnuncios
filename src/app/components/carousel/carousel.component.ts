@@ -12,38 +12,38 @@ export class CarouselComponent implements OnInit, OnDestroy {
   listObservers$: Array<Subscription> = [];
   listPosts!: Post[];
 
-  responsiveOptions!: any[];
+  // responsiveOptions!: any[];
 
   private readonly productService = inject(ArchiveService);
 
   ngOnInit() {
-    this.responsiveOptions = [
-      {
-        breakpoint: '1199px',
-        numVisible: 1,
-        numScroll: 1,
-      },
-      {
-        breakpoint: '991px',
-        numVisible: 2,
-        numScroll: 1,
-      },
-      {
-        breakpoint: '767px',
-        numVisible: 1,
-        numScroll: 1,
-      },
-    ];
+    // this.responsiveOptions = [
+    //   {
+    //     breakpoint: '1199px',
+    //     numVisible: 1,
+    //     numScroll: 1,
+    //   },
+    //   {
+    //     breakpoint: '991px',
+    //     numVisible: 2,
+    //     numScroll: 1,
+    //   },
+    //   {
+    //     breakpoint: '767px',
+    //     numVisible: 1,
+    //     numScroll: 1,
+    //   },
+    // ];
 
     this.productService.postArrayResponde().subscribe(
       (resOk) => {
         this.listPosts = resOk.filter((m) => m.status === true);
+        console.log(resOk);
       },
       (resFail) => {
         //     console.log('🟢🟢🟢');
       }
     );
-
   }
 
   ngOnDestroy(): void {
