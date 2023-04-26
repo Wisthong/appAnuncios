@@ -1,17 +1,18 @@
+<div class="mt-2">
+  <h1 class="text-6xl text-center mt-3">Sección de anuncios</h1>
+  <p class="text-2xl mt-2">
+    En el siguiente apartado, podras mirar los anuncios del equipo Universal
+    ......
+  </p>
+</div>
+<img class="h-96 w-full" src="../../../assets/banner/campana.jpg" alt="" />
 <div class="grid grid-cols-8">
   <div class="col-start-2 col-span-6">
-    <div class="mt-2">
-      <h1 class="text-6xl text-center mt-3">Sección de anuncios</h1>
-      <p class="text-2xl mt-2">
-        En el siguiente apartado, podras mirar los anuncios del equipo Universal
-        ......
-      </p>
-    </div>
     <div class="card" *ngIf="listPosts">
       <p-carousel
         [value]="listPosts"
         [numVisible]="2"
-        [numScroll]="3"
+        [numScroll]="1"
         [autoplayInterval]="5000"
         [responsiveOptions]="responsiveOptions"
         [circular]="true"
@@ -24,7 +25,7 @@
               <img
                 [src]="itemPost.archiveJoin[0]!.url"
                 [alt]="itemPost.archiveJoin[0]!.filename"
-                class="shadow-2xl rounded-2xl animate__animated animate__pulse animate__infinite"
+                class="slider shadow-2xl rounded-2xl animate__animated animate__pulse animate__infinite"
               />
             </div>
             <div>
