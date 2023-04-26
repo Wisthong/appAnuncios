@@ -1,0 +1,24 @@
+<div class="card">
+  <p-menubar [model]="items">
+    <ng-template pTemplate="start">
+      <a [routerLink]="['/master']">
+        <img
+          src="https://primefaces.org/cdn/primeng/images/primeng.svg"
+          height="40"
+          class="mr-2"
+        />
+      </a>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <p-button
+        pTooltip="Cerrar sesion"
+        (onClick)="onCerrarSesion()"
+        icon="pi pi-user"
+        styleClass="p-button-rounded p-button-info p-button-outlined"
+      ></p-button>
+      <!-- <input type="text" pInputText placeholder="Buscar" class="w-full" /> -->
+    </ng-template>
+  </p-menubar>
+</div>
+
+<router-outlet></router-outlet>

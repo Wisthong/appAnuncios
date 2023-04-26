@@ -1,0 +1,29 @@
+<div class="grid grid-cols-8">
+  <div class="col-start-2 col-span-6">
+    <div class="my-5">
+      <h1 class="text-6xl text-center mt-3">Sección de Dashboard</h1>
+      <p class="text-2xl mt-2">Seccion en construccion ......</p>
+    </div>
+
+    <p-accordion [activeIndex]="0">
+      <p-accordionTab header="Informacion del Usuario">
+        <p>
+          <i class="pi pi-user" style="font-size: 1rem">
+            Nombre: {{ usuario.name | titlecase }}
+            {{ usuario.lastname | titlecase }}
+          </i>
+        </p>
+        <p>
+          <i class="pi pi-user" style="font-size: 1rem">
+            Email: {{ usuario.email | titlecase }}
+          </i>
+        </p>
+        <p>
+          <i class="pi pi-user" style="font-size: 1rem">
+            Rol: {{ usuario.role | titlecase }}
+          </i>
+        </p>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+</div>
