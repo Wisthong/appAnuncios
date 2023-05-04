@@ -1,49 +1,53 @@
-<div class="grid grid-cols-1">
-  <img class="h-auto w-full" src="../../../assets/banner/fondo.png" alt="" />
-  <div class="contenido">
-    <p-carousel
-      [value]="listPosts"
-      [numVisible]="1"
-      [numScroll]="1"
-      [autoplayInterval]="5000"
-      [circular]="true"
-    >
-      <ng-template let-itemPost pTemplate="item">
-        <div class="grid grid-cols-3">
-          <div class="lg:font-bold lg:font">
-            <p class="lg:text-7xl italic text-slate-50">Productos Destacados</p>
-            <div class="grid grid-cols-1">
+<body>
+  <h3>hola</h3>
+  <div class="grid grid-cols-1">
+    <div class="contenido">
+      <p-carousel
+        [value]="listPosts"
+        [numVisible]="1"
+        [numScroll]="1"
+        [autoplayInterval]="5000"
+        [circular]="true"
+      >
+        <ng-template let-itemPost pTemplate="item">
+          <div class="grid grid-cols-3">
+            <div class="lg:font-bold lg:font">
               <p class="lg:text-7xl italic text-slate-50">
-                <span class="text-sky-600 text-9xl text-center"
-                  >10% <br
-                /></span>
-                de descuentos
+                Productos Destacados
               </p>
-              <p class="font-light text-2xl pt-3 text-slate-50">
-                Valido desde 8 hasta 30
+              <div class="grid grid-cols-1">
+                <p class="lg:text-7xl italic text-slate-50">
+                  <span class="text-sky-600 text-9xl text-center"
+                    >10% <br
+                  /></span>
+                  de descuentos
+                </p>
+                <p class="font-light text-2xl pt-3 text-slate-50">
+                  Valido desde 8 hasta 30
+                </p>
+              </div>
+            </div>
+            <div class="">
+              <img
+                [src]="itemPost.archiveJoin[0]!.url"
+                [alt]="itemPost.archiveJoin[0]!.filename"
+                class="imagen"
+              />
+            </div>
+            <div class="">
+              <p class="titulo">{{ itemPost.description }}</p>
+              <p class="item">
+                <span class="font-bold"> Item:</span> {{ itemPost.description }}
+                <br />
+                <span class="font-bold"> Precio:</span> {{ "$45.000" }}
               </p>
             </div>
           </div>
-          <div class="">
-            <img
-              [src]="itemPost.archiveJoin[0]!.url"
-              [alt]="itemPost.archiveJoin[0]!.filename"
-              class="imagen"
-            />
-          </div>
-          <div class="">
-            <p class="titulo">{{ itemPost.description }}</p>
-            <p class="item">
-              <span class="font-bold"> Item:</span> {{ itemPost.description }}
-              <br />
-              <span class="font-bold"> Precio:</span> {{ "$45.000" }}
-            </p>
-          </div>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="footer">
-        <p class="text-gray-50 font-extralight">Papeleria Universal</p>
-      </ng-template>
-    </p-carousel>
+        </ng-template>
+        <!-- <ng-template pTemplate="footer">
+          <p class="text-gray-50 font-extralight">Papeleria Universal</p>
+        </ng-template> -->
+      </p-carousel>
+    </div>
   </div>
-</div>
+</body>

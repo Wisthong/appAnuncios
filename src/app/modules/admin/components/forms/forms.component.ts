@@ -80,7 +80,7 @@ export default class FormsComponent {
             summary: 'Eroor',
             detail: error.message,
           });
-          console.log('Error');
+          console.log('Error', error);
         }
       );
     } else {
