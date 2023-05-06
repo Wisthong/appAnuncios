@@ -23,6 +23,15 @@ export default class StatusPostComponent {
   responsiveOptions!: any[];
   id!: string | null;
   select?: string;
+  categoria = [
+    'Papeleria',
+    'Tecnologia',
+    'Cacharro',
+    'Cosmeticos',
+    'Arte',
+    'Institucional',
+    'Libros',
+  ];
 
   private readonly productService = inject(ArchiveService);
   private readonly messageService = inject(MessageService);
@@ -31,12 +40,15 @@ export default class StatusPostComponent {
   private readonly fb = inject(FormBuilder);
 
   postForm = this.fb.nonNullable.group({
+    archive: ['', [Validators.required]],
+    category: ['', [Validators.required]],
+    description: ['', [Validators.required, Validators.minLength(5)]],
     item: ['', [Validators.required, Validators.minLength(4)]],
     line: ['', [Validators.required, Validators.minLength(5)]],
-    category: ['', [Validators.required, Validators.minLength(5)]],
+    line2: ['', [Validators.required, Validators.minLength(5)]],
+    priceClient: [0, [Validators.required, Validators.min(500)]],
+    priceSuper: [0, [Validators.required, Validators.min(500)]],
     status: [false, Validators.required],
-    description: ['', [Validators.required, Validators.minLength(5)]],
-    archive: ['', [Validators.required]],
   });
 
   ngOnInit() {
@@ -50,6 +62,9 @@ export default class StatusPostComponent {
           description: resOk.description,
           archive: resOk.archive,
           status: resOk.status,
+          line2: resOk.line2,
+          priceClient: resOk.priceClient,
+          priceSuper: resOk.priceSuper,
         });
         // console.log(resOk._id);
       },
@@ -86,6 +101,8 @@ export default class StatusPostComponent {
       const body = this.postForm.getRawValue();
 
       if (this.id !== null) {
+        console.log(body);
+
         //TODO: UPDATE
         this.productService.updatePost(this.id, body).subscribe(
           (resOk) => {

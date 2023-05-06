@@ -20,7 +20,15 @@ export default class FormsComponent {
   listObservers$: Array<Subscription> = [];
   listImages!: Archive[];
   responsiveOptions!: any[];
-
+  categoria = [
+    'Papeleria',
+    'Tecnologia',
+    'Cacharro',
+    'Cosmeticos',
+    'Arte',
+    'Institucional',
+    'Libros',
+  ];
   select?: string;
 
   private readonly productService = inject(ArchiveService);
@@ -29,11 +37,14 @@ export default class FormsComponent {
   private readonly fb = inject(FormBuilder);
 
   postForm = this.fb.nonNullable.group({
+    archive: ['', [Validators.required]],
+    category: ['', [Validators.required]],
+    description: ['', [Validators.required, Validators.minLength(5)]],
     item: ['', [Validators.required, Validators.minLength(4)]],
     line: ['', [Validators.required, Validators.minLength(5)]],
-    category: ['', [Validators.required, Validators.minLength(5)]],
-    description: ['', [Validators.required, Validators.minLength(5)]],
-    archive: ['', [Validators.required]],
+    line2: ['', [Validators.required, Validators.minLength(5)]],
+    priceClient: [0, [Validators.required, Validators.min(500)]],
+    priceSuper: [0, [Validators.required, Validators.min(500)]],
   });
 
   ngOnInit() {

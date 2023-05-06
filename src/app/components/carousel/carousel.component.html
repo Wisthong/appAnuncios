@@ -6,13 +6,13 @@
     <div class="grid grid-cols-1">
       <img
         src="./../../../assets/banner/logo.png"
-        class="lg:w-28 mx-auto lg:mt-5 xl:w-52"
+        class="lg:w-28 mx-auto lg:mt-5 xl:w-52 sm:w-32 sm:pt-6"
         alt=""
         srcset=""
       />
     </div>
     <div class="grid grid-cols-1">
-      <div class="absolute w-full xl:top-64 lg:top-52">
+      <div class="absolute w-full xl:top-64 lg:top-52 sm:top-72">
         <p-carousel
           [value]="listPosts"
           [numVisible]="1"
@@ -21,8 +21,10 @@
           [circular]="true"
         >
           <ng-template let-itemPost pTemplate="item">
-            <div class="grid grid-cols-3">
-              <div class="xl:hidden lg:font-bold lg:font xl:mt-20 lg:mt-20">
+            <div class="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-1">
+              <div
+                class="sm:hidden md:hidden lg:block xl:block lg:font-bold lg:font xl:mt-20 lg:mt-20"
+              >
                 <p class="lg:text-7xl italic text-slate-50">
                   Productos Destacados
                 </p>
@@ -39,22 +41,28 @@
                   </p>
                 </div>
               </div>
+
               <div
-                class="xl:mt-20 lg:mt-20 bg-slate-50 border-4 border-yellow-500 lg:rounded-full xl:rounded-3xl text-center"
+                class="sm:block md:hidden lg:block xl:block xl:mt-20 lg:mt-20 bg-slate-50 border-4 border-yellow-500 lg:rounded-full xl:rounded-3xl text-center"
               >
                 <img
                   [src]="itemPost.archiveJoin[0]!.url"
                   [alt]="itemPost.archiveJoin[0]!.filename"
-                  class="lg:rounded-3xl mx-auto lg:w-96 lg:h-96"
+                  class="sm:w-96 sm:h-60 lg:rounded-3xl mx-auto lg:w-96 lg:h-96"
                 />
               </div>
-              <div class="xl:mt-20 lg:mt-20 mx-auto">
+
+              <!-- Texto lateral derecha -->
+              <div
+                class="sm:hidden md:hidden lg:block xl:block xl:mt-20 lg:mt-20 mx-auto"
+              >
                 <p class="titulo">{{ itemPost.description }}</p>
                 <p class="item">
                   <span class="font-bold"> Item:</span>
                   {{ itemPost.description }}
                   <br />
-                  <span class="font-bold"> Precio:</span> {{ "$45.000" }}
+                  <span class="font-bold"> Precio:</span>
+                  {{ "$ " + itemPost.priceClient }}
                 </p>
               </div>
             </div>

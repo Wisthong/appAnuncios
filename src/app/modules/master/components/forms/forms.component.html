@@ -18,8 +18,41 @@
         <h2 class="text-3xl font-semibold leading-7">
           Informacion del producto
         </h2>
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <div class="sm:col-span-2">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6">
+          <div class="col-span-full">
+            <label for="about" class="block text-sm font-medium leading-6"
+              >Descripcion</label
+            >
+            <div class="mt-2">
+              <textarea
+                formControlName="description"
+                id="about"
+                name="about"
+                rows="3"
+                class="block w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:py-1.5 lg:text-sm lg:leading-6"
+              ></textarea>
+              <p
+                *ngIf="
+                  postForm.controls['description'].touched &&
+                  postForm.controls['description'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['description'].touched &&
+                  postForm.controls['description'].hasError('minlength')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Debes introducir minimo 5 caracteres
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3">
             <label for="first-name" class="block text-sm font-medium leading-6"
               >Item</label
             >
@@ -30,7 +63,7 @@
                 name="first-name"
                 id="first-name"
                 autocomplete="given-name"
-                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
               />
               <p
                 *ngIf="
@@ -52,7 +85,25 @@
               </p>
             </div>
           </div>
-          <div class="sm:col-span-2">
+
+          <div class="lg:col-span-3">
+            <label for="first-name" class="block text-sm font-medium leading-6"
+              >Categoria</label
+            >
+            <div class="mt-2">
+              <select
+                placeholder="Estado"
+                formControlName="category"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              >
+                <option *ngFor="let item of categoria" [value]="item">
+                  {{ item | titlecase }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3">
             <label for="first-name" class="block text-sm font-medium leading-6"
               >Linea</label
             >
@@ -63,7 +114,7 @@
                 name="first-name"
                 id="first-name"
                 autocomplete="given-name"
-                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
               />
               <p
                 *ngIf="
@@ -86,23 +137,23 @@
             </div>
           </div>
 
-          <div class="sm:col-span-2">
-            <label for="last-name" class="block text-sm font-medium leading-6"
-              >Categoria</label
+          <div class="lg:col-span-3">
+            <label for="first-name" class="block text-sm font-medium leading-6"
+              >Linea de segundo nivel</label
             >
             <div class="mt-2">
               <input
-                formControlName="category"
+                formControlName="line2"
                 type="text"
-                name="last-name"
-                id="last-name"
-                autocomplete="family-name"
-                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 sm:text-sm sm:leading-6"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
               />
               <p
                 *ngIf="
-                  postForm.controls['category'].touched &&
-                  postForm.controls['category'].hasError('required')
+                  postForm.controls['line2'].touched &&
+                  postForm.controls['line2'].hasError('required')
                 "
                 class="text-red-700 text-sm italic font-extrabold"
               >
@@ -110,8 +161,8 @@
               </p>
               <p
                 *ngIf="
-                  postForm.controls['category'].touched &&
-                  postForm.controls['category'].hasError('minlength')
+                  postForm.controls['line2'].touched &&
+                  postForm.controls['line2'].hasError('minlength')
                 "
                 class="text-red-700 text-sm italic font-extrabold"
               >
@@ -120,22 +171,23 @@
             </div>
           </div>
 
-          <div class="col-span-full">
-            <label for="about" class="block text-sm font-medium leading-6"
-              >Descripcion</label
+          <div class="lg:col-span-3">
+            <label for="first-name" class="block text-sm font-medium leading-6"
+              >Precio cliente</label
             >
             <div class="mt-2">
-              <textarea
-                formControlName="description"
-                id="about"
-                name="about"
-                rows="3"
-                class="block w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 sm:py-1.5 sm:text-sm sm:leading-6"
-              ></textarea>
+              <input
+                formControlName="priceClient"
+                type="number"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
               <p
                 *ngIf="
-                  postForm.controls['description'].touched &&
-                  postForm.controls['description'].hasError('required')
+                  postForm.controls['priceClient'].touched &&
+                  postForm.controls['priceClient'].hasError('required')
                 "
                 class="text-red-700 text-sm italic font-extrabold"
               >
@@ -143,12 +195,46 @@
               </p>
               <p
                 *ngIf="
-                  postForm.controls['description'].touched &&
-                  postForm.controls['description'].hasError('minlength')
+                  postForm.controls['priceClient'].touched &&
+                  postForm.controls['priceClient'].hasError('min')
                 "
                 class="text-red-700 text-sm italic font-extrabold"
               >
-                Debes introducir minimo 5 caracteres
+                El precio minimo es $500
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3">
+            <label for="first-name" class="block text-sm font-medium leading-6"
+              >Precio Super</label
+            >
+            <div class="mt-2">
+              <input
+                formControlName="priceSuper"
+                type="number"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
+              <p
+                *ngIf="
+                  postForm.controls['priceSuper'].touched &&
+                  postForm.controls['priceSuper'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['priceSuper'].touched &&
+                  postForm.controls['priceSuper'].hasError('min')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                El precio minimo es $500
               </p>
             </div>
           </div>
