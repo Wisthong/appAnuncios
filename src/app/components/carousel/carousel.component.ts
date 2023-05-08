@@ -38,7 +38,6 @@ export class CarouselComponent implements OnInit, OnDestroy {
     this.productService.postArrayResponde().subscribe(
       (resOk) => {
         this.listPosts = resOk.filter((m) => m.status === true);
-        console.log(resOk);
       },
       (resFail) => {
         //     console.log('🟢🟢🟢');

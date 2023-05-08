@@ -24,7 +24,8 @@ export class ArchiveService {
           (m) =>
             m.filename.includes('.png') ||
             m.filename.includes('.jpg') ||
-            m.filename.includes('.jpeg')
+            m.filename.includes('.jpeg') ||
+            m.filename.includes('.gif')
         );
       })
     );

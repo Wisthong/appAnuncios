@@ -49,6 +49,10 @@ export default class StatusPostComponent {
     priceClient: [0, [Validators.required, Validators.min(500)]],
     priceSuper: [0, [Validators.required, Validators.min(500)]],
     status: [false, Validators.required],
+    title: ['', [Validators.required, Validators.minLength(10)]],
+    porcentage: [0, [Validators.required]],
+    infoDesc: ['', []],
+    valid: ['', []],
   });
 
   ngOnInit() {
@@ -56,16 +60,21 @@ export default class StatusPostComponent {
     this.productService.getPost(this.id!).subscribe(
       (resOk) => {
         this.postForm.patchValue({
-          item: resOk.item,
-          line: resOk.line,
+          archive: resOk.archive,
           category: resOk.category,
           description: resOk.description,
-          archive: resOk.archive,
-          status: resOk.status,
+          item: resOk.item,
+          line: resOk.line,
           line2: resOk.line2,
           priceClient: resOk.priceClient,
           priceSuper: resOk.priceSuper,
+          status: resOk.status,
+          title: resOk.title,
+          porcentage: resOk.porcentage,
+          infoDesc: resOk.infoDesc,
+          valid: resOk.valid,
         });
+        this.select = resOk.archive;
         // console.log(resOk._id);
       },
       (resFail) => {

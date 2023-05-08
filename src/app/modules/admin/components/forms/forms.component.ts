@@ -45,6 +45,10 @@ export default class FormsComponent {
     line2: ['', [Validators.required, Validators.minLength(5)]],
     priceClient: [0, [Validators.required, Validators.min(500)]],
     priceSuper: [0, [Validators.required, Validators.min(500)]],
+    title: ['', [Validators.required, Validators.minLength(10)]],
+    porcentage: [0, []],
+    infoDesc: ['', []],
+    valid: ['', []],
   });
 
   ngOnInit() {
@@ -74,29 +78,27 @@ export default class FormsComponent {
   onSave() {
     if (this.postForm.valid) {
       const body = this.postForm.getRawValue();
-      console.log(body);
-      // this.productService.createPost(body).subscribe(
-      //   (resOk) => {
-      //     this.messageService.add({
-      //       severity: 'info',
-      //       summary: 'Exito',
-      //       detail: resOk,
-      //     });
-      //     setTimeout(() => {
-      //       this.router.navigate(['/admin']);
-      //     }, 1000 * 3);
-      //   },
-      //   ({ error }: HttpErrorResponse) => {
-      //     this.messageService.add({
-      //       severity: 'error',
-      //       summary: 'Eroor',
-      //       detail: error.message,
-      //     });
-      //     console.log('Error', error);
-      //   }
-      // );
+      this.productService.createPost(body).subscribe(
+        (resOk) => {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Exito',
+            detail: resOk,
+          });
+          setTimeout(() => {
+            this.router.navigate(['/admin']);
+          }, 1000 * 3);
+        },
+        ({ error }: HttpErrorResponse) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Eroor',
+            detail: error.message,
+          });
+          console.log('Error', error);
+        }
+      );
     } else {
-      // this.postForm.
       this.messageService.add({
         severity: 'error',
         summary: 'Error',

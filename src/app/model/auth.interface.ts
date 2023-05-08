@@ -41,16 +41,21 @@ export interface Archive {
 }
 
 export interface Post {
-  _id?:            string;
-  archive:         string;
-  category:        string;
-  description:     string;
-  item:            string;
-  line:            string;
-  line2:           string;
-  priceClient:     number;
-  priceSuper:      number;
-  status?:         boolean;
+  _id?:              string;
+  archive:           string;
+  category:          string;
+  description:       string;
+  item:              string;
+  line:              string;
+  line2:             string;
+  priceClient:       number;
+  priceSuper:        number;
+  status?:           boolean;
+  title:             string;
+  porcentage?:       number;
+  infoDesc?:         string;
+  valid?:            string;
+
 }
 
 export interface UserAdmin {
@@ -78,17 +83,21 @@ export interface ResponseAuth {
 
 
 export interface Posts {
-  _id?:            string;
-  archive:         string;
-  category:        string;
-  description:     string;
-  item:            string;
-  line:            string;
-  line2:           string;
-  priceClient:     number;
-  priceSuper:      number;
-  status:          boolean;
-  archiveJoin?:    ArchiveJoin[];
+  _id?:              string;
+  archive:           string;
+  category:          string;
+  description:       string;
+  item:              string;
+  line:              string;
+  line2:             string;
+  priceClient:       number;
+  priceSuper:        number;
+  status?:           boolean;
+  title:             string;
+  porcentage?:       number;
+  infoDesc?:         string;
+  valid?:            string;
+  archiveJoin?:      ArchiveJoin[];
 }
 
 export interface ArchiveJoin {

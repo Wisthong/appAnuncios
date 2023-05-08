@@ -45,6 +45,10 @@ export default class FormsComponent {
     line2: ['', [Validators.required, Validators.minLength(5)]],
     priceClient: [0, [Validators.required, Validators.min(500)]],
     priceSuper: [0, [Validators.required, Validators.min(500)]],
+    title: ['', [Validators.required, Validators.minLength(10)]],
+    porcentage: [0, [Validators.required]],
+    infoDesc: ['', []],
+    valid: ['', []],
   });
 
   ngOnInit() {
