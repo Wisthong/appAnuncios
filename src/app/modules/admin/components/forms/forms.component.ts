@@ -21,13 +21,13 @@ export default class FormsComponent {
   listImages!: Archive[];
   responsiveOptions!: any[];
   categoria = [
-    'Papeleria',
-    'Tecnologia',
+    'Arte',
     'Cacharro',
     'Cosmeticos',
-    'Arte',
     'Institucional',
     'Libros',
+    'Papeleria',
+    'Tecnologia',
   ];
   select?: string;
 

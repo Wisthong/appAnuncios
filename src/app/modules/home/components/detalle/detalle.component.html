@@ -1,0 +1,56 @@
+<header>
+  <h1
+    class="capitalize py-4 text-5xl font-semibold text-center italic text-orange-300"
+  >
+    {{ "Name product" }}
+  </h1>
+</header>
+<div class="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 mx-8 gap-4">
+  <div
+    class="w-full hover:animate-pulse max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    *ngIf="posts as item"
+  >
+    <!-- <img
+      class="p-8 w-96 h-80 rounded-t-lg"
+      [src]="item.archiveJoin![0].url"
+      alt="product image"
+    /> -->
+
+    <div class="px-5 pb-5">
+      <p
+        class="text-3xl underline font-semibold tracking-tight text-blue-800 dark:text-white"
+      >
+        {{ item.description }}
+      </p>
+      <p class="text-base tracking-tight text-gray-900 dark:text-white">
+        Categoria: <span class="text-base"> {{ item.category }} </span>
+      </p>
+      <p class="text-base tracking-tight text-gray-900 dark:text-white">
+        Item: <span class="text-base"> {{ item.item }} </span>
+      </p>
+      <p class="text-base tracking-tight text-gray-900 dark:text-white">
+        Linea: <span class="text-base"> {{ item.line }} </span>
+      </p>
+      <p class="text-base tracking-tight text-gray-900 dark:text-white">
+        Linea secundaria: <span class="text-base"> {{ item.line2 }} </span>
+      </p>
+      <p class="text-base tracking-tight text-gray-900 dark:text-white">
+        Precio:
+        <span class="text-base">
+          ${{ item.priceSuper | currency : "COP" }}
+        </span>
+      </p>
+
+      <div class="flex items-center justify-between pt-4">
+        <span class="text-2xl font-bold text-gray-900 dark:text-white"
+          >$ {{ item.priceSuper | currency : "COP" : "symbol" }}
+        </span>
+        <!-- <a
+          href="#"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >Add to cart</a
+        > -->
+      </div>
+    </div>
+  </div>
+</div>

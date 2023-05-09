@@ -24,13 +24,13 @@ export default class StatusPostComponent {
   id!: string | null;
   select?: string;
   categoria = [
-    'Papeleria',
-    'Tecnologia',
+    'Arte',
     'Cacharro',
     'Cosmeticos',
-    'Arte',
     'Institucional',
     'Libros',
+    'Papeleria',
+    'Tecnologia',
   ];
 
   private readonly productService = inject(ArchiveService);

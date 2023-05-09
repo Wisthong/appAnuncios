@@ -5,7 +5,7 @@
   >
     <div class="grid grid-cols-1">
       <img
-        src="./../../../assets/banner/logo.png"
+        src="../../../../../assets/banner/logo.png"
         class="lg:w-28 mx-auto lg:mt-5 xl:w-52 sm:w-32 sm:pt-6 md:w-32 md:pt-6"
         alt=""
         srcset=""
@@ -57,7 +57,7 @@
               </div>
 
               <div
-                class="sm:block md:hidden lg:block xl:block xl:mt-20 lg:mt-20 bg-slate-50 border-4 border-yellow-500 lg:rounded-full xl:rounded-full text-center"
+                class="dav sm:block md:hidden lg:block xl:block xl:mt-20 lg:mt-20 bg-slate-50 lg:rounded-full xl:rounded-full text-center"
               >
                 <img
                   [src]="itemPost.archiveJoin[0]!.url"
@@ -70,8 +70,10 @@
               <div
                 class="sm:hidden md:hidden lg:block xl:block xl:mt-20 lg:mt-20 mx-auto"
               >
-                <p class="titulo">{{ itemPost.description }}</p>
-                <p class="item">
+                <p class="text-5xl text-white font-semibold bg-cyan-400 italic">
+                  {{ itemPost.description }}
+                </p>
+                <p class="text-white text-3xl">
                   <span class="font-bold"> Item:</span>
                   {{ itemPost.description }}
                   <br />

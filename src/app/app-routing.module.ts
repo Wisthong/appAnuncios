@@ -1,31 +1,59 @@
 import { NgModule, inject } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { AuthGuard } from './guard/auth.guard';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { MasterGuard } from './guard/master.guard';
+import { ErrorpageComponent } from './pages/errorpage/errorpage.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: '',
+  //   pathMatch: 'full',
+  // },
+  //TODO: routes init
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    loadComponent() {
+      return import('./modules/home/pages/carousel/carousel.component');
+    },
+    // component: CarouselComponent,
+    title: 'Carousel',
   },
+  //TODO: Ruote login
   {
-    path: 'home',
-    component: NavbarComponent,
+    path: 'login',
+    loadComponent() {
+      return import('./pages/login/login.component');
+    },
+    title: 'Login',
+  },
+  //TODO: Route asesor
+  {
+    path: 'asesor',
+    loadComponent() {
+      return import('./modules/home/components/nabvar/nabvar.component');
+    },
     children: [
       {
         path: '',
-        component: CarouselComponent,
-        title: 'Carousel',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Asesor Comercial',
       },
       {
-        path: 'login',
+        path: 'arte',
         loadComponent() {
-          return import('./pages/login/login.component');
+          return import('./modules/home/pages/asesor/asesor.component');
         },
-        title: 'Login',
+        title: 'Catálogo arte',
+      },
+      {
+        path: 'cosmeticos',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo cosmeticos',
       },
     ],
   },
@@ -110,6 +138,11 @@ const routes: Routes = [
         },
       },
     ],
+  },
+  {
+    path: '**',
+    component: ErrorpageComponent,
+    title: 'Pagina error  ',
   },
 ];
 
