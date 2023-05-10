@@ -46,14 +46,56 @@ const routes: Routes = [
         loadComponent() {
           return import('./modules/home/pages/asesor/asesor.component');
         },
-        title: 'Catálogo arte',
+        title: 'Catálogo de Arte',
+      },
+      {
+        path: 'cacharro',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Cacharro',
       },
       {
         path: 'cosmeticos',
         loadComponent() {
           return import('./modules/home/pages/asesor/asesor.component');
         },
-        title: 'Catálogo cosmeticos',
+        title: 'Catálogo de Cosmeticos',
+      },
+      {
+        path: 'institucional',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Institucional',
+      },
+      {
+        path: 'libros',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Libros',
+      },
+      {
+        path: 'papeleria',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Papeleria',
+      },
+      {
+        path: 'tecnologia',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Tecnologia',
+      },
+      {
+        path: 'detalle/:id',
+        loadComponent() {
+          return import('./modules/home/components/detalle/detalle.component');
+        },
+        title: 'Detalle de producto',
       },
     ],
   },

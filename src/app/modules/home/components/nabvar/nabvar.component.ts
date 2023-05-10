@@ -16,43 +16,42 @@ export default class NabvarComponent {
   items!: MenuItem[];
   private readonly router = inject(Router);
 
-
   ngOnInit(): void {
     this.items = [
       {
         label: 'Arte',
         icon: 'pi pi-fw pi-pencil',
-        routerLink: '',
+        routerLink: 'arte',
       },
       {
         label: 'Cacharro',
         icon: 'pi pi-fw pi-pencil',
-        routerLink: '',
+        routerLink: 'cacharro',
       },
       {
         label: 'Cosmeticos',
         icon: 'pi pi-fw pi-pencil',
-        routerLink: '',
+        routerLink: 'cosmeticos',
       },
       {
         label: 'Institucional',
         icon: 'pi pi-fw pi-pencil',
-        routerLink: '',
+        routerLink: 'institucional',
       },
       {
         label: 'Libros',
         icon: 'pi pi-fw pi-pencil',
-        routerLink: '',
+        routerLink: 'libros',
       },
       {
         label: 'Papeleria',
         icon: 'pi pi-fw pi-pencil',
-        routerLink: '',
+        routerLink: 'papeleria',
       },
       {
         label: 'Tecnologia',
         icon: 'pi pi-fw pi-pencil',
-        routerLink: '',
+        routerLink: 'tecnologia',
       },
     ];
   }

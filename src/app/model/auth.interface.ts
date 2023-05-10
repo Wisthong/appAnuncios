@@ -16,6 +16,11 @@ export interface ResponsePost {
   message: string;
 }
 
+export interface ResponsePosts {
+  data:    Posts[];
+  ok:      boolean;
+  message: string;
+}
 
 export interface ResponseUpload {
   data:    Upload;
