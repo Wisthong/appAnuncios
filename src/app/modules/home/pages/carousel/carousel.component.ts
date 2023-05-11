@@ -4,11 +4,12 @@ import { Subscription } from 'rxjs';
 import { Post, Posts } from 'src/app/model/auth.interface';
 import { ArchiveService } from 'src/app/services/archive.service';
 import { CarouselModule } from 'primeng/carousel';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [CommonModule, CarouselModule],
+  imports: [CommonModule, CarouselModule,RouterModule],
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css'],
 })

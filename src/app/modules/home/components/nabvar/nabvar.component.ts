@@ -4,11 +4,19 @@ import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-nabvar',
   standalone: true,
-  imports: [CommonModule, RouterModule, MenubarModule, ButtonModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MenubarModule,
+    ButtonModule,
+    DropdownModule,
+    // MatIconModule,
+  ],
   templateUrl: './nabvar.component.html',
   styleUrls: ['./nabvar.component.css'],
 })
@@ -25,32 +33,32 @@ export default class NabvarComponent {
       },
       {
         label: 'Cacharro',
-        icon: 'pi pi-fw pi-pencil',
+        icon: 'pi pi-bars',
         routerLink: 'cacharro',
       },
       {
         label: 'Cosmeticos',
-        icon: 'pi pi-fw pi-pencil',
+        icon: 'pi pi-angle-double-right',
         routerLink: 'cosmeticos',
       },
       {
         label: 'Institucional',
-        icon: 'pi pi-fw pi-pencil',
+        icon: 'pi pi-file',
         routerLink: 'institucional',
       },
       {
         label: 'Libros',
-        icon: 'pi pi-fw pi-pencil',
+        icon: 'pi pi-book',
         routerLink: 'libros',
       },
       {
         label: 'Papeleria',
-        icon: 'pi pi-fw pi-pencil',
+        icon: 'pi pi-paperclip',
         routerLink: 'papeleria',
       },
       {
         label: 'Tecnologia',
-        icon: 'pi pi-fw pi-pencil',
+        icon: 'pi pi-desktop',
         routerLink: 'tecnologia',
       },
     ];
