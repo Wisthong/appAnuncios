@@ -16,6 +16,7 @@
     <div class="grid grid-cols-1">
       <div class="absolute w-full xl:top-64 ct:top-44 lg:top-52 sm:top-72">
         <p-carousel
+          *ngIf="listPosts.length > 0; else spinner"
           [value]="listPosts"
           [numVisible]="1"
           [numScroll]="1"
@@ -52,7 +53,7 @@
 
                 <div
                   class="grid grid-cols-1"
-                  *ngIf="itemPost.infoDesc === '' && itemPost.valid === ''"
+                  *ngIf="itemPost.infoDesc === ''"
                 >
                   <p
                     class="ct:text-7xl ct:mt-24 lg:text-8xl lg:mt-16 text-center xl:text-8xl capitalize italic text-slate-50"
@@ -63,7 +64,7 @@
               </div>
 
               <div
-                class="dav sm:block md:hidden ct:block ct:mt-20 lg:block xl:block xl:mt-20 lg:mt-20 bg-slate-50 rounded-full text-center"
+                class="dav sm:block md:hidden ct:block ct:mt-20 lg:block xl:block xl:mt-20 lg:mt-32 bg-slate-50 rounded-full text-center"
               >
                 <img
                   [src]="itemPost.archiveJoin[0]!.url"
@@ -81,7 +82,7 @@
                 </p>
                 <p class="text-white text-3xl">
                   <span class="font-bold"> Item:</span>
-                  {{ itemPost.description }}
+                  {{ itemPost.item }}
                   <br />
                   <span class="font-bold"> Precio:</span>
                   {{ "$ " + itemPost.priceClient }}
@@ -129,10 +130,25 @@
               </div>
             </div>
           </ng-template>
+
           <!-- <ng-template pTemplate="footer">
           <p class="text-gray-50 font-extralight">Papeleria Universal</p>
         </ng-template> -->
         </p-carousel>
+        <ng-template #spinner>
+          <div class="card grid text-center">
+            <p class="py-12 text-white text-4xl">No hay post</p>
+
+            <div class="card">
+              <p-progressSpinner
+                styleClass="w-1rem h-1rem"
+                strokeWidth="20"
+                fill="var(--surface-ground)"
+                animationDuration=".5s"
+              ></p-progressSpinner>
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>

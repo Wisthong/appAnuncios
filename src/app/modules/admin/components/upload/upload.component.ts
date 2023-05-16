@@ -5,6 +5,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { UploadService } from 'src/app/services/upload.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload',
@@ -23,13 +24,14 @@ export default class UploadComponent {
 
   getFile(event: Event) {
     const { files } = event.target as HTMLInputElement;
-    console.log(files?.[0]);
 
     if (files !== null) {
       this.fileRaw = files?.[0];
       this.fileName = files?.[0].name;
       this.flag = false;
     }
+
+    console.log(files);
   }
 
   onCargar() {
@@ -40,17 +42,17 @@ export default class UploadComponent {
         this.messageService.add({
           severity: 'info',
           summary: 'Exitoso',
-          detail: 'Se cargo el archivo',
+          detail: resOk,
         });
-        setTimeout(() => {
-          this.router.navigate(['/admin']);
-        }, 1000 * 3);
+        this.router.navigate(['/admin']);
+        // setTimeout(() => {
+        // }, 1000 * 3);
       },
-      (resFail) => {
+      ({ error }: HttpErrorResponse) => {
         this.messageService.add({
-          severity: 'danger',
-          summary: 'Error',
-          detail: 'Error',
+          severity: 'error',
+          summary: 'Eroor',
+          detail: error.message,
         });
       }
     );

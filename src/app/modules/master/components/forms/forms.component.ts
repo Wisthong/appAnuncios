@@ -18,6 +18,7 @@ import { ArchiveService } from 'src/app/services/archive.service';
 })
 export default class FormsComponent {
   listObservers$: Array<Subscription> = [];
+  optionTitle = ['Producto nuevo', 'Mega descuento'];
   listImages!: Archive[];
   responsiveOptions!: any[];
   categoria = [
@@ -55,12 +56,17 @@ export default class FormsComponent {
     const observer$ = this.productService.getAllImages().subscribe(
       (resOk) => {
         this.listImages = resOk;
-        // console.log(this.listImages);
       },
-      (resFail) => {
-        console.log('🟢🟢🟢');
+      ({ error }: HttpErrorResponse) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Eroor',
+          detail: error.message,
+        });
       }
     );
+
+    this.listObservers$ = [observer$];
   }
 
   onImg(img?: string) {
@@ -85,9 +91,7 @@ export default class FormsComponent {
             summary: 'Exito',
             detail: resOk,
           });
-          setTimeout(() => {
-            this.router.navigate(['/master']);
-          }, 1000 * 3);
+          this.router.navigate(['/master']);
         },
         ({ error }: HttpErrorResponse) => {
           this.messageService.add({
@@ -95,7 +99,6 @@ export default class FormsComponent {
             summary: 'Eroor',
             detail: error.message,
           });
-          console.log('Error');
         }
       );
     } else {

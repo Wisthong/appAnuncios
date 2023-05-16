@@ -8,9 +8,8 @@
       <div class="border-b border-gray-900/10 pb-12">
         <h1 class="text-6xl text-center mt-3">Formulario de post</h1>
         <p class="text-2xl mt-2">
-          En esta sección debes el formulario, digitando cada uno de los campos
-          para subir el post que deseas que se visualice como
-          <span class="text-3xl font-black text-teal-400"> anuncio</span>
+          En esta sección debes llenar los campos requeridos para poder mostrar
+          tu post
         </p>
       </div>
 
@@ -55,6 +54,26 @@
 
           <div class="lg:col-span-3">
             <label for="first-name" class="block text-sm font-medium leading-6"
+              >Tipo</label
+            >
+            <div class="mt-2">
+              <select
+                formControlName="title"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              >
+                <option
+                  class="capitalize"
+                  *ngFor="let item of optionTitle"
+                  [value]="item"
+                >
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- <div class="lg:col-span-3">
+            <label for="first-name" class="block text-sm font-medium leading-6"
               >Titulo</label
             >
             <div class="mt-2">
@@ -84,7 +103,7 @@
                 Debes ingresar minimo 10 caracteres
               </p>
             </div>
-          </div>
+          </div> -->
 
           <div class="lg:col-span-3">
             <label for="first-name" class="block text-sm font-medium leading-6"
@@ -360,7 +379,7 @@
                 </div>
               </div>
               <!-- <div class="grid grid-cols-3" *ngFor="let item of listImages">
-              </div> -->
+            </div> -->
             </div>
           </div>
         </div>

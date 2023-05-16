@@ -5,17 +5,18 @@ import { Post, Posts } from 'src/app/model/auth.interface';
 import { ArchiveService } from 'src/app/services/archive.service';
 import { CarouselModule } from 'primeng/carousel';
 import { RouterModule } from '@angular/router';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [CommonModule, CarouselModule,RouterModule],
+  imports: [CommonModule, CarouselModule, RouterModule, ProgressSpinnerModule],
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css'],
 })
 export default class CarouselComponent {
   listObservers$: Array<Subscription> = [];
-  listPosts!: Posts[];
+  listPosts: Posts[] = [];
 
   // responsiveOptions!: any[];
 
@@ -28,7 +29,6 @@ export default class CarouselComponent {
         console.log(resOk);
       },
       (resFail) => {
-        console.log('🟢🟢🟢');
       }
     );
   }

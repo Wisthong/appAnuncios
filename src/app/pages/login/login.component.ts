@@ -20,10 +20,16 @@ export default class LoginComponent {
   private readonly authSvc = inject(AuthService);
   private readonly messageService = inject(MessageService);
 
+  anio!: number;
+
   loginForm = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]],
   });
+
+  ngOnInit(): void {
+    this.anio = new Date().getFullYear();
+  }
 
   onLogin() {
     if (this.loginForm.valid) {

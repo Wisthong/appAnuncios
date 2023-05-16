@@ -131,6 +131,13 @@ const routes: Routes = [
         },
         title: 'Forms',
       },
+      {
+        path: 'update/:id',
+        loadComponent() {
+          return import('@admin/components/forms/forms.component');
+        },
+        title: 'Actualizar',
+      },
     ],
   },
 
@@ -169,7 +176,8 @@ const routes: Routes = [
         path: 'forms',
         title: 'Formulario',
         loadComponent() {
-          return import('@master/components/forms/forms.component');
+          return import('@master/components/status-post/status-post.component');
+          // return import('@master/components/forms/forms.component');
         },
       },
       {

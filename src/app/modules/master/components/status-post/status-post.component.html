@@ -1,12 +1,14 @@
 <div class="grid grid-cols-8">
   <div class="col-start-2 col-span-6">
     <div class="mt-2">
-      <h1 class="text-6xl text-center mt-3">
-        Acticar/Desactivar <span class="font-extrabold"> Post</span>
+      <h1 class="text-6xl text-center mt-3" *ngIf="id !== null">
+        Actualización de <span class="font-extrabold"> Post</span>
+      </h1>
+      <h1 class="text-6xl text-center mt-3" *ngIf="id === null">
+        Formulario de <span class="font-extrabold"> Post</span>
       </h1>
       <p class="text-2xl mt-2 border-b border-gray-900/10 pb-12">
-        En el siguiente apartado, podras activar o desactivar un post de tal
-        manera que podra ser visualizado o no en el carousel principal......
+        Por favor llena los campos requeridos para mostrar tu post
       </p>
     </div>
 
@@ -17,18 +19,6 @@
     >
       <div class="space-y-12">
         <div class="border-b border-gray-900/10 pb-12">
-          <h1 class="text-6xl text-center mt-3">Formulario de post</h1>
-          <p class="text-2xl mt-2">
-            En esta sección debes el formulario, digitando cada uno de los
-            campos para subir el post que deseas que se visualice como
-            <span class="text-3xl font-black text-teal-400"> anuncio</span>
-          </p>
-        </div>
-
-        <div class="border-b border-gray-900/10 pb-12">
-          <h2 class="text-3xl font-semibold leading-7">
-            Informacion del producto
-          </h2>
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6">
             <div class="col-span-full">
               <label for="about" class="block text-sm font-medium leading-6"
@@ -67,6 +57,28 @@
               <label
                 for="first-name"
                 class="block text-sm font-medium leading-6"
+                >Tipo</label
+              >
+              <div class="mt-2">
+                <select
+                  formControlName="title"
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+                >
+                  <option
+                    class="capitalize"
+                    *ngFor="let item of optionTitle"
+                    [value]="item"
+                  >
+                    {{ item }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- <div class="lg:col-span-3">
+              <label
+                for="first-name"
+                class="block text-sm font-medium leading-6"
                 >Titulo</label
               >
               <div class="mt-2">
@@ -96,7 +108,7 @@
                   Debes ingresar minimo 10 caracteres
                 </p>
               </div>
-            </div>
+            </div> -->
 
             <div class="lg:col-span-3">
               <label

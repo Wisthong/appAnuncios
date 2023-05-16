@@ -23,6 +23,7 @@ export default class StatusPostComponent {
   responsiveOptions!: any[];
   id!: string | null;
   select?: string;
+  optionTitle = ['Producto nuevo', 'Mega descuento'];
   categoria = [
     'Arte',
     'Cacharro',
@@ -57,40 +58,49 @@ export default class StatusPostComponent {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.productService.getPost(this.id!).subscribe(
-      (resOk) => {
-        this.postForm.patchValue({
-          archive: resOk.archive,
-          category: resOk.category,
-          description: resOk.description,
-          item: resOk.item,
-          line: resOk.line,
-          line2: resOk.line2,
-          priceClient: resOk.priceClient,
-          priceSuper: resOk.priceSuper,
-          status: resOk.status,
-          title: resOk.title,
-          porcentage: resOk.porcentage,
-          infoDesc: resOk.infoDesc,
-          valid: resOk.valid,
-        });
-        this.select = resOk.archive;
-        // console.log(resOk._id);
-      },
-      (resFail) => {
-        console.log(resFail);
-      }
-    );
+    if (this.id !== null) {
+      this.productService.getPost(this.id!).subscribe(
+        (resOk) => {
+          this.postForm.patchValue({
+            archive: resOk.archive,
+            category: resOk.category,
+            description: resOk.description,
+            item: resOk.item,
+            line: resOk.line,
+            line2: resOk.line2,
+            priceClient: resOk.priceClient,
+            priceSuper: resOk.priceSuper,
+            status: resOk.status,
+            title: resOk.title,
+            porcentage: resOk.porcentage,
+            infoDesc: resOk.infoDesc,
+            valid: resOk.valid,
+          });
+          this.select = resOk.archive;
+        },
+        ({ error }: HttpErrorResponse) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Eroor',
+            detail: error.errors[0].msg,
+          });
+        }
+      );
+    }
 
     const observer$ = this.productService.getAllImages().subscribe(
       (resOk) => {
         this.listImages = resOk;
-        // console.log(this.listImages);
       },
-      (resFail) => {
-        console.log('🟢🟢🟢');
+      ({ error }: HttpErrorResponse) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Eroor',
+          detail: error.message,
+        });
       }
     );
+    this.listObservers$ = [observer$];
   }
 
   onImg(img?: string) {
@@ -110,8 +120,6 @@ export default class StatusPostComponent {
       const body = this.postForm.getRawValue();
 
       if (this.id !== null) {
-        console.log(body);
-
         //TODO: UPDATE
         this.productService.updatePost(this.id, body).subscribe(
           (resOk) => {
@@ -120,9 +128,7 @@ export default class StatusPostComponent {
               summary: 'Exito',
               detail: resOk,
             });
-            setTimeout(() => {
-              this.router.navigate(['/master']);
-            }, 1000 * 3);
+            this.router.navigate(['/master']);
           },
           ({ error }: HttpErrorResponse) => {
             this.messageService.add({
@@ -130,7 +136,6 @@ export default class StatusPostComponent {
               summary: 'Eroor',
               detail: error.message,
             });
-            console.log('Error');
           }
         );
       } else {
@@ -142,9 +147,7 @@ export default class StatusPostComponent {
               summary: 'Exito',
               detail: resOk,
             });
-            setTimeout(() => {
-              this.router.navigate(['/master']);
-            }, 1000 * 3);
+            this.router.navigate(['/master']);
           },
           ({ error }: HttpErrorResponse) => {
             this.messageService.add({
@@ -152,7 +155,6 @@ export default class StatusPostComponent {
               summary: 'Eroor',
               detail: error.message,
             });
-            console.log('Error');
           }
         );
       }
