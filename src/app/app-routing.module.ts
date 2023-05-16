@@ -1,31 +1,101 @@
 import { NgModule, inject } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { AuthGuard } from './guard/auth.guard';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { MasterGuard } from './guard/master.guard';
+import { ErrorpageComponent } from './pages/errorpage/errorpage.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: '',
+  //   pathMatch: 'full',
+  // },
+  //TODO: routes init
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    loadComponent() {
+      return import('./modules/home/pages/carousel/carousel.component');
+    },
+    // component: CarouselComponent,
+    title: 'Carousel',
   },
+  //TODO: Ruote login
   {
-    path: 'home',
-    component: NavbarComponent,
+    path: 'login',
+    loadComponent() {
+      return import('./pages/login/login.component');
+    },
+    title: 'Login',
+  },
+  //TODO: Route asesor
+  {
+    path: 'asesor',
+    loadComponent() {
+      return import('./modules/home/components/nabvar/nabvar.component');
+    },
     children: [
       {
         path: '',
-        component: CarouselComponent,
-        title: 'Carousel',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Asesor Comercial',
       },
       {
-        path: 'login',
+        path: 'arte',
         loadComponent() {
-          return import('./pages/login/login.component');
+          return import('./modules/home/pages/asesor/asesor.component');
         },
-        title: 'Login',
+        title: 'Catálogo de Arte',
+      },
+      {
+        path: 'cacharro',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Cacharro',
+      },
+      {
+        path: 'cosmeticos',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Cosmeticos',
+      },
+      {
+        path: 'institucional',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Institucional',
+      },
+      {
+        path: 'libros',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Libros',
+      },
+      {
+        path: 'papeleria',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Papeleria',
+      },
+      {
+        path: 'tecnologia',
+        loadComponent() {
+          return import('./modules/home/pages/asesor/asesor.component');
+        },
+        title: 'Catálogo de Tecnologia',
+      },
+      {
+        path: 'detalle/:id',
+        loadComponent() {
+          return import('./modules/home/components/detalle/detalle.component');
+        },
+        title: 'Detalle de producto',
       },
     ],
   },
@@ -60,6 +130,13 @@ const routes: Routes = [
           return import('@admin/components/forms/forms.component');
         },
         title: 'Forms',
+      },
+      {
+        path: 'update/:id',
+        loadComponent() {
+          return import('@admin/components/forms/forms.component');
+        },
+        title: 'Actualizar',
       },
     ],
   },
@@ -99,7 +176,8 @@ const routes: Routes = [
         path: 'forms',
         title: 'Formulario',
         loadComponent() {
-          return import('@master/components/forms/forms.component');
+          return import('@master/components/status-post/status-post.component');
+          // return import('@master/components/forms/forms.component');
         },
       },
       {
@@ -110,6 +188,11 @@ const routes: Routes = [
         },
       },
     ],
+  },
+  {
+    path: '**',
+    component: ErrorpageComponent,
+    title: 'Pagina error  ',
   },
 ];
 

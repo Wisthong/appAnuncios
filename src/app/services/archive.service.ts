@@ -6,7 +6,9 @@ import {
   Archive,
   Post,
   PostArray,
+  Posts,
   ResponsePost,
+  ResponsePosts,
   ResponseTrue,
 } from '../model/auth.interface';
 
@@ -24,7 +26,8 @@ export class ArchiveService {
           (m) =>
             m.filename.includes('.png') ||
             m.filename.includes('.jpg') ||
-            m.filename.includes('.jpeg')
+            m.filename.includes('.jpeg') ||
+            m.filename.includes('.gif')
         );
       })
     );
@@ -54,10 +57,10 @@ export class ArchiveService {
     );
   }
 
-  getPost(id?: string): Observable<Post> {
-    return this.http.get<ResponsePost>(this.apiUrl + '/posts/' + id).pipe(
+  getPost(id?: string): Observable<Posts> {
+    return this.http.get<ResponsePosts>(this.apiUrl + '/posts/' + id).pipe(
       map(({ data }) => {
-        return data;
+        return data[0];
       })
     );
   }

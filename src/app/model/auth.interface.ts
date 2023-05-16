@@ -16,6 +16,11 @@ export interface ResponsePost {
   message: string;
 }
 
+export interface ResponsePosts {
+  data:    Posts[];
+  ok:      boolean;
+  message: string;
+}
 
 export interface ResponseUpload {
   data:    Upload;
@@ -41,13 +46,21 @@ export interface Archive {
 }
 
 export interface Post {
-  _id?:          string;
-  item:          string;
-  description:   string;
-  line:          string;
-  category:      string;
-  status?:       boolean;
-  archive:       string;
+  _id?:              string;
+  archive:           string;
+  category:          string;
+  description:       string;
+  item:              string;
+  line:              string;
+  line2:             string;
+  priceClient:       number;
+  priceSuper:        number;
+  status?:           boolean;
+  title:             string;
+  porcentage?:       number;
+  infoDesc?:         string;
+  valid?:            string;
+
 }
 
 export interface UserAdmin {
@@ -75,14 +88,21 @@ export interface ResponseAuth {
 
 
 export interface Posts {
-  _id?:         string;
-  item:         string;
-  description:  string;
-  line:         string;
-  category:     string;
-  archive:      string;
-  status:       boolean;
-  archiveJoin?:  ArchiveJoin[];
+  _id?:              string;
+  archive:           string;
+  category:          string;
+  description:       string;
+  item:              string;
+  line:              string;
+  line2:             string;
+  priceClient:       number;
+  priceSuper:        number;
+  status?:           boolean;
+  title:             string;
+  porcentage?:       number;
+  infoDesc?:         string;
+  valid?:            string;
+  archiveJoin?:      ArchiveJoin[];
 }
 
 export interface ArchiveJoin {

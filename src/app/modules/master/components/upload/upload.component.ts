@@ -42,9 +42,7 @@ export default class UploadComponent {
           summary: 'Exitoso',
           detail: resOk,
         });
-        setTimeout(() => {
-          this.router.navigate(['/master']);
-        }, 1000 * 3);
+        this.router.navigate(['/master']);
       },
       (resFail) => {
         this.messageService.add({

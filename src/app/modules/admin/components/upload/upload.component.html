@@ -13,7 +13,7 @@
     <div class="col-span-full">
       <label
         for="cover-photo"
-        class="block text-sm font-medium leading-6 text-white"
+        class="block text-sm font-medium leading-6 text-gray-900"
         >Seleccionar foto</label
       >
       <div
@@ -32,7 +32,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <div class="mt-4 flex text-sm leading-6 text-gray-100">
+          <div class="mt-4 flex text-sm leading-6 text-gray-900">
             <label
               for="file-upload"
               class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-100 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-100 focus-within:ring-offset-2 hover:text-indigo-500"
@@ -49,16 +49,16 @@
             <p *ngIf="fileName == null" class="pl-1">Arrastrar o soltar</p>
           </div>
 
-          <p *ngIf="fileName != null" class="text-xs leading-5 text-gray-100">
+          <p *ngIf="fileName != null" class="text-xs leading-5 text-gray-900">
             {{ fileName }}
           </p>
-          <p *ngIf="fileName == null" class="text-xs leading-5 text-gray-100">
+          <p *ngIf="fileName == null" class="text-xs leading-5 text-gray-900">
             PNG, JPG, GIF menor de 10MB
           </p>
         </div>
       </div>
 
-      <!-- <p *ngIf="fileName !== null" class="text-base leading-5 text-gray-100 font-semibold">
+      <!-- <p *ngIf="fileName !== null" class="text-base leading-5 text-gray-900 font-semibold">
         {{ fileName }}
       </p> -->
     </div>

@@ -18,9 +18,18 @@ import { ArchiveService } from 'src/app/services/archive.service';
 })
 export default class FormsComponent {
   listObservers$: Array<Subscription> = [];
+  optionTitle = ['Producto nuevo', 'Mega descuento'];
   listImages!: Archive[];
   responsiveOptions!: any[];
-
+  categoria = [
+    'Arte',
+    'Cacharro',
+    'Cosmeticos',
+    'Institucional',
+    'Libros',
+    'Papeleria',
+    'Tecnologia',
+  ];
   select?: string;
 
   private readonly productService = inject(ArchiveService);
@@ -29,23 +38,35 @@ export default class FormsComponent {
   private readonly fb = inject(FormBuilder);
 
   postForm = this.fb.nonNullable.group({
+    archive: ['', [Validators.required]],
+    category: ['', [Validators.required]],
+    description: ['', [Validators.required, Validators.minLength(5)]],
     item: ['', [Validators.required, Validators.minLength(4)]],
     line: ['', [Validators.required, Validators.minLength(5)]],
-    category: ['', [Validators.required, Validators.minLength(5)]],
-    description: ['', [Validators.required, Validators.minLength(5)]],
-    archive: ['', [Validators.required]],
+    line2: ['', [Validators.required, Validators.minLength(5)]],
+    priceClient: [0, [Validators.required, Validators.min(500)]],
+    priceSuper: [0, [Validators.required, Validators.min(500)]],
+    title: ['', [Validators.required, Validators.minLength(10)]],
+    porcentage: [0, [Validators.required]],
+    infoDesc: ['', []],
+    valid: ['', []],
   });
 
   ngOnInit() {
     const observer$ = this.productService.getAllImages().subscribe(
       (resOk) => {
         this.listImages = resOk;
-        // console.log(this.listImages);
       },
-      (resFail) => {
-        console.log('🟢🟢🟢');
+      ({ error }: HttpErrorResponse) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Eroor',
+          detail: error.message,
+        });
       }
     );
+
+    this.listObservers$ = [observer$];
   }
 
   onImg(img?: string) {
@@ -70,9 +91,7 @@ export default class FormsComponent {
             summary: 'Exito',
             detail: resOk,
           });
-          setTimeout(() => {
-            this.router.navigate(['/master']);
-          }, 1000 * 3);
+          this.router.navigate(['/master']);
         },
         ({ error }: HttpErrorResponse) => {
           this.messageService.add({
@@ -80,7 +99,6 @@ export default class FormsComponent {
             summary: 'Eroor',
             detail: error.message,
           });
-          console.log('Error');
         }
       );
     } else {

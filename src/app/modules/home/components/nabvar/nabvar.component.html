@@ -1,11 +1,9 @@
 <div class="card">
   <p-menubar [model]="items">
     <ng-template pTemplate="start">
-      <img
-        src="https://primefaces.org/cdn/primeng/images/primeng.svg"
-        height="40"
-        class="mr-2"
-      />
+      <a [routerLink]="['/']">
+        <img src="/assets/banner/logo.png" class="w-24" />
+      </a>
     </ng-template>
     <ng-template pTemplate="end">
       <p-button
@@ -14,9 +12,9 @@
         icon="pi pi-user"
         styleClass="p-button-rounded p-button-info p-button-outlined"
       ></p-button>
+      <!-- <span class="material-icons">gesture</span> -->
       <!-- <input type="text" pInputText placeholder="Buscar" class="w-full" /> -->
     </ng-template>
   </p-menubar>
 </div>
-<router-outlet/>
-<!-- <app-carousel/> -->
+<router-outlet />

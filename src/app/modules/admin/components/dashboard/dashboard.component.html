@@ -2,28 +2,83 @@
   <div class="col-start-2 col-span-6">
     <div class="my-5">
       <h1 class="text-6xl text-center mt-3">Sección de Dashboard</h1>
-      <p class="text-2xl mt-2">Seccion en construccion ......</p>
     </div>
 
     <p-accordion [activeIndex]="0">
       <p-accordionTab header="Informacion del Usuario">
         <p>
           <i class="pi pi-user" style="font-size: 1rem">
-            Nombre: {{ usuario.name | titlecase }}
-            {{ usuario.lastname | titlecase }}
+            Nombre: {{ user.name | titlecase }}
+            {{ user.lastname | titlecase }}
           </i>
         </p>
         <p>
           <i class="pi pi-user" style="font-size: 1rem">
-            Email: {{ usuario.email | titlecase }}
+            Email: {{ user.email | titlecase }}
           </i>
         </p>
         <p>
           <i class="pi pi-user" style="font-size: 1rem">
-            Rol: {{ usuario.role | titlecase }}
+            Rol: {{ user.role | titlecase }}
           </i>
         </p>
       </p-accordionTab>
     </p-accordion>
+  </div>
+</div>
+
+<div class="grid grid-cols-8">
+  <div class="col-start-2 col-span-6">
+    <!-- <app-navbar/> -->
+
+    <div class="card mt-8" *ngIf="listPosts.length > 0; else spinner">
+      <p-carousel
+        [value]="listPosts"
+        [numVisible]="2"
+        [numScroll]="2"
+        [autoplayInterval]="3000"
+        [circular]="true"
+      >
+        <ng-template let-itemPost pTemplate="item">
+          <div
+            class="border-1 surface-border border-round m-2 text-center py-5 px-10"
+          >
+            <div class="mb-3">
+              <a [routerLink]="['./update/' + itemPost._id]">
+                <img
+                  [src]="itemPost.archiveJoin[0]!.url"
+                  [alt]="itemPost.archiveJoin[0]!.filename"
+                  class="shadow-2xl lg: w-screen lg:h-96"
+                />
+              </a>
+            </div>
+            <div>
+              <h4 class="mb-1">{{ "Item: " + itemPost.item }}</h4>
+              <h4 class="mb-1">{{ "Linea: " + itemPost.line }}</h4>
+              <h4 class="mt-0 mb-1">
+                {{ "Descripcion: " + itemPost.description }}
+              </h4>
+              <h4>{{ "Categoria: " + itemPost.category }}</h4>
+              <h4>{{ "Estado: " + itemPost.status | titlecase }}</h4>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+
+    <ng-template #spinner>
+      <div class="card grid text-center">
+        <p class="py-12 text-4xl">No hay post</p>
+
+        <div class="card">
+          <p-progressSpinner
+            styleClass="w-1rem h-1rem"
+            strokeWidth="20"
+            fill="var(--surface-ground)"
+            animationDuration=".5s"
+          ></p-progressSpinner>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
