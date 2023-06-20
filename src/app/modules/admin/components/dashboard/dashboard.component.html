@@ -46,8 +46,8 @@
             <div class="mb-3">
               <a [routerLink]="['./update/' + itemPost._id]">
                 <img
-                  [src]="itemPost.archiveJoin[0]!.url"
-                  [alt]="itemPost.archiveJoin[0]!.filename"
+                  [src]="itemPost.archiveJoin[0]?.url"
+                  [alt]="itemPost.archiveJoin[0]?.filename"
                   class="shadow-2xl lg: w-screen lg:h-96"
                 />
               </a>

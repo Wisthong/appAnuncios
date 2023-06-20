@@ -26,7 +26,6 @@ export default class CarouselComponent {
     this.productService.postArrayResponde().subscribe(
       (resOk) => {
         this.listPosts = resOk.filter((m) => m.status === true);
-        console.log(resOk);
       },
       (resFail) => {
       }
@@ -34,7 +33,6 @@ export default class CarouselComponent {
   }
 
   ngOnDestroy(): void {
-    console.log('🔵🔵🔵');
     this.listObservers$.forEach((m) => m.unsubscribe());
   }
 

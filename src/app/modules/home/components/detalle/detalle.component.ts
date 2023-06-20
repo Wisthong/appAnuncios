@@ -80,7 +80,6 @@ export default class DetalleComponent {
 
   ngOnDestroy(): void {
     this.listObservers$.forEach((m) => m.unsubscribe());
-    console.log('🔵🔵🔵');
   }
 
   onClic(id?: string) {

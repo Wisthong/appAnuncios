@@ -32,7 +32,6 @@ export default class CardComponent {
             this.listPosts = resOk.filter(
               (m) => m.status === true && m.category === 'Arte'
             );
-            console.log(resOk);
           },
           (resFail) => {
             console.log('🟢🟢🟢');
@@ -45,7 +44,6 @@ export default class CardComponent {
             this.listPosts = resOk.filter(
               (m) => m.status === true && m.category === 'Cacharro'
             );
-            console.log(resOk);
           },
           (resFail) => {
             console.log('🟢🟢🟢');
@@ -58,7 +56,6 @@ export default class CardComponent {
             this.listPosts = resOk.filter(
               (m) => m.status === true && m.category === 'Cosmeticos'
             );
-            console.log(resOk);
           },
           (resFail) => {
             console.log('🟢🟢🟢');
