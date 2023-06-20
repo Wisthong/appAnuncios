@@ -34,11 +34,11 @@ export default class NavbarComponent {
             icon: 'pi pi-fw pi-external-link',
             routerLink: 'forms',
           },
-          {
-            label: 'Activar/Desactivar',
-            icon: 'pi pi-fw pi-align-left',
-            routerLink: 'status',
-          },
+          // {
+          //   label: 'Activar/Desactivar',
+          //   icon: 'pi pi-fw pi-align-left',
+          //   routerLink: 'status',
+          // },
         ],
       },
     ];
