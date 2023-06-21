@@ -68,7 +68,8 @@
             },
             "development": {
               "browserTarget": "anuncios:build:development",
-              "port": 8080,
+              "host": "0.0.0.0",
+              "port": 80,
               "open": true
             }
           },
