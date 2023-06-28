@@ -24,10 +24,10 @@ export class ArchiveService {
       map(({ data }) => {
         return data.filter(
           (m) =>
-            m.filename.includes('.png') ||
-            m.filename.includes('.jpg') ||
-            m.filename.includes('.jpeg') ||
-            m.filename.includes('.gif')
+            m.url.includes('.png') ||
+            m.url.includes('.jpg') ||
+            m.url.includes('.jpeg') ||
+            m.url.includes('.gif')
         );
       })
     );

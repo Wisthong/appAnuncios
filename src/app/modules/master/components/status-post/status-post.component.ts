@@ -90,6 +90,8 @@ export default class StatusPostComponent {
 
     const observer$ = this.productService.getAllImages().subscribe(
       (resOk) => {
+        console.log(resOk);
+        
         this.listImages = resOk;
       },
       ({ error }: HttpErrorResponse) => {

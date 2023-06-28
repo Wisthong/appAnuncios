@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      roboto: ["Roboto", "sans-serif"],
+    },
+    extend: {
+      colors: {
+        "primary-universal": "#fabc13",
+        "secondary-universal": "#223664",
+      },
+    },
     screens: {
       sm: { max: "640px" },
       // => @media (min-width: 640px) { ... }

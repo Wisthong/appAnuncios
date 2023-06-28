@@ -1,19 +1,23 @@
 <div class="grid grid-cols-6">
   <div class="col-start-2 col-span-4">
-    <h1 class="text-6xl text-center mt-3">Subir archivo</h1>
-    <p class="text-2xl mt-2">
+    <h1
+      class="text-6xl text-center mt-3 font-bold font-roboto text-primary-universal"
+    >
+      Subir archivo
+    </h1>
+    <p class="text-2xl mt-2 text-white">
       En esta sección debes subir la imagen que quieres que aparezca como
       anuncio ......
     </p>
   </div>
-  <div class="col-start-2 col-span-4">
+  <div class="col-start-2 col-span-4 bg-white">
     <p-toast></p-toast>
     <i class="pi pi-file"> </i>
 
     <div class="col-span-full">
       <label
         for="cover-photo"
-        class="text-gray-900 block text-sm font-medium leading-6"
+        class="text-secondary-universal block text-sm font-medium leading-6"
         >Seleccionar foto</label
       >
       <div
@@ -70,10 +74,10 @@
       (change)="getFile($event)"
     /> -->
 
-    <div>
+    <div class="grid mx-auto w-32">
       <button
         (click)="onCargar()"
-        class="bg-lime-500 hover:bg-lime-700 text-white font-bold my-10 py-2 px-4 rounded"
+        class="bg-primary-universal hover:bg-yellow-600 text-white font-roboto text-lg font-bold my-10 py-2 px-4 rounded-full"
         [disabled]="flag"
       >
         Cargar

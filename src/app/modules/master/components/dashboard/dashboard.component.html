@@ -1,26 +1,28 @@
 <div class="grid grid-cols-8">
   <div class="col-start-2 col-span-6">
     <div class="my-5">
-      <h1 class="text-6xl text-center mt-3">Sección de Dashboard</h1>
+      <h1
+        class="text-6xl text-center mt-3 font-bold font-roboto text-primary-universal"
+      >
+        Sección de Dashboard
+      </h1>
     </div>
 
     <p-accordion [activeIndex]="0">
       <p-accordionTab header="Informacion del Usuario">
         <p>
-          <i class="pi pi-user" style="font-size: 1rem">
+          <i class="pi pi-user text-base">
             Nombre: {{ user.name | titlecase }}
             {{ user.lastname | titlecase }}
           </i>
         </p>
         <p>
-          <i class="pi pi-user" style="font-size: 1rem">
+          <i class="pi pi-user text-base">
             Email: {{ user.email | titlecase }}
           </i>
         </p>
         <p>
-          <i class="pi pi-user" style="font-size: 1rem">
-            Rol: {{ user.role | titlecase }}
-          </i>
+          <i class="pi pi-user text-base"> Rol: {{ user.role | titlecase }} </i>
         </p>
       </p-accordionTab>
     </p-accordion>
@@ -53,13 +55,49 @@
               </a>
             </div>
             <div>
-              <h4 class="mb-1">{{ "Item: " + itemPost.item }}</h4>
-              <h4 class="mb-1">{{ "Linea: " + itemPost.line }}</h4>
-              <h4 class="mt-0 mb-1">
-                {{ "Descripcion: " + itemPost.description }}
-              </h4>
-              <h4>{{ "Categoria: " + itemPost.category }}</h4>
-              <h4>{{ "Estado: " + itemPost.status | titlecase }}</h4>
+              <p
+                class="text-3xl text-center font-extrabold tracking-tight sm:text-4xl mb-4 text-white font-poppins"
+              >
+                {{ itemPost.description }}
+              </p>
+              <p class="sm:text-2xl font-semibold text-white">
+                Categoria:
+                <span class="sm:font-normal ct:font-normal lg:font-medium">
+                  {{ itemPost.category }}
+                </span>
+              </p>
+              <p class="sm:text-2xl font-semibold text-white">
+                Item:
+                <span class="sm:font-normal ct:font-normal lg:font-medium">
+                  {{ itemPost.item }}
+                </span>
+              </p>
+              <p class="sm:text-2xl font-semibold text-white">
+                Linea:
+                <span class="sm:font-normal ct:font-normal lg:font-medium">
+                  {{ itemPost.line }}
+                </span>
+              </p>
+              <p class="sm:text-2xl font-semibold text-white">
+                Linea secundaria:
+                <span class="sm:font-normal ct:font-normal lg:font-medium">
+                  {{ itemPost.line2 }}
+                </span>
+              </p>
+              <p class="sm:text-2xl font-semibold text-white">
+                Precio:
+                <span
+                  class="text-base font-extrabold bg-primary-universal px-2 py-1 sm:text-2xl"
+                >
+                  {{ itemPost.priceSuper | currency }}
+                </span>
+              </p>
+              <p class="sm:text-2xl font-semibold text-white">
+                Estado
+                <span class="sm:font-normal ct:font-normal lg:font-medium uppercase">
+                  {{ itemPost.status }}
+                </span>
+              </p>
             </div>
           </div>
         </ng-template>

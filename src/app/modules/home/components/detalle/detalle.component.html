@@ -1,65 +1,103 @@
 <div class="bg-white">
   <header>
-    <h1 class="capitalize py-4 text-5xl font-semibold text-center italic text-white">
-
-      <!-- {{ nameProduct }} -->
+    <h1
+      class="capitalize pt-8 pb-20 text-5xl font-semibold text-center text-primary-universal font-roboto"
+    >
+      {{ nameProduct }}
     </h1>
   </header>
 
-  <div class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 sm:mx-4 lg:mx-20 lg:gap-2" *ngIf="posts as item">
+  <div
+    class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 sm:mx-4 lg:mx-20 lg:gap-2"
+    *ngIf="posts as item"
+  >
     <div class="ct:mx-auto border-4 border-yellow-500 shadow">
       <p>
-        <img class="w-96 ct:h-1/3 lg:h-1/3 sm:h-64 rounded-3xl" [src]="item.archiveJoin![0].url" alt="product image" />
+        <img
+          class="w-96 ct:h-1/3 lg:h-1/3 sm:h-64 rounded-3xl"
+          [src]="item.archiveJoin![0].url"
+          alt="product image"
+        />
       </p>
     </div>
 
     <div
-      class="w-auto hover:animate-pulse max-w-sm bg-white  md:py-8 md:mt-16 md:h-72 ">
-      <div class="px-8">
-        <p class="mb-2 text-base tracking-tight text-gray-900 ">
-          Categoria: <span class="text-base"> {{ item.category }} </span>
+      class="w-auto hover:animate-pulse max-w-sm bg-white md:py-8 md:mt-16 md:h-72"
+    >
+      <div class="">
+        <p
+          class="sm:text-2xl ct:text-3xl lg:text-4xl font-semibold text-secondary-universal"
+        >
+          Categoria:
+          <span class="sm:font-normal ct:font-normal lg:font-medium">
+            {{ item.category }}
+          </span>
         </p>
-        <p class="mb-2 text-base tracking-tight text-gray-900 ">
-          Item: <span class="text-base"> {{ item.item }} </span>
+        <p
+          class="sm:text-2xl ct:text-3xl lg:text-4xl font-semibold text-secondary-universal"
+        >
+          Item:
+          <span class="sm:font-normal ct:font-normal lg:font-medium">
+            {{ item.item }}
+          </span>
         </p>
-        <p class="mb-2 text-base tracking-tight text-gray-900 ">
-          Linea: <span class="text-base"> {{ item.line }} </span>
+        <p
+          class="sm:text-2xl ct:text-3xl lg:text-4xl font-semibold text-secondary-universal"
+        >
+          Linea:
+          <span class="sm:font-normal ct:font-normal lg:font-medium">
+            {{ item.line }}
+          </span>
         </p>
-        <p class="mb-2 text-base tracking-tight text-gray-900 ">
-          Linea secundaria: <span class="text-base"> {{ item.line2 }} </span>
+        <p
+          class="sm:text-2xl ct:text-3xl lg:text-4xl font-semibold text-secondary-universal"
+        >
+          Linea secundaria:
+          <span class="sm:font-normal ct:font-normal lg:font-medium">
+            {{ item.line2 }}
+          </span>
         </p>
-        <!-- <p class="mb-2 text-base tracking-tight text-gray-900 dark:text-white">
+        <p
+          class="sm:text-2xl ct:text-3xl lg:text-4xl font-semibold text-secondary-universal"
+        >
           Precio:
-          <span class="text-base">
-            ${{ item.priceSuper | currency : "COP" }}
-          </span>
-        </p> -->
-        <p class="mb-2 ">
-          Precio super $
-          <span class="text-2xl font-bold text-gray-900 dark:text-white"> {{ item.priceSuper | currency : "COP" :
-            "symbol" }}
+          <span
+            class="text-base font-extrabold bg-primary-universal px-2 py-1 sm:text-2xl ct:text-3xl lg:text-4xl"
+          >
+            {{ item.priceSuper | currency }}
           </span>
         </p>
-
-        <!-- <div class="flex items-center justify-between pt-4">
-        </div> -->
       </div>
     </div>
   </div>
 
   <div class="grid grid-cols-1">
-    <h1 class="mt-10 mx-4 lg:mx-auto text-5xl font-semibold">
-      {{ "Productos de tu interés" }}
+    <h1
+      class="mt-10 mx-36 mb-4 lg:mx-auto text-4xl font-semibold font-roboto text-primary-universal"
+    >
+      Productos de tu interés
     </h1>
 
-    <p-carousel [value]="$listPosts" [numVisible]="4" [numScroll]="1" [responsiveOptions]="responsiveOptions"
-      [autoplayInterval]="3000" [circular]="true">
+    <p-carousel
+      [value]="$listPosts"
+      [numVisible]="4"
+      [numScroll]="1"
+      [responsiveOptions]="responsiveOptions"
+      [autoplayInterval]="3000"
+      [circular]="true"
+    >
       <ng-template let-product pTemplate="item">
         <div class="surface-border text-center">
           <div class="my-3">
-            <a [routerLink]="['/asesor/detalle/' + product._id]" target="_blank">
-              <img [src]="product.archiveJoin?.[0].url" [alt]="product.name"
-                class="w-screen sm:w-36 mx-auto sm:h-24 lg:h-52 lg:mt-5 xl:w-52 sm:pt-6 md:w-32 md:pt-6 border-4 border-yellow-500 shadow" />
+            <a
+              [routerLink]="['/asesor/detalle/' + product._id]"
+              target="_blank"
+            >
+              <img
+                [src]="product.archiveJoin?.[0].url"
+                [alt]="product.name"
+                class="w-screen sm:w-36 mx-auto sm:h-24 lg:h-52 lg:mt-5 xl:w-52 sm:pt-6 md:w-32 md:pt-6 border-4 border-yellow-500 shadow"
+              />
             </a>
             <!-- <button (click)="onClic(product._id)">
               <img
@@ -70,11 +108,12 @@
             </button> -->
           </div>
           <div>
-            <h4 class="mb-1">{{ product.description.slice(0, 10) + "..." | titlecase}}</h4>
+            <h4 class="mb-1">
+              {{ product.description.slice(0, 10) + "..." | titlecase }}
+            </h4>
           </div>
         </div>
       </ng-template>
     </p-carousel>
   </div>
-
 </div>

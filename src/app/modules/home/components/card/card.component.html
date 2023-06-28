@@ -1,37 +1,61 @@
 <header>
-  <h1 class="capitalize py-4 text-5xl font-bold text-center italic"
-    style="color: #FABC13; font-family: 'Roboto', sans-serif;">
+  <h1
+    class="capitalize py-4 text-5xl font-bold text-center text-primary-universal font-roboto"
+  >
     {{ pathRouter }}
   </h1>
 </header>
 
-<div class="grid sm:grid-cols-1 md:grid-cols-2 ct:grid-cols-4 mx-8 pb-8 my-4 gap-4">
-  <div class="w-full hover:animate-pulse  bg-white border-yellow-500 border-4 shadow"
-    *ngFor="let item of listPosts">
+<div
+  class="grid sm:grid-cols-1 md:grid-cols-2 ct:grid-cols-4 mx-8 pb-8 my-4 gap-4"
+>
+  <div
+    class="w-full hover:animate-pulse bg-white border-primary-universal border-4 shadow"
+    *ngFor="let item of listPosts"
+  >
     <a [routerLink]="['/asesor/detalle/' + item._id]">
-      <img class="p-8 w-96 h-80 rounded-t-lg mx-auto" [src]="item.archiveJoin![0].url" alt="product image" />
+      <img
+        class="p-8 w-96 h-80 rounded-t-lg mx-auto"
+        [src]="item.archiveJoin![0].url"
+        alt="product image"
+      />
     </a>
     <div class="px-5 pb-5">
-      <p class="text-3xl text-center font-extrabold tracking-tight sm:text-4xl mb-4"
-        style="color: #223664; font-family: 'Roboto', sans-serif;">
-        {{ item.description }}
+      <p
+        class="text-3xl text-center font-extrabold tracking-tight sm:text-4xl mb-4 text-secondary-universal font-poppins"
+      >
+        {{ item.description }} "222"
       </p>
-      <p class="sm:text-2xl font-semibold" style="color: #223664;">
-        Categoria: <span class="sm:font-normal ct:font-normal lg:font-medium"> {{ item.category }} </span>
+      <p class="sm:text-2xl font-semibold text-secondary-universal">
+        Categoria:
+        <span class="sm:font-normal ct:font-normal lg:font-medium">
+          {{ item.category }}
+        </span>
       </p>
-      <p class="sm:text-2xl font-semibold" style="color: #223664;">
-        Item: <span class="sm:font-normal ct:font-normal lg:font-medium"> {{ item.item }} </span>
+      <p class="sm:text-2xl font-semibold text-secondary-universal">
+        Item:
+        <span class="sm:font-normal ct:font-normal lg:font-medium">
+          {{ item.item }}
+        </span>
       </p>
-      <p class="sm:text-2xl font-semibold" style="color: #223664;">
-        Linea: <span class="sm:font-normal ct:font-normal lg:font-medium"> {{ item.line }} </span>
+      <p class="sm:text-2xl font-semibold text-secondary-universal">
+        Linea:
+        <span class="sm:font-normal ct:font-normal lg:font-medium">
+          {{ item.line }}
+        </span>
       </p>
-      <p class="sm:text-2xl font-semibold" style="color: #223664;">
-        Linea secundaria: <span class="sm:font-normal ct:font-normal lg:font-medium"> {{ item.line2 }} </span>
+      <p class="sm:text-2xl font-semibold text-secondary-universal">
+        Linea secundaria:
+        <span class="sm:font-normal ct:font-normal lg:font-medium">
+          {{ item.line2 }}
+        </span>
       </p>
-      <p class="sm:text-2xl font-semibold " style="color: #223664;">
+      <p class="sm:text-2xl font-semibold text-secondary-universal">
         Precio:
-        <span class="text-base font-extrabold bg-yellow-400 px-2 py-1 sm:text-2xl" style="color: #223664;">
-          {{ item.priceSuper | currency  }}
+        <span
+          class="text-base font-extrabold bg-primary-universal px-2 py-1 sm:text-2xl"
+        >
+          {{ item.priceSuper | currency }}
         </span>
       </p>
 
