@@ -7,10 +7,11 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-html,body{
-  font-family: 'Roboto', sans-serif;
+html,
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 /* p,
@@ -20,21 +21,23 @@ label {
 
 .p-carousel .p-carousel-indicators .p-carousel-indicator button {
   margin-top: 5px;
-  background-color: #e9ecef;
-  width: 1rem;
-  height: 1rem;
+  background-color: white;
+  width: 8px;
+  height: 8px;
   transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
   border-radius: 50%;
 }
 
 .p-carousel .p-carousel-content .p-carousel-prev,
 .p-carousel .p-carousel-content .p-carousel-next {
-  color: orange;
+  color: white;
 }
 
 .p-carousel .p-carousel-content .p-carousel-prev,
 .p-carousel .p-carousel-content .p-carousel-next :hover {
-  color: orange;
+  color: white;
 }
 
-
+.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+  background-color: #fabc13;
+}

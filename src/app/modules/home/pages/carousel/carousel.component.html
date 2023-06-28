@@ -1,69 +1,122 @@
 <body>
-  <div class="h-screen w-screen bg-no-repeat bg-cover bg-top bg-fixed"
-    style="background-image: url('./../../../assets/banner/fondo.jpg')">
+  <div
+    class="h-screen w-screen bg-no-repeat bg-cover bg-top bg-fixed overflow-hidden"
+    style="background-image: url('./../../../assets/banner/fondo.jpg')"
+  >
+    <!-- LOGO -->
     <div class="grid grid-cols-1">
       <a [routerLink]="['/asesor/arte']">
-        <img src="../../../../../assets/banner/logo.png"
-          class="lg:w-28 mx-auto lg:mt-5 xl:w-52 sm:w-32 sm:pt-6 md:w-32 md:pt-4" alt="" srcset="" />
+        <img
+          src="../../../../../assets/banner/logo.png"
+          class="lg:w-28 mx-auto lg:mt-5 xl:w-52 sm:w-32 sm:pt-6 md:w-28 md:pt-4"
+          alt=""
+          srcset=""
+        />
       </a>
     </div>
+
     <div class="grid grid-cols-1">
-      <div class="absolute w-full xl:top-64 md:top-24 ct:top-44 lg:top-52 sm:top-72">
-        <p-carousel *ngIf="listPosts.length > 0; else spinner" [value]="listPosts" [numVisible]="1" [numScroll]="1"
-          [autoplayInterval]="3000" [circular]="true">
+      <div
+        class="relative w-full xl:top-64 md:top-0 ct:top-44 lg:top-52 sm:top-72"
+      >
+        <p-carousel
+          *ngIf="listPosts.length > 0; else spinner"
+          [value]="listPosts"
+          [numVisible]="1"
+          [numScroll]="1"
+          [autoplayInterval]="3000"
+          [circular]="true"
+        >
           <ng-template let-itemPost pTemplate="item">
-            <div class="grid md:grid-cols-3 sm:grid-cols-1">
+            <div class="grid md:grid-cols-3 ct:grid-cols-3 sm:grid-cols-1">
               <!-- Text to left -->
               <div class="sm:hidden md:block md:font-bold xl:mt-20 lg:mt-20">
                 <!-- DESCUENTOS -->
-                <div class="grid grid-cols-1 md:pt-10">
-                 <img src="/assets/img/luis.png" alt="" srcset="" class="ct:w-4/5 lg:w-52 mx-auto">
+                <div class="grid grid-cols-1 md:mt-32 ct:mt-10">
+                  <img
+                    src="/assets/img/luis.png"
+                    alt=""
+                    srcset=""
+                    class="md:w-56 md:h-56 ct:w-4/5 lg:w-52 mx-auto"
+                  />
                 </div>
-
               </div>
 
               <div
-                class=" sm:block ct:block ct:mt-20 md:mt-24 lg:block xl:block xl:mt-20 lg:mt-32 sm:rounded-full md:rounded-full ct:rounded-full text-center">
-                <img [src]="itemPost.archiveJoin[0]?.url" [alt]="itemPost.archiveJoin[0]?.filename"
-                  class="sm:w-96 sm:h-60 md:w-96 md:h-auto ct:rounded-3xl ct:w-96 ct:h-72 lg:rounded-3xl mx-auto lg:w-96 lg:h-96" />
+                class="sm:block ct:block ct:mt-20 md:mt-24 lg:block xl:block xl:mt-20 lg:mt-32 sm:rounded-full md:rounded-full ct:rounded-full text-center"
+              >
+              <!-- IMAGEN CENTRAL -->
+                <img
+                  [src]="itemPost.archiveJoin[0]?.url"
+                  [alt]="itemPost.archiveJoin[0]?.filename"
+                  class="sm:w-96 sm:h-60 md:w-96 md:h-72 ct:rounded-3xl ct:w-96 ct:h-72 lg:rounded-3xl mx-auto lg:w-96 lg:h-96"
+                />
               </div>
 
               <!-- Text to rigth -->
-              <div class="sm:hidden ct:block lg:block ct:ml-8 xl:block xl:mt-20 lg:mx-8 md:ml-4 md:pt-10 lg:mt-20">
-                <p class="text-5xl text-white font-semibold italic">
+              <div
+                class="sm:hidden ct:block lg:block ct:ml-8 xl:block xl:mt-20 lg:mx-8 md:ml-10 md:mt-48 lg:mt-20"
+              >
+                <p
+                  class="md:text-3xl text-5xl text-primary-universal font-semibold italic uppercase font-roboto"
+                >
                   {{ itemPost.description }}
                 </p>
-                <p class="text-white text-3xl">
+                <p class="text-white md:text-2xl  text-3xl font-roboto">
                   <span class="font-bold"> Item:</span>
                   {{ itemPost.item }}
                   <br />
-                  <span class="font-bold"> Precio:</span>
-                  {{ "$ " + itemPost.priceClient }}
+                  <span class="font-bold md:text-2xl  text-3xl font-roboto">
+                    Precio:</span
+                  >
+                  <span class="bg-primary-universal text-3xl">
+                    {{ "$ " + itemPost.priceClient }}
+                  </span>
                 </p>
 
-                <p class="md:text-2xl mt-8 mb-4 text-3xl font-bold text-white">
-                  Nuestras redes <span class=""> Sociales</span>
-                </p>
-
-                <div class="grid md:grid-cols-2 ct:grid-cols-4 lg:grid-cols-3 lg:gap-0 gap-0">
-                  <a class="" href="https://www.instagram.com/distriuniversal_/?hl=es" target="_blank">
-                    <i class="md:text-5xl text-6xl text-white pi pi-instagram">
+                <div
+                  class="grid md:mt-16 md:grid-cols-8 ct:grid-cols-4 lg:grid-cols-3 gap-0"
+                >
+                  <a
+                    class="ct:col-span-2 lg:col-auto"
+                    href="https://www.instagram.com/distriuniversal_/?hl=es"
+                    target="_blank"
+                  >
+                    <i
+                      class="md:text-2xl  text-center text-6xl text-primary-universal pi pi-instagram"
+                    >
                       <p class="md:text-xs text-base text-white">
-                        @distriuniversal_
+                        <!-- @distriuniversal_ -->
                       </p>
                     </i>
                   </a>
-                  <a class="" href="https://api.whatsapp.com/send?phone=573217798798&text=Hola" target="_blank">
-                    <i class="md:text-5xl text-6xl text-white pi pi-whatsapp">
-                      <p class="md:text-xs text-base text-white">3217798798</p>
-                    </i>
-                  </a>
-                  <a class="ct:col-span-2 lg:col-auto md:col-auto"
-                    href="https://www.facebook.com/distribuidorauniversalcali/?locale=es_LA" target="_blank">
-                    <i class="md:text-5xl text-6xl text-white pi pi-facebook">
+                  <a
+                    class="ct:col-span-2 lg:col-auto"
+                    href="https://www.facebook.com/distribuidorauniversalcali/?locale=es_LA"
+                    target="_blank"
+                  >
+                    <i
+                      class="md:text-2xl  text-center text-6xl text-primary-universal pi pi-facebook"
+                    >
                       <p class="md:text-xs lg:text-base text-white">
-                        @distribuidorauniversalcali
+                        <!-- @distribuidorauniversalcali -->
                       </p>
+                    </i>
+                  </a>
+                  <a
+                    class="ct:col-span-2 lg:col-auto"
+                    href="https://api.whatsapp.com/send?phone=573217798798&text=Hola"
+                    target="_blank"
+                  >
+                    <i
+                      class="md:text-2xl  text-center text-6xl text-primary-universal pi pi-whatsapp"
+                    >
+                      <span class="md:text-lg md:ml-2 text-base text-white sm:hidden"
+                        >3217798798</span
+                      >
+                      <!-- <p class="ct:block md:text-xs text-base text-white">
+                        3217798798
+                      </p> -->
                     </i>
                   </a>
                 </div>
@@ -80,8 +133,12 @@
             <p class="py-12 text-white text-4xl">No hay post</p>
 
             <div class="card">
-              <p-progressSpinner styleClass="w-1rem h-1rem" strokeWidth="20" fill="var(--surface-ground)"
-                animationDuration=".5s"></p-progressSpinner>
+              <p-progressSpinner
+                styleClass="w-1rem h-1rem"
+                strokeWidth="20"
+                fill="var(--surface-ground)"
+                animationDuration=".5s"
+              ></p-progressSpinner>
             </div>
           </div>
         </ng-template>
