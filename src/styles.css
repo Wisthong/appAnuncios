@@ -41,3 +41,15 @@ label {
 .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
   background-color: #fabc13;
 }
+
+@media (min-width: 1400px) {
+  .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+    margin-top: 5rem;
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    border-radius: 50%;
+  }
+  
+} 

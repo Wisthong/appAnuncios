@@ -18,7 +18,7 @@
 
     <div class="grid grid-cols-1">
       <div
-        class="relative w-full xl:top-64 md:top-0 ct:top-44 lg:top-52 sm:top-72"
+        class="md:relative w-full xl:top-0 md:top-0 ct:top-0 sm:top-72"
       >
         <p-carousel
           *ngIf="listPosts.length > 0; else spinner"
@@ -31,60 +31,61 @@
           <ng-template let-itemPost pTemplate="item">
             <div class="grid md:grid-cols-3 ct:grid-cols-3 sm:grid-cols-1">
               <!-- Text to left -->
-              <div class="sm:hidden md:block md:font-bold xl:mt-20 lg:mt-20">
+              <div class="sm:hidden md:block md:font-bold">
                 <!-- DESCUENTOS -->
-                <div class="grid grid-cols-1 md:mt-32 ct:mt-10">
+                <div class="grid grid-cols-1 md:mt-32 ct:mt-44 lg:mt-56">
                   <img
                     src="/assets/img/luis.png"
                     alt=""
                     srcset=""
-                    class="md:w-56 md:h-56 ct:w-4/5 lg:w-52 mx-auto"
+                    class="md:w-56 md:h-56 ct:w-80 ct:h-80 lg:w-96 lg:h-96 mx-auto"
                   />
                 </div>
               </div>
 
               <div
-                class="sm:block ct:block ct:mt-20 md:mt-24 lg:block xl:block xl:mt-20 lg:mt-32 sm:rounded-full md:rounded-full ct:rounded-full text-center"
+                class="sm:block ct:block ct:mt-44 md:mt-24 lg:block xl:block lg:mt-56 sm:rounded-full md:rounded-full ct:rounded-full text-center"
               >
               <!-- IMAGEN CENTRAL -->
                 <img
                   [src]="itemPost.archiveJoin[0]?.url"
                   [alt]="itemPost.archiveJoin[0]?.filename"
-                  class="sm:w-96 sm:h-60 md:w-96 md:h-72 ct:rounded-3xl ct:w-96 ct:h-72 lg:rounded-3xl mx-auto lg:w-96 lg:h-96"
+                  class="mx-auto rounded-3xl sm:w-96 sm:h-60 md:w-96 md:h-72  ct:w-96 ct:h-80 lg:w-96 lg:h-96"
                 />
               </div>
 
               <!-- Text to rigth -->
               <div
-                class="sm:hidden ct:block lg:block ct:ml-8 xl:block xl:mt-20 lg:mx-8 md:ml-10 md:mt-48 lg:mt-20"
+                class="sm:hidden ct:block lg:block ct:ml-8  lg:mx-8 md:ml-10 md:mt-48  ct:mt-44 lg:mt-72"
               >
                 <p
-                  class="md:text-3xl text-5xl text-primary-universal font-semibold italic uppercase font-roboto"
+                  class="md:text-3xl ct:text-4xl lg:text-5xl text-primary-universal font-semibold italic uppercase font-roboto"
                 >
                   {{ itemPost.description }}
                 </p>
-                <p class="text-white md:text-2xl  text-3xl font-roboto">
+                <p class="text-white md:text-2xl ct:text-3xl lg:text-4xl font-roboto">
                   <span class="font-bold"> Item:</span>
                   {{ itemPost.item }}
                   <br />
-                  <span class="font-bold md:text-2xl  text-3xl font-roboto">
+                  <span class="font-bold md:text-2xl ct:text-3xl lg:text-4xl font-roboto">
                     Precio:</span
                   >
-                  <span class="bg-primary-universal text-3xl">
+                  <span class="bg-primary-universal md:text-3xl ct:text-4xl lg:text-4xl font-semibold">
                     {{ "$ " + itemPost.priceClient }}
                   </span>
                 </p>
 
+                <!-- ICONOS REDES -->
                 <div
-                  class="grid md:mt-16 md:grid-cols-8 ct:grid-cols-4 lg:grid-cols-3 gap-0"
+                  class="grid md:mt-16 md:grid-cols-8 ct:grid-cols-3 lg:grid-cols-3 gap-0"
                 >
                   <a
-                    class="ct:col-span-2 lg:col-auto"
+                    class=""
                     href="https://www.instagram.com/distriuniversal_/?hl=es"
                     target="_blank"
                   >
                     <i
-                      class="md:text-2xl  text-center text-6xl text-primary-universal pi pi-instagram"
+                      class="md:text-2xl text-center ct:text-4xl lg:text-6xl text-primary-universal pi pi-instagram"
                     >
                       <p class="md:text-xs text-base text-white">
                         <!-- @distriuniversal_ -->
@@ -92,12 +93,12 @@
                     </i>
                   </a>
                   <a
-                    class="ct:col-span-2 lg:col-auto"
+                    class=""
                     href="https://www.facebook.com/distribuidorauniversalcali/?locale=es_LA"
                     target="_blank"
                   >
                     <i
-                      class="md:text-2xl  text-center text-6xl text-primary-universal pi pi-facebook"
+                      class="md:text-2xl text-center ct:text-4xl lg:text-6xl text-primary-universal pi pi-facebook"
                     >
                       <p class="md:text-xs lg:text-base text-white">
                         <!-- @distribuidorauniversalcali -->
@@ -105,14 +106,14 @@
                     </i>
                   </a>
                   <a
-                    class="ct:col-span-2 lg:col-auto"
+                    class=""
                     href="https://api.whatsapp.com/send?phone=573217798798&text=Hola"
                     target="_blank"
                   >
                     <i
-                      class="md:text-2xl  text-center text-6xl text-primary-universal pi pi-whatsapp"
+                      class="md:text-2xl text-center ct:text-4xl lg:text-6xl text-primary-universal pi pi-whatsapp"
                     >
-                      <span class="md:text-lg md:ml-2 text-base text-white sm:hidden"
+                      <span class="md:text-lg md:ml-2 ct:text-sm text-base text-white sm:hidden"
                         >3217798798</span
                       >
                       <!-- <p class="ct:block md:text-xs text-base text-white">
