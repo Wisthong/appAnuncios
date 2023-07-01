@@ -18,7 +18,7 @@
 
     <div class="grid grid-cols-1">
       <div
-        class="md:relative w-full xl:top-0 md:top-0 ct:top-0 sm:top-72"
+        class="md:relative sm:absolute w-full xl:top-0 md:top-0 ct:top-0 top-0"
       >
         <p-carousel
           *ngIf="listPosts.length > 0; else spinner"
@@ -33,7 +33,7 @@
               <!-- Text to left -->
               <div class="sm:hidden md:block md:font-bold">
                 <!-- DESCUENTOS -->
-                <div class="grid grid-cols-1 md:mt-32 ct:mt-44 lg:mt-56">
+                <div class="grid grid-cols-1 md:mt-32 ct:mt-44 lg:mt-48">
                   <img
                     src="/assets/img/luis.png"
                     alt=""
@@ -44,7 +44,7 @@
               </div>
 
               <div
-                class="sm:block ct:block ct:mt-44 md:mt-24 lg:block xl:block lg:mt-56 sm:rounded-full md:rounded-full ct:rounded-full text-center"
+                class="sm:block ct:block ct:mt-44 md:mt-24 lg:block xl:block lg:mt-48 sm:rounded-full md:rounded-full ct:rounded-full text-center"
               >
               <!-- IMAGEN CENTRAL -->
                 <img
@@ -66,6 +66,9 @@
                 <p class="text-white md:text-2xl ct:text-3xl lg:text-4xl font-roboto">
                   <span class="font-bold"> Item:</span>
                   {{ itemPost.item }}
+                  <br />
+                  <span class="font-bold"> Categoria:</span>
+                  {{ itemPost.category }}
                   <br />
                   <span class="font-bold md:text-2xl ct:text-3xl lg:text-4xl font-roboto">
                     Precio:</span
@@ -132,8 +135,7 @@
         </p-carousel>
         <ng-template #spinner>
           <div class="card grid text-center">
-            <p class="py-12 text-white text-4xl">No hay post</p>
-
+            <p class="sm:pt-0 mt-64 font-roboto text-primary-universal font-bold text-4xl">No hay post</p>
             <div class="card">
               <p-progressSpinner
                 styleClass="w-1rem h-1rem"

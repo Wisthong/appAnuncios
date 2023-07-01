@@ -20,6 +20,7 @@ export default class FormsComponent {
   listObservers$: Array<Subscription> = [];
   optionTitle = ['Producto nuevo', 'Mega descuento'];
   listImages!: Archive[];
+  listGalery!: Archive[];
   responsiveOptions!: any[];
   categoria = [
     'Arte',
@@ -66,7 +67,20 @@ export default class FormsComponent {
       }
     );
 
-    this.listObservers$ = [observer$];
+    const observer1$ = this.productService.getAllImages().subscribe(
+      (resOk) => {
+        this.listGalery = resOk;
+      },
+      ({ error }: HttpErrorResponse) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Eroor',
+          detail: error.message,
+        });
+      }
+    );
+
+    this.listObservers$ = [observer$, observer1$];
   }
 
   onImg(img?: string) {

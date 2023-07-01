@@ -27,8 +27,8 @@
       class="col-start-2 col-span-6"
     >
       <div class="space-y-12">
-        <div class="border-gray-900/10 pb-12">
-          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6">
+        <div class="border-gray-900/10 border-4 pb-12">
+          <div class="mt-10 grid grid-cols-1 gap-1">
             <div class="col-span-full">
               <label
                 for="about"
@@ -64,16 +64,16 @@
               </div>
             </div>
 
-            <div class="col-span-full">
+            <div class="">
               <label
                 for="cover-photo"
-                class="block text-sm text-secondary-universal font-medium leading-6 capitalize"
+                class="block text-center text-sm text-secondary-universal font-medium leading-6 capitalize"
                 >Información producto
               </label>
 
               <div
-                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
-                *ngIf="listImages"
+                class="mt-2 flex bg-gray-200 justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                *ngIf="listGalery"
               >
                 <div class="text-center">
                   <div class="mt-4 flex text-sm leading-6 text-gray-100">
@@ -85,141 +85,100 @@
                     </label>
                   </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4">
-                  <div *ngFor="let item of listImages">
+                <div class="grid grid-cols-8 gap-2">
+                  <div *ngFor="let item of listGalery">
                     <img
-                      [ngClass]="{ select: select === item._id }"
-                      class="w-80 h-80"
-                      (click)="onImg(item._id)"
+                      [ngClass]="{ select1: select1 === item._id }"
+                      class="w-32 h-32"
+                      (click)="onImgInformation(item._id)"
                       [src]="[item.url]"
-                      alt="No hay"
+                      alt="No hay de Información"
                     />
                   </div>
                 </div>
-                <!-- <div class="grid grid-cols-3" *ngFor="let item of listImages">
-              </div> -->
               </div>
             </div>
 
-            <!-- <div class="lg:col-span-3">
-              <label for="first-name" class="block text-sm text-secondary-universal font-medium leading-6">Tipo</label>
-              <div class="mt-2">
-                <select formControlName="title"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6">
-                  <option class="capitalize" *ngFor="let item of optionTitle" [value]="item">
-                    {{ item }}
-                  </option>
-                </select>
-              </div>
-            </div>
-
-
-            <div class="lg:col-span-3">
-              <label for="first-name" class="block text-sm text-secondary-universal font-medium leading-6">Porcentaje</label>
-              <div class="mt-2">
-                <input formControlName="porcentage" type="number" name="porcentage" id="porcentage"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6" />
-                <p *ngIf="
-                    postForm.controls['porcentage'].touched &&
-                    postForm.controls['porcentage'].hasError('required')
-                  " class="text-red-700 text-sm italic font-extrabold">
-                  Campo requerido
-                </p>
-              </div>
-            </div>
-
-            <div class="lg:col-span-3">
-              <label for="first-name" class="block text-sm text-secondary-universal font-medium leading-6">Información de descuento</label>
-              <div class="mt-2">
-                <input formControlName="infoDesc" type="text" name="infoDesc" id="infoDesc" placeholder="de descuestos"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6" />
-              </div>
-            </div>
-
-            <div class="lg:col-span-3">
-              <label for="first-name" class="block text-sm text-secondary-universal font-medium leading-6">Valido</label>
-              <div class="mt-2">
-                <input formControlName="valid" type="text" name="valid" id="valid"
-                  placeholder="Valido desde 17 de mayo hasta 29 de mayo de 2023"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6" />
-              </div>
-            </div> -->
-
-            <div class="lg:col-span-2">
-              <label
-                for="first-name"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Item</label
-              >
-              <div class="mt-2">
-                <input
-                  formControlName="item"
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autocomplete="given-name"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                />
-                <p
-                  *ngIf="
-                    postForm.controls['item'].touched &&
-                    postForm.controls['item'].hasError('required')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
+            <div class="grid ct:grid-cols-3 gap-2 w-full">
+              <div class="">
+                <label
+                  for="first-name"
+                  class="block text-sm text-secondary-universal font-medium leading-6"
+                  >Item</label
                 >
-                  Campo requerido
-                </p>
-                <p
-                  *ngIf="
-                    postForm.controls['item'].touched &&
-                    postForm.controls['item'].hasError('minlength')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Debes ingresar minimo 4 caracteres
-                </p>
+                <div class="mt-2">
+                  <input
+                    formControlName="item"
+                    type="text"
+                    name="first-name"
+                    id="first-name"
+                    autocomplete="given-name"
+                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+                  />
+                  <p
+                    *ngIf="
+                      postForm.controls['item'].touched &&
+                      postForm.controls['item'].hasError('required')
+                    "
+                    class="text-red-700 text-sm italic font-extrabold"
+                  >
+                    Campo requerido
+                  </p>
+                  <p
+                    *ngIf="
+                      postForm.controls['item'].touched &&
+                      postForm.controls['item'].hasError('minlength')
+                    "
+                    class="text-red-700 text-sm italic font-extrabold"
+                  >
+                    Debes ingresar minimo 4 caracteres
+                  </p>
+                </div>
               </div>
+  
+              <div class="">
+                <label
+                  for="first-name"
+                  class="block text-sm text-secondary-universal font-medium leading-6"
+                  >Estado</label
+                >
+                <div class="mt-2">
+                  <select
+                    placeholder="Estado"
+                    formControlName="status"
+                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+                  >
+                    <option *ngFor="let item of estado" [value]="item">
+                      {{ item | titlecase }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="">
+                <label
+                  for="first-name"
+                  class="block text-sm text-secondary-universal font-medium leading-6"
+                  >Categoria</label
+                >
+                <div class="mt-2">
+                  <select
+                    placeholder="Categoria"
+                    formControlName="category"
+                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+                  >
+                    <option *ngFor="let item of categoria" [value]="item">
+                      {{ item | titlecase }}
+                    </option>
+                  </select>
+                </div>
+              </div>              
             </div>
 
-            <div class="lg:col-span-2">
-              <label
-                for="first-name"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Estado</label
-              >
-              <div class="mt-2">
-                <select
-                  placeholder="Estado"
-                  formControlName="status"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                >
-                  <option *ngFor="let item of estado" [value]="item">
-                    {{ item | titlecase }}
-                  </option>
-                </select>
-              </div>
-            </div>
 
-            <div class="lg:col-span-2">
-              <label
-                for="first-name"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Categoria</label
-              >
-              <div class="mt-2">
-                <select
-                  placeholder="Categoria"
-                  formControlName="category"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                >
-                  <option *ngFor="let item of categoria" [value]="item">
-                    {{ item | titlecase }}
-                  </option>
-                </select>
-              </div>
-            </div>
-
-            <div class="lg:col-span-3">
+            <div class="grid ct:grid-cols-2 gap-2">
+            
+            <div class="">
               <label
                 for="first-name"
                 class="block text-sm text-secondary-universal font-medium leading-6"
@@ -255,7 +214,7 @@
               </div>
             </div>
 
-            <div class="lg:col-span-3">
+            <div class="">
               <label
                 for="first-name"
                 class="block text-sm text-secondary-universal font-medium leading-6"
@@ -290,7 +249,7 @@
                 </p>
               </div>
             </div>
-
+          </div>
             <div class="lg:col-span-3">
               <label
                 for="first-name"
@@ -319,6 +278,41 @@
                   *ngIf="
                     postForm.controls['priceClient'].touched &&
                     postForm.controls['priceClient'].hasError('min')
+                  "
+                  class="text-red-700 text-sm italic font-extrabold"
+                >
+                  El precio minimo es $500
+                </p>
+              </div>
+            </div>
+            <div class="lg:col-span-3">
+              <label
+                for="first-name"
+                class="block text-sm text-secondary-universal font-medium leading-6"
+                >Precio P14</label
+              >
+              <div class="mt-2">
+                <input
+                  formControlName="price14"
+                  type="number"
+                  name="first-name"
+                  id="first-name"
+                  autocomplete="given-name"
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+                />
+                <p
+                  *ngIf="
+                    postForm.controls['price14'].touched &&
+                    postForm.controls['price14'].hasError('required')
+                  "
+                  class="text-red-700 text-sm italic font-extrabold"
+                >
+                  Campo requerido
+                </p>
+                <p
+                  *ngIf="
+                    postForm.controls['price14'].touched &&
+                    postForm.controls['price14'].hasError('min')
                   "
                   class="text-red-700 text-sm italic font-extrabold"
                 >
@@ -366,12 +360,12 @@
             <div class="col-span-full">
               <label
                 for="cover-photo"
-                class="block text-sm text-secondary-universal font-medium leading-6"
+                class="block text-center text-sm text-secondary-universal font-medium leading-6"
                 >Galeria</label
               >
 
               <div
-                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                class="bg-gray-200 mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
                 *ngIf="listImages"
               >
                 <div class="text-center">
@@ -384,11 +378,11 @@
                     </label>
                   </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-8 gap-2">
                   <div *ngFor="let item of listImages">
                     <img
                       [ngClass]="{ select: select === item._id }"
-                      class="w-80 h-80"
+                      class="w-32 h-32"
                       (click)="onImg(item._id)"
                       [src]="[item.url]"
                       alt="No hay"
@@ -408,7 +402,7 @@
         <div>
           <button
             type="submit"
-            class="bg-secondary-universal hover:bg-blue-800 text-white font-roboto text-lg font-bold px-4 rounded-full"
+            class="bg-secondary-universal hover:bg-blue-800 text-white font-roboto text-lg font-bold px-4 rounded-full uppercase"
           >
             Cancelar
           </button>
@@ -416,9 +410,9 @@
         <div>
           <button
             type="submit"
-            class="bg-primary-universal hover:bg-yellow-600 text-white font-roboto text-lg font-bold px-4 rounded-full"
+            class="bg-primary-universal hover:bg-yellow-600 text-white font-roboto text-lg font-bold px-4 rounded-full uppercase"
           >
-            Guardar
+            {{btnAction}}
           </button>
         </div>
       </div>

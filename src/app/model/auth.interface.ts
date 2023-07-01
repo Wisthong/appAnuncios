@@ -48,6 +48,7 @@ export interface Archive {
 export interface Post {
   _id?:              string;
   archive:           string;
+  information:       string;
   category:          string;
   description:       string;
   item:              string;
@@ -55,11 +56,12 @@ export interface Post {
   line2:             string;
   priceClient:       number;
   priceSuper:        number;
+  price14:           number;
   status?:           boolean;
-  title:             string;
-  porcentage?:       number;
-  infoDesc?:         string;
-  valid?:            string;
+  // title:             string;
+  // porcentage?:       number;
+  // infoDesc?:         string;
+  // valid?:            string;
 
 }
 
@@ -90,6 +92,7 @@ export interface ResponseAuth {
 export interface Posts {
   _id?:              string;
   archive:           string;
+  information:       string;
   category:          string;
   description:       string;
   item:              string;
@@ -97,11 +100,12 @@ export interface Posts {
   line2:             string;
   priceClient:       number;
   priceSuper:        number;
+  price14:           number;
   status?:           boolean;
-  title:             string;
-  porcentage?:       number;
-  infoDesc?:         string;
-  valid?:            string;
+  // title:             string;
+  // porcentage?:       number;
+  // infoDesc?:         string;
+  // valid?:            string;
   archiveJoin?:      ArchiveJoin[];
 }
 

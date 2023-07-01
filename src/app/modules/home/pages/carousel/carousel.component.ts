@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Post, Posts } from 'src/app/model/auth.interface';
 import { ArchiveService } from 'src/app/services/archive.service';
 import { CarouselModule } from 'primeng/carousel';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
@@ -19,17 +19,42 @@ export default class CarouselComponent {
   listPosts: Posts[] = [];
 
   // responsiveOptions!: any[];
+  pathRouter!: string;
 
   private readonly productService = inject(ArchiveService);
+  private readonly route = inject(ActivatedRoute);
 
   ngOnInit() {
-    this.productService.postArrayResponde().subscribe(
-      (resOk) => {
-        this.listPosts = resOk.filter((m) => m.status === true);
-      },
-      (resFail) => {
-      }
-    );
+
+    if (this.route.snapshot.url.length <= 0) {
+      this.productService.postArrayResponde().subscribe(
+        (resOk) => {
+          console.log(resOk);
+
+          this.listPosts = resOk.filter((m) => m.status === true);
+        },
+        (resFail) => {}
+      );
+    } else {
+      this.pathRouter = this.route.snapshot.url[0].path.toString();
+      this.productService.postArrayResponde().subscribe((resOk) => {
+        this.listPosts = resOk.filter(
+          (m) => m.category === 'Papeleria' || m.category === 'Cacharro'
+        );
+        console.log(this.listPosts);
+
+        // console.log(this.pathRouter);
+      });
+    }
+
+    //     if (this.route.snapshot.url[0].path.toString() !== ''){
+    //       console.log(1);
+
+    //     }
+    //     else{
+    // console.log(2);
+
+    //     }
   }
 
   ngOnDestroy(): void {

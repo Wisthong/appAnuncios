@@ -17,12 +17,15 @@ import { ToastModule } from 'primeng/toast';
   styleUrls: ['./status-post.component.css'],
 })
 export default class StatusPostComponent {
+  btnAction!:string;
   estado = ['false', 'true'];
   listObservers$: Array<Subscription> = [];
   listImages!: Archive[];
+  listGalery!: Archive[];
   responsiveOptions!: any[];
   id!: string | null;
   select?: string;
+  select1?: string;
   optionTitle = ['Producto nuevo', 'Mega descuento'];
   categoria = [
     'Arte',
@@ -42,6 +45,7 @@ export default class StatusPostComponent {
 
   postForm = this.fb.nonNullable.group({
     archive: ['', [Validators.required]],
+    information: ['', [Validators.required]],
     category: ['', [Validators.required]],
     description: ['', [Validators.required, Validators.minLength(5)]],
     item: ['', [Validators.required, Validators.minLength(4)]],
@@ -49,20 +53,25 @@ export default class StatusPostComponent {
     line2: ['', [Validators.required, Validators.minLength(5)]],
     priceClient: [0, [Validators.required, Validators.min(500)]],
     priceSuper: [0, [Validators.required, Validators.min(500)]],
+    price14: [0, [Validators.required, Validators.min(500)]],
     status: [false, Validators.required],
-    title: ['', [Validators.required, Validators.minLength(10)]],
-    porcentage: [0, [Validators.required]],
-    infoDesc: ['', []],
-    valid: ['', []],
+    // title: ['', [Validators.required, Validators.minLength(10)]],
+    // porcentage: [0, [Validators.required]],
+    // infoDesc: ['', []],
+    // valid: ['', []],
   });
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id !== null) {
+      
+      this.btnAction = 'Actualizar'
+
       this.productService.getPost(this.id!).subscribe(
         (resOk) => {
           this.postForm.patchValue({
             archive: resOk.archive,
+            information: resOk.information,
             category: resOk.category,
             description: resOk.description,
             item: resOk.item,
@@ -70,13 +79,15 @@ export default class StatusPostComponent {
             line2: resOk.line2,
             priceClient: resOk.priceClient,
             priceSuper: resOk.priceSuper,
+            price14: resOk.price14,
             status: resOk.status,
-            title: resOk.title,
-            porcentage: resOk.porcentage,
-            infoDesc: resOk.infoDesc,
-            valid: resOk.valid,
+            // title: resOk.title,
+            // porcentage: resOk.porcentage,
+            // infoDesc: resOk.infoDesc,
+            // valid: resOk.valid,
           });
           this.select = resOk.archive;
+          this.select1 = resOk.information;
         },
         ({ error }: HttpErrorResponse) => {
           this.messageService.add({
@@ -87,11 +98,12 @@ export default class StatusPostComponent {
         }
       );
     }
+    else{
+      this.btnAction = 'Guardar'
+    }
 
     const observer$ = this.productService.getAllImages().subscribe(
       (resOk) => {
-        console.log(resOk);
-        
         this.listImages = resOk;
       },
       ({ error }: HttpErrorResponse) => {
@@ -102,7 +114,20 @@ export default class StatusPostComponent {
         });
       }
     );
-    this.listObservers$ = [observer$];
+
+    const observer1$ = this.productService.getAllGalery().subscribe(
+      (resOk) => {
+        this.listGalery = resOk;
+      },
+      ({ error }: HttpErrorResponse) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Eroor',
+          detail: error.message,
+        });
+      }
+    );
+    this.listObservers$ = [observer$], observer1$;
   }
 
   onImg(img?: string) {
@@ -117,10 +142,21 @@ export default class StatusPostComponent {
     });
   }
 
+  onImgInformation(image?: string) {
+    this.select1 = image;
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Información',
+      detail: 'Has seleccionado la img',
+    });
+    this.postForm.patchValue({
+      information: image,
+    });
+  }
+
   onSave() {
     if (this.postForm.valid) {
       const body = this.postForm.getRawValue();
-
       if (this.id !== null) {
         //TODO: UPDATE
         this.productService.updatePost(this.id, body).subscribe(
@@ -161,6 +197,8 @@ export default class StatusPostComponent {
         );
       }
     } else {
+      console.log(this.postForm.getRawValue());
+      
       this.messageService.add({
         severity: 'error',
         summary: 'Error',

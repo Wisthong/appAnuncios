@@ -40,6 +40,7 @@ export default class FormsComponent {
 
   postForm = this.fb.nonNullable.group({
     archive: ['', [Validators.required]],
+    information: ['', [Validators.required]],
     category: ['', [Validators.required]],
     description: ['', [Validators.required, Validators.minLength(5)]],
     item: ['', [Validators.required, Validators.minLength(4)]],
@@ -47,6 +48,7 @@ export default class FormsComponent {
     line2: ['', [Validators.required, Validators.minLength(5)]],
     priceClient: [0, [Validators.required, Validators.min(500)]],
     priceSuper: [0, [Validators.required, Validators.min(500)]],
+    price14: [0, [Validators.required, Validators.min(500)]],
     title: ['', [Validators.required, Validators.minLength(10)]],
     porcentage: [0, []],
     infoDesc: ['', []],
@@ -67,10 +69,11 @@ export default class FormsComponent {
             line2: resOk.line2,
             priceClient: resOk.priceClient,
             priceSuper: resOk.priceSuper,
-            title: resOk.title,
-            porcentage: resOk.porcentage,
-            infoDesc: resOk.infoDesc,
-            valid: resOk.valid,
+            price14: resOk.price14,
+            // title: resOk.title,
+            // porcentage: resOk.porcentage,
+            // infoDesc: resOk.infoDesc,
+            // valid: resOk.valid,
           });
           this.select = resOk.archive;
           // console.log(resOk._id);

@@ -21,25 +21,31 @@ export default class NavbarComponent {
   ngOnInit(): void {
     this.items = [
       {
-        label: 'Subir archivo',
+        label: 'Subir archivos',
         icon: 'pi pi-fw pi-external-link',
-        routerLink: 'upload',
+        items:[
+          {
+            label:'Información',
+            icon: 'pi pi-fw pi-external-link',
+            routerLink: 'uploadinformation',
+          },
+          {
+            label:'Producto',
+            icon: 'pi pi-fw pi-external-link',
+            routerLink: 'upload',
+          },
+        ]
       },
       {
         label: 'Post',
-        icon: 'pi pi-fw pi-pencil',
-        items: [
-          {
-            label: 'Crear',
-            icon: 'pi pi-fw pi-external-link',
-            routerLink: 'forms',
-          },
-          // {
-          //   label: 'Activar/Desactivar',
-          //   icon: 'pi pi-fw pi-align-left',
-          //   routerLink: 'status',
-          // },
-        ],
+        icon: 'pi pi-fw pi-external-link',
+        routerLink: 'forms',
+        // icon: 'pi pi-fw pi-pencil',
+        // items: [
+        //   {
+        //     label: 'Crear',
+        //   },
+        // ],
       },
     ];
   }

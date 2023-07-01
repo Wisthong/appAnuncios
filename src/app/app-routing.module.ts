@@ -19,6 +19,14 @@ const routes: Routes = [
     // component: CarouselComponent,
     title: 'Carousel',
   },
+  {
+    path: 'calima',
+    loadComponent() {
+      return import('./modules/home/pages/carousel/carousel.component');
+    },
+    // component: CarouselComponent,
+    title: 'Calima',
+  },
   //TODO: Ruote login
   {
     path: 'login',
@@ -170,6 +178,13 @@ const routes: Routes = [
         title: 'Upload',
         loadComponent() {
           return import('@master/components/upload/upload.component');
+        },
+      },
+      {
+        path: 'uploadinformation',
+        title: 'Upload Informacion',
+        loadComponent() {
+          return import('@master/components/informationupload/informationupload.component');
         },
       },
       {

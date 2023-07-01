@@ -18,4 +18,12 @@ export class UploadService {
       })
     );
   }
+
+  sendGalery(body: FormData): Observable<string> {
+    return this.http.post<ResponseUpload>(this.apiUrl + '/informationstorages', body).pipe(
+      map(({ message }) => {
+        return message;
+      })
+    );
+  }
 }

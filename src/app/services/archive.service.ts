@@ -33,6 +33,20 @@ export class ArchiveService {
     );
   }
 
+  getAllGalery(): Observable<Archive[]> {
+    return this.http.get<ResponseTrue>(this.apiUrl + '/informationstorages').pipe(
+      map(({ data }) => {
+        return data.filter(
+          (m) =>
+            m.url.includes('.png') ||
+            m.url.includes('.jpg') ||
+            m.url.includes('.jpeg') ||
+            m.url.includes('.gif')
+        );
+      })
+    );
+  }
+
   createPost(body: Post): Observable<string> {
     return this.http.post<ResponsePost>(this.apiUrl + '/posts', body).pipe(
       map(({ message }) => {
