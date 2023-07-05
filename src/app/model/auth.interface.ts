@@ -58,10 +58,6 @@ export interface Post {
   priceSuper:        number;
   price14:           number;
   status?:           boolean;
-  // title:             string;
-  // porcentage?:       number;
-  // infoDesc?:         string;
-  // valid?:            string;
 
 }
 
@@ -90,23 +86,20 @@ export interface ResponseAuth {
 
 
 export interface Posts {
-  _id?:              string;
-  archive:           string;
-  information:       string;
-  category:          string;
-  description:       string;
-  item:              string;
-  line:              string;
-  line2:             string;
-  priceClient:       number;
-  priceSuper:        number;
-  price14:           number;
-  status?:           boolean;
-  // title:             string;
-  // porcentage?:       number;
-  // infoDesc?:         string;
-  // valid?:            string;
-  archiveJoin?:      ArchiveJoin[];
+  _id?:               string;
+  archive:            string;
+  information:        string;
+  category:           string;
+  description:        string;
+  item:               string;
+  line:               string;
+  line2:              string;
+  priceClient:        number;
+  priceSuper:         number;
+  price14:            number;
+  status?:            boolean;
+  archiveJoin?:       ArchiveJoin[];
+  dataDescuentoJoin?: DataDescuentoJoin[];
 }
 
 export interface ArchiveJoin {
@@ -115,3 +108,11 @@ export interface ArchiveJoin {
   filename?:  string;
   usuario?:   string;
 }
+
+export interface DataDescuentoJoin {
+  _id?:       string;
+  url?:       string;
+  filename?:  string;
+  usuario?:   string;
+}
+

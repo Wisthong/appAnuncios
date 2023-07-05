@@ -1,403 +1,394 @@
-
 <div class="grid grid-cols-8 bg-white">
   <div class="col-start-2 col-span-6">
     <div class="mt-2">
       <h1
-        class="text-6xl text-center  my-10 font-roboto font-bold text-primary-universal"
+        class="text-6xl text-center my-10 font-roboto font-bold text-primary-universal"
         *ngIf="id !== null"
       >
         Actualización de <span class="font-extrabold"> Post</span>
       </h1>
       <h1
-        class="text-6xl text-center  my-10 font-roboto font-bold text-primary-universal"
+        class="text-6xl text-center my-10 font-roboto font-bold text-primary-universal"
         *ngIf="id === null"
       >
         Formulario de <span class="font-extrabold"> Post</span>
       </h1>
-      <p
-        class="text-2xl mt-2 border-gray-900/10 pb-1 text-secondary-universal"
-      >
+      <p class="text-2xl mt-2 border-gray-900/10 pb-1 text-secondary-universal">
         Por favor llena los campos requeridos para mostrar tu post
       </p>
     </div>
 
-    <form
-      [formGroup]="postForm"
-      (ngSubmit)="onSave()"
-      class="col-start-2 col-span-6"
-    >
-      <div class="space-y-12">
-        <div class="border-gray-900/10 border-4 pb-12">
-          <div class="mt-10 grid grid-cols-1 gap-1">
-            <div class="col-span-full">
-              <label
-                for="about"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Descripcion</label
-              >
-              <div class="mt-2">
-                <textarea
-                  formControlName="description"
-                  id="about"
-                  name="about"
-                  rows="3"
-                  class="block w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:py-1.5 lg:text-sm lg:leading-6"
-                ></textarea>
-                <p
-                  *ngIf="
-                    postForm.controls['description'].touched &&
-                    postForm.controls['description'].hasError('required')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Campo requerido
-                </p>
-                <p
-                  *ngIf="
-                    postForm.controls['description'].touched &&
-                    postForm.controls['description'].hasError('minlength')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Debes introducir minimo 5 caracteres
-                </p>
-              </div>
-            </div>
-
-            <div class="">
-              <label
-                for="cover-photo"
-                class="block text-center text-sm text-secondary-universal font-medium leading-6 capitalize"
-                >Información producto
-              </label>
-
-              <div
-                class="mt-2 flex bg-gray-200 justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
-                *ngIf="listGalery"
-              >
-                <div class="text-center">
-                  <div class="mt-4 flex text-sm leading-6 text-gray-100">
-                    <label
-                      for="file-upload"
-                      class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-100 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-100 focus-within:ring-offset-2 hover:text-indigo-500"
-                    >
-                      <!-- <span>Files</span> -->
-                    </label>
-                  </div>
-                </div>
-                <div class="grid grid-cols-8 gap-2">
-                  <div *ngFor="let item of listGalery">
-                    <img
-                      [ngClass]="{ select1: select1 === item._id }"
-                      class="w-32 h-32"
-                      (click)="onImgInformation(item._id)"
-                      [src]="[item.url]"
-                      alt="No hay de Información"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="grid ct:grid-cols-3 gap-2 w-full">
-              <div class="">
-                <label
-                  for="first-name"
-                  class="block text-sm text-secondary-universal font-medium leading-6"
-                  >Item</label
-                >
-                <div class="mt-2">
-                  <input
-                    formControlName="item"
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    autocomplete="given-name"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                  />
-                  <p
-                    *ngIf="
-                      postForm.controls['item'].touched &&
-                      postForm.controls['item'].hasError('required')
-                    "
-                    class="text-red-700 text-sm italic font-extrabold"
-                  >
-                    Campo requerido
-                  </p>
-                  <p
-                    *ngIf="
-                      postForm.controls['item'].touched &&
-                      postForm.controls['item'].hasError('minlength')
-                    "
-                    class="text-red-700 text-sm italic font-extrabold"
-                  >
-                    Debes ingresar minimo 4 caracteres
-                  </p>
-                </div>
-              </div>
-  
-              <div class="">
-                <label
-                  for="first-name"
-                  class="block text-sm text-secondary-universal font-medium leading-6"
-                  >Estado</label
-                >
-                <div class="mt-2">
-                  <select
-                    placeholder="Estado"
-                    formControlName="status"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                  >
-                    <option *ngFor="let item of estado" [value]="item">
-                      {{ item | titlecase }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-  
-              <div class="">
-                <label
-                  for="first-name"
-                  class="block text-sm text-secondary-universal font-medium leading-6"
-                  >Categoria</label
-                >
-                <div class="mt-2">
-                  <select
-                    placeholder="Categoria"
-                    formControlName="category"
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                  >
-                    <option *ngFor="let item of categoria" [value]="item">
-                      {{ item | titlecase }}
-                    </option>
-                  </select>
-                </div>
-              </div>              
-            </div>
-
-
-            <div class="grid ct:grid-cols-2 gap-2">
-            
-            <div class="">
-              <label
-                for="first-name"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Linea</label
-              >
-              <div class="mt-2">
-                <input
-                  formControlName="line"
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autocomplete="given-name"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                />
-                <p
-                  *ngIf="
-                    postForm.controls['line'].touched &&
-                    postForm.controls['line'].hasError('required')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Campo requerido
-                </p>
-                <p
-                  *ngIf="
-                    postForm.controls['line'].touched &&
-                    postForm.controls['line'].hasError('minlength')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Debes introducir minimo 5 caracteres
-                </p>
-              </div>
-            </div>
-
-            <div class="">
-              <label
-                for="first-name"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Linea de segundo nivel</label
-              >
-              <div class="mt-2">
-                <input
-                  formControlName="line2"
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autocomplete="given-name"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                />
-                <p
-                  *ngIf="
-                    postForm.controls['line2'].touched &&
-                    postForm.controls['line2'].hasError('required')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Campo requerido
-                </p>
-                <p
-                  *ngIf="
-                    postForm.controls['line2'].touched &&
-                    postForm.controls['line2'].hasError('minlength')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Debes introducir minimo 5 caracteres
-                </p>
-              </div>
-            </div>
+    <form [formGroup]="postForm" (ngSubmit)="onSave()">
+      <div class="mt-10 grid grid-cols-1 gap-1">
+        <div class="col-span-full">
+          <label
+            for="about"
+            class="block text-sm text-secondary-universal font-medium leading-6"
+            >Descripcion</label
+          >
+          <div class="mt-2">
+            <textarea
+              formControlName="description"
+              id="about"
+              name="about"
+              rows="3"
+              class="block w-full rounded-md border-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:py-1.5 lg:text-sm lg:leading-6"
+            ></textarea>
+            <p
+              *ngIf="
+                postForm.controls['description'].touched &&
+                postForm.controls['description'].hasError('required')
+              "
+              class="text-red-700 text-sm italic font-extrabold"
+            >
+              Campo requerido
+            </p>
+            <p
+              *ngIf="
+                postForm.controls['description'].touched &&
+                postForm.controls['description'].hasError('minlength')
+              "
+              class="text-red-700 text-sm italic font-extrabold"
+            >
+              Debes introducir minimo 5 caracteres
+            </p>
           </div>
-            <div class="lg:col-span-3">
-              <label
-                for="first-name"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Precio cliente</label
-              >
-              <div class="mt-2">
-                <input
-                  formControlName="priceClient"
-                  type="number"
-                  name="first-name"
-                  id="first-name"
-                  autocomplete="given-name"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                />
-                <p
-                  *ngIf="
-                    postForm.controls['priceClient'].touched &&
-                    postForm.controls['priceClient'].hasError('required')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
+        </div>
+
+        <div class="col-span-full">
+          <label
+            for="cover-photo"
+            class="block text-center text-sm text-secondary-universal font-medium leading-6 capitalize"
+            >Información producto
+          </label>
+
+          <div
+            class="mt-2 flex bg-gray-200 justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+            *ngIf="listGalery"
+          >
+            <div class="text-center">
+              <div class="mt-4 flex text-sm leading-6 text-gray-100">
+                <label
+                  for="file-upload"
+                  class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-100 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-100 focus-within:ring-offset-2 hover:text-indigo-500"
                 >
-                  Campo requerido
-                </p>
-                <p
-                  *ngIf="
-                    postForm.controls['priceClient'].touched &&
-                    postForm.controls['priceClient'].hasError('min')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  El precio minimo es $500
-                </p>
+                  <!-- <span>Files</span> -->
+                </label>
               </div>
             </div>
-            <div class="lg:col-span-3">
-              <label
-                for="first-name"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Precio P14</label
-              >
-              <div class="mt-2">
-                <input
-                  formControlName="price14"
-                  type="number"
-                  name="first-name"
-                  id="first-name"
-                  autocomplete="given-name"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+            <div class="grid sm:grid-cols-2 sm:gap-8 grid-cols-8 gap-2">
+              <div *ngFor="let item of listGalery">
+                <img
+                  [ngClass]="{ select1: select1 === item._id }"
+                  class="sm:w-40 sm:h-40 w-32 h-32"
+                  (click)="onImgInformation(item._id)"
+                  [src]="[item.url]"
+                  alt="No hay de Información"
                 />
-                <p
-                  *ngIf="
-                    postForm.controls['price14'].touched &&
-                    postForm.controls['price14'].hasError('required')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Campo requerido
-                </p>
-                <p
-                  *ngIf="
-                    postForm.controls['price14'].touched &&
-                    postForm.controls['price14'].hasError('min')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  El precio minimo es $500
-                </p>
-              </div>
-            </div>
-
-            <div class="lg:col-span-3">
-              <label
-                for="first-name"
-                class="block text-sm text-secondary-universal font-medium leading-6"
-                >Precio Super</label
-              >
-              <div class="mt-2">
-                <input
-                  formControlName="priceSuper"
-                  type="number"
-                  name="first-name"
-                  id="first-name"
-                  autocomplete="given-name"
-                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
-                />
-                <p
-                  *ngIf="
-                    postForm.controls['priceSuper'].touched &&
-                    postForm.controls['priceSuper'].hasError('required')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  Campo requerido
-                </p>
-                <p
-                  *ngIf="
-                    postForm.controls['priceSuper'].touched &&
-                    postForm.controls['priceSuper'].hasError('min')
-                  "
-                  class="text-red-700 text-sm italic font-extrabold"
-                >
-                  El precio minimo es $500
-                </p>
-              </div>
-            </div>
-
-            <div class="col-span-full">
-              <label
-                for="cover-photo"
-                class="block text-center text-sm text-secondary-universal font-medium leading-6"
-                >Galeria</label
-              >
-
-              <div
-                class="bg-gray-200 mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
-                *ngIf="listImages"
-              >
-                <div class="text-center">
-                  <div class="mt-4 flex text-sm leading-6 text-gray-100">
-                    <label
-                      for="file-upload"
-                      class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-100 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-100 focus-within:ring-offset-2 hover:text-indigo-500"
-                    >
-                      <!-- <span>Files</span> -->
-                    </label>
-                  </div>
-                </div>
-                <div class="grid grid-cols-8 gap-2">
-                  <div *ngFor="let item of listImages">
-                    <img
-                      [ngClass]="{ select: select === item._id }"
-                      class="w-32 h-32"
-                      (click)="onImg(item._id)"
-                      [src]="[item.url]"
-                      alt="No hay"
-                    />
-                  </div>
-                </div>
-                <!-- <div class="grid grid-cols-3" *ngFor="let item of listImages">
-              </div> -->
               </div>
             </div>
           </div>
         </div>
+
+        <div class="grid sm:grid-cols-1 sm:gap-0 grid-cols-3 gap-4">
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Item</label
+            >
+            <div class="mt-2">
+              <input
+                formControlName="item"
+                type="text"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
+              <p
+                *ngIf="
+                  postForm.controls['item'].touched &&
+                  postForm.controls['item'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['item'].touched &&
+                  postForm.controls['item'].hasError('minlength')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Debes ingresar minimo 4 caracteres
+              </p>
+            </div>
+          </div>
+
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Estado</label
+            >
+            <div class="mt-2">
+              <select
+                placeholder="Estado"
+                formControlName="status"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              >
+                <option *ngFor="let item of estado" [value]="item">
+                  {{ item | titlecase }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Categoria</label
+            >
+            <div class="mt-2">
+              <select
+                placeholder="Categoria"
+                formControlName="category"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              >
+                <option *ngFor="let item of categoria" [value]="item">
+                  {{ item | titlecase }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-1 sm:gap-0 grid-cols-2 gap-4">
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Linea</label
+            >
+            <div class="mt-2">
+              <input
+                formControlName="line"
+                type="text"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
+              <p
+                *ngIf="
+                  postForm.controls['line'].touched &&
+                  postForm.controls['line'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['line'].touched &&
+                  postForm.controls['line'].hasError('minlength')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Debes introducir minimo 5 caracteres
+              </p>
+            </div>
+          </div>
+
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Linea de segundo nivel</label
+            >
+            <div class="mt-2">
+              <input
+                formControlName="line2"
+                type="text"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
+              <p
+                *ngIf="
+                  postForm.controls['line2'].touched &&
+                  postForm.controls['line2'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['line2'].touched &&
+                  postForm.controls['line2'].hasError('minlength')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Debes introducir minimo 5 caracteres
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-1 sm:gap-0 grid-cols-3 gap-4">
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Precio cliente</label
+            >
+            <div class="mt-2">
+              <input
+                formControlName="priceClient"
+                type="number"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
+              <p
+                *ngIf="
+                  postForm.controls['priceClient'].touched &&
+                  postForm.controls['priceClient'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['priceClient'].touched &&
+                  postForm.controls['priceClient'].hasError('min')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                El precio minimo es $500
+              </p>
+            </div>
+          </div>
+
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Precio P14</label
+            >
+            <div class="mt-2">
+              <input
+                formControlName="price14"
+                type="number"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
+              <p
+                *ngIf="
+                  postForm.controls['price14'].touched &&
+                  postForm.controls['price14'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['price14'].touched &&
+                  postForm.controls['price14'].hasError('min')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                El precio minimo es $500
+              </p>
+            </div>
+          </div>
+
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Precio Super</label
+            >
+            <div class="mt-2">
+              <input
+                formControlName="priceSuper"
+                type="number"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
+              <p
+                *ngIf="
+                  postForm.controls['priceSuper'].touched &&
+                  postForm.controls['priceSuper'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['priceSuper'].touched &&
+                  postForm.controls['priceSuper'].hasError('min')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                El precio minimo es $500
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-full">
+          <label
+            for="cover-photo"
+            class="block text-center text-sm text-secondary-universal font-medium leading-6"
+            >Galeria</label
+          >
+
+          <div
+            class="bg-gray-200 mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+            *ngIf="listImages"
+          >
+            <div class="text-center">
+              <div class="mt-4 flex text-sm leading-6 text-gray-100">
+                <label
+                  for="file-upload"
+                  class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-100 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-100 focus-within:ring-offset-2 hover:text-indigo-500"
+                >
+                  <!-- <span>Files</span> -->
+                </label>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 sm:gap-8 grid-cols-8 gap-2">
+              <div *ngFor="let item of listImages">
+                <img
+                  [ngClass]="{ select: select === item._id }"
+                  class="sm:h-40 sm:w-40 w-32 h-32"
+                  (click)="onImg(item._id)"
+                  [src]="[item.url]"
+                  alt="No hay"
+                />
+              </div>
+            </div>
+            <!-- <div class="grid grid-cols-3" *ngFor="let item of listImages">
+              </div> -->
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-3 pb-4">
+      <div class="grid grid-cols-3 py-4">
         <p-toast></p-toast>
         <div>
           <button
@@ -412,7 +403,7 @@
             type="submit"
             class="bg-primary-universal hover:bg-yellow-600 text-white font-roboto text-lg font-bold px-4 rounded-full uppercase"
           >
-            {{btnAction}}
+            {{ btnAction }}
           </button>
         </div>
       </div>

@@ -25,7 +25,7 @@ export default class CarouselComponent {
   private readonly route = inject(ActivatedRoute);
 
   ngOnInit() {
-
+    //TODO: Route sin /
     if (this.route.snapshot.url.length <= 0) {
       this.productService.postArrayResponde().subscribe(
         (resOk) => {

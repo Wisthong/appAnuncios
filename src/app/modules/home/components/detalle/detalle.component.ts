@@ -47,7 +47,7 @@ export default class DetalleComponent {
       },
       {
         breakpoint: '640px',
-        numVisible: 3,
+        numVisible: 2,
         numScroll: 1,
       },
     ];
@@ -56,7 +56,9 @@ export default class DetalleComponent {
 
     const observer1 = this.productService.postArrayResponde().subscribe(
       (resOk) => {
-        this.$listPosts = resOk.filter((m) => m._id !== this.id);
+        this.$listPosts = resOk.filter((m) => m._id !== this.id && m.status !== false);
+        console.log(resOk);
+        
         this.cdr.markForCheck();
       },
       (resFail) => {
