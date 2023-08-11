@@ -56,6 +56,7 @@ export interface Post {
   line2:             string;
   priceClient:       number;
   priceSuper:        number;
+  priceMayorista?:   number;
   price14:           number;
   status?:           boolean;
 
@@ -96,6 +97,7 @@ export interface Posts {
   line2:              string;
   priceClient:        number;
   priceSuper:         number;
+  priceMayorista?:    number;
   price14:            number;
   status?:            boolean;
   archiveJoin?:       ArchiveJoin[];

@@ -240,12 +240,12 @@
           </div>
         </div>
 
-        <div class="grid sm:grid-cols-1 sm:gap-0 grid-cols-3 gap-4">
+        <div class="grid sm:grid-cols-1 sm:gap-0 grid-cols-4 gap-4">
           <div class="">
             <label
               for="first-name"
               class="block text-sm text-secondary-universal font-medium leading-6"
-              >Precio cliente</label
+              >Precio publico</label
             >
             <div class="mt-2">
               <input
@@ -308,7 +308,7 @@
                 "
                 class="text-red-700 text-sm italic font-extrabold"
               >
-                El precio minimo es $500
+                El precio minimo es $0
               </p>
             </div>
           </div>
@@ -341,6 +341,42 @@
                 *ngIf="
                   postForm.controls['priceSuper'].touched &&
                   postForm.controls['priceSuper'].hasError('min')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                El precio minimo es $500
+              </p>
+            </div>
+          </div>
+
+          <div class="">
+            <label
+              for="first-name"
+              class="block text-sm text-secondary-universal font-medium leading-6"
+              >Precio Mayorista</label
+            >
+            <div class="mt-2">
+              <input
+                formControlName="priceMayorista"
+                type="number"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-100 lg:text-sm lg:leading-6"
+              />
+              <p
+                *ngIf="
+                  postForm.controls['priceMayorista'].touched &&
+                  postForm.controls['priceMayorista'].hasError('required')
+                "
+                class="text-red-700 text-sm italic font-extrabold"
+              >
+                Campo requerido
+              </p>
+              <p
+                *ngIf="
+                  postForm.controls['priceMayorista'].touched &&
+                  postForm.controls['priceMayorista'].hasError('min')
                 "
                 class="text-red-700 text-sm italic font-extrabold"
               >
@@ -388,11 +424,11 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-3 py-4">
+      <div class="grid grid-cols-4 py-4">
         <p-toast></p-toast>
         <div>
           <button
-            type="submit"
+            type="button"
             class="bg-secondary-universal hover:bg-blue-800 text-white font-roboto text-lg font-bold px-4 rounded-full uppercase"
           >
             Cancelar
@@ -404,6 +440,15 @@
             class="bg-primary-universal hover:bg-yellow-600 text-white font-roboto text-lg font-bold px-4 rounded-full uppercase"
           >
             {{ btnAction }}
+          </button>
+        </div>
+        <div *ngIf="id !== null"> 
+          <button
+            (click)="onDeletePost()"
+            type="button"
+            class="bg-red-500 hover:bg-red-600 text-white font-roboto text-lg font-bold px-4 rounded-full uppercase"
+          >
+            {{ "Eliminar" }}
           </button>
         </div>
       </div>

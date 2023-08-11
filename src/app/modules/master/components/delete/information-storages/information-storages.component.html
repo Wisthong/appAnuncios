@@ -1,0 +1,42 @@
+<div class="mt-2">
+  <h1
+    class="text-6xl text-center my-10 font-roboto font-bold text-primary-universal"
+  >
+    Eliminar imagenes de <span class="font-extrabold"> Información</span>
+  </h1>
+</div>
+
+<div class="col-span-full">
+    <label
+      for="cover-photo"
+      class="block text-center text-sm text-secondary-universal font-medium leading-6 capitalize"
+      >Información producto
+    </label>
+
+    <div
+      class="mt-2 flex bg-gray-200 justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+      *ngIf="listGalery"
+    >
+      <div class="text-center">
+        <div class="mt-4 flex text-sm leading-6 text-gray-100">
+          <label
+            for="file-upload"
+            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-100 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-100 focus-within:ring-offset-2 hover:text-indigo-500"
+          >
+            <!-- <span>Files</span> -->
+          </label>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 sm:gap-8 grid-cols-8 gap-2">
+        <div *ngFor="let item of listGalery">
+          <img
+            [ngClass]="{ select1: select1 === item._id }"
+            class="sm:w-40 sm:h-40 w-32 h-32"
+            (click)="onImgInformation(item._id)"
+            [src]="[item.url]"
+            alt="No hay de Información"
+          />
+        </div>
+      </div>
+    </div>
+  </div>

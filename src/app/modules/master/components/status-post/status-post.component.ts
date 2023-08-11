@@ -17,7 +17,7 @@ import { ToastModule } from 'primeng/toast';
   styleUrls: ['./status-post.component.css'],
 })
 export default class StatusPostComponent {
-  btnAction!:string;
+  btnAction!: string;
   estado = ['false', 'true'];
   listObservers$: Array<Subscription> = [];
   listImages!: Archive[];
@@ -51,9 +51,10 @@ export default class StatusPostComponent {
     item: ['', [Validators.required, Validators.minLength(4)]],
     line: ['', [Validators.required, Validators.minLength(5)]],
     line2: ['', [Validators.required, Validators.minLength(5)]],
-    priceClient: [0, [Validators.required, Validators.min(500)]],
-    priceSuper: [0, [Validators.required, Validators.min(500)]],
-    price14: [0, [Validators.required, Validators.min(500)]],
+    priceClient: [0, [Validators.required, Validators.min(50)]],
+    priceSuper: [0, [Validators.required, Validators.min(50)]],
+    priceMayorista: [0, [Validators.required, Validators.min(50)]],
+    price14: [0, [Validators.required, Validators.min(0)]],
     status: [false, Validators.required],
     // title: ['', [Validators.required, Validators.minLength(10)]],
     // porcentage: [0, [Validators.required]],
@@ -64,8 +65,7 @@ export default class StatusPostComponent {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id !== null) {
-      
-      this.btnAction = 'Actualizar'
+      this.btnAction = 'Actualizar';
 
       this.productService.getPost(this.id!).subscribe(
         (resOk) => {
@@ -80,6 +80,7 @@ export default class StatusPostComponent {
             priceClient: resOk.priceClient,
             priceSuper: resOk.priceSuper,
             price14: resOk.price14,
+            priceMayorista: resOk.priceMayorista,
             status: resOk.status,
             // title: resOk.title,
             // porcentage: resOk.porcentage,
@@ -97,9 +98,8 @@ export default class StatusPostComponent {
           });
         }
       );
-    }
-    else{
-      this.btnAction = 'Guardar'
+    } else {
+      this.btnAction = 'Guardar';
     }
 
     const observer$ = this.productService.getAllImages().subscribe(
@@ -127,7 +127,7 @@ export default class StatusPostComponent {
         });
       }
     );
-    this.listObservers$ = [observer$], observer1$;
+    (this.listObservers$ = [observer$]), observer1$;
   }
 
   onImg(img?: string) {
@@ -198,12 +198,28 @@ export default class StatusPostComponent {
       }
     } else {
       console.log(this.postForm.getRawValue());
-      
+
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
         detail: 'Faltan campos por llenar',
       });
+    }
+  }
+
+  onDeletePost() {
+    if (confirm('¿Estas seguro?')) {
+      this.productService.deletePost(this.id!).subscribe(
+        (resOk) => {
+          console.log('Eliminado');
+          this.router.navigate(['/master']);
+        },
+        (resFail) => {
+          console.log(resFail);
+        }
+      );
+    } else {
+      console.log('Error');
     }
   }
 }

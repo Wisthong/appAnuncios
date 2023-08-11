@@ -38,7 +38,9 @@ export default class CarouselComponent {
       this.pathRouter = this.route.snapshot.url[0].path.toString();
       this.productService.postArrayResponde().subscribe((resOk) => {
         this.listPosts = resOk.filter(
-          (m) => m.category === 'Papeleria' || m.category === 'Cacharro'
+          (m) =>
+            m.category === 'Papeleria' ||
+            (m.category === 'Cacharro' && m.status === true)
         );
         console.log(this.listPosts);
 

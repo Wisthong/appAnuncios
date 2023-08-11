@@ -64,13 +64,23 @@
           <span
             class="text-base font-extrabold bg-primary-universal px-2 py-1 sm:text-2xl ct:text-3xl lg:text-4xl"
           >
+            {{ item.priceMayorista | currency }}
+          </span>
+        </p>
+        <p
+          class="sm:text-2xl ct:text-3xl lg:text-4xl font-semibold text-secondary-universal"
+        >
+          Precio Super Mayorista:
+          <span
+            class="text-base font-extrabold bg-primary-universal px-2 py-1 sm:text-2xl ct:text-3xl lg:text-4xl"
+          >
             {{ item.priceSuper | currency }}
           </span>
         </p>
         <p
           class="sm:text-2xl ct:text-3xl lg:text-4xl font-semibold text-secondary-universal"
         >
-          Precio:
+          Precio publico:
           <span
             class="text-base font-extrabold bg-primary-universal px-2 py-1 sm:text-2xl ct:text-3xl lg:text-4xl"
           >

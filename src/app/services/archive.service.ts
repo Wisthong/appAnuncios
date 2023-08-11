@@ -33,18 +33,28 @@ export class ArchiveService {
     );
   }
 
+  deleteImages(id: string): Observable<any> {
+    return this.http.delete<ResponseTrue>(this.apiUrl + '/storages/' + id);
+  }
+
+  deleteImagesInformation(id: string): Observable<any> {
+    return this.http.delete<ResponseTrue>(this.apiUrl + '/informationstorages/' + id);
+  }
+
   getAllGalery(): Observable<Archive[]> {
-    return this.http.get<ResponseTrue>(this.apiUrl + '/informationstorages').pipe(
-      map(({ data }) => {
-        return data.filter(
-          (m) =>
-            m.url.includes('.png') ||
-            m.url.includes('.jpg') ||
-            m.url.includes('.jpeg') ||
-            m.url.includes('.gif')
-        );
-      })
-    );
+    return this.http
+      .get<ResponseTrue>(this.apiUrl + '/informationstorages')
+      .pipe(
+        map(({ data }) => {
+          return data.filter(
+            (m) =>
+              m.url.includes('.png') ||
+              m.url.includes('.jpg') ||
+              m.url.includes('.jpeg') ||
+              m.url.includes('.gif')
+          );
+        })
+      );
   }
 
   createPost(body: Post): Observable<string> {
@@ -62,6 +72,16 @@ export class ArchiveService {
       })
     );
   }
+  
+  deletePost(id: string): Observable<string> {
+    return this.http.delete<ResponsePost>(this.apiUrl + '/posts/' + id).pipe(
+      map(({ message }) => {
+        return message;
+      })
+    );
+  }
+
+
 
   postArrayResponde(): Observable<Post[]> {
     return this.http.get<PostArray>(this.apiUrl + '/posts').pipe(

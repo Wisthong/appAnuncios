@@ -23,110 +23,123 @@ export default class CardComponent {
   private readonly productService = inject(ArchiveService);
 
   ngOnInit() {
-    this.pathRouter = this.route.snapshot.url[0].path.toString();
+    if (this.route.snapshot.routeConfig?.path === '') {
+      this.productService.postArrayResponde().subscribe(
+        (resOk) => {
+          return (this.listPosts = resOk.filter(
+            (m) => m.status === true && m.category === 'Arte'
+          ));
+        },
+        (resFail) => {
+          console.log('🟢🟢🟢');
+        }
+      );
+    } else {
+      this.pathRouter = this.route.snapshot.url[0].path.toString();
 
-    switch (this.pathRouter) {
-      case 'arte':
-        this.productService.postArrayResponde().subscribe(
-          (resOk) => {
-            this.listPosts = resOk.filter(
-              (m) => m.status === true && m.category === 'Arte'
-            );
-          },
-          (resFail) => {
-            console.log('🟢🟢🟢');
-          }
-        );
-        break;
-      case 'cacharro':
-        this.productService.postArrayResponde().subscribe(
-          (resOk) => {
-            this.listPosts = resOk.filter(
-              (m) => m.status === true && m.category === 'Cacharro'
-            );
-          },
-          (resFail) => {
-            console.log('🟢🟢🟢');
-          }
-        );
-        break;
-      case 'cosmeticos':
-        this.productService.postArrayResponde().subscribe(
-          (resOk) => {
-            this.listPosts = resOk.filter(
-              (m) => m.status === true && m.category === 'Cosmeticos'
-            );
-          },
-          (resFail) => {
-            console.log('🟢🟢🟢');
-          }
-        );
-        break;
-      case 'institucional':
-        this.productService.postArrayResponde().subscribe(
-          (resOk) => {
-            this.listPosts = resOk.filter(
-              (m) => m.status === true && m.category === 'Institucional'
-            );
-            console.log(resOk);
-          },
-          (resFail) => {
-            console.log('🟢🟢🟢');
-          }
-        );
-        break;
-      case 'libros':
-        this.productService.postArrayResponde().subscribe(
-          (resOk) => {
-            this.listPosts = resOk.filter(
-              (m) => m.status === true && m.category === 'Libros'
-            );
-            console.log(resOk);
-          },
-          (resFail) => {
-            console.log('🟢🟢🟢');
-          }
-        );
-        break;
-      case 'papeleria':
-        this.productService.postArrayResponde().subscribe(
-          (resOk) => {
-            this.listPosts = resOk.filter(
-              (m) => m.status === true && m.category === 'Papeleria'
-            );
-            console.log(resOk);
-          },
-          (resFail) => {
-            console.log('🟢🟢🟢');
-          }
-        );
-        break;
-      case 'tecnologia':
-        this.productService.postArrayResponde().subscribe(
-          (resOk) => {
-            this.listPosts = resOk.filter(
-              (m) => m.status === true && m.category === 'Tecnologia'
-            );
-            console.log(resOk);
-          },
-          (resFail) => {
-            console.log('🟢🟢🟢');
-          }
-        );
-        break;
+      switch (this.pathRouter) {
+        case 'arte':
+          this.productService.postArrayResponde().subscribe(
+            (resOk) => {
+              this.listPosts = resOk.filter(
+                (m) => m.status === true && m.category === 'Arte'
+              );
+            },
+            (resFail) => {
+              console.log('🟢🟢🟢');
+            }
+          );
+          break;
+        case 'cacharro':
+          this.productService.postArrayResponde().subscribe(
+            (resOk) => {
+              this.listPosts = resOk.filter(
+                (m) => m.status === true && m.category === 'Cacharro'
+              );
+            },
+            (resFail) => {
+              console.log('🟢🟢🟢');
+            }
+          );
+          break;
+        case 'cosmeticos':
+          this.productService.postArrayResponde().subscribe(
+            (resOk) => {
+              this.listPosts = resOk.filter(
+                (m) => m.status === true && m.category === 'Cosmeticos'
+              );
+            },
+            (resFail) => {
+              console.log('🟢🟢🟢');
+            }
+          );
+          break;
+        case 'institucional':
+          this.productService.postArrayResponde().subscribe(
+            (resOk) => {
+              this.listPosts = resOk.filter(
+                (m) => m.status === true && m.category === 'Institucional'
+              );
+              console.log(resOk);
+            },
+            (resFail) => {
+              console.log('🟢🟢🟢');
+            }
+          );
+          break;
+        case 'libros':
+          this.productService.postArrayResponde().subscribe(
+            (resOk) => {
+              this.listPosts = resOk.filter(
+                (m) => m.status === true && m.category === 'Libros'
+              );
+              console.log(resOk);
+            },
+            (resFail) => {
+              console.log('🟢🟢🟢');
+            }
+          );
+          break;
+        case 'papeleria':
+          this.productService.postArrayResponde().subscribe(
+            (resOk) => {
+              this.listPosts = resOk.filter(
+                (m) => m.status === true && m.category === 'Papeleria'
+              );
+              console.log(resOk);
+            },
+            (resFail) => {
+              console.log('🟢🟢🟢');
+            }
+          );
+          break;
+        case 'tecnologia':
+          this.productService.postArrayResponde().subscribe(
+            (resOk) => {
+              this.listPosts = resOk.filter(
+                (m) => m.status === true && m.category === 'Tecnologia'
+              );
+              console.log(resOk);
+            },
+            (resFail) => {
+              console.log('🟢🟢🟢');
+            }
+          );
+          break;
 
-      default:
-        break;
+        default:
+          break;
+      }
+
+      // this.productService.postArrayResponde().subscribe(
+      //   (resOk) => {
+      //     this.listPosts = resOk.filter((m) => m.status === true);
+      //     console.log(resOk);
+      //   },
+      //   (resFail) => {
+      //     console.log('🟢🟢🟢');
+      //   }
+      // );
     }
-
-    // this.productService.postArrayResponde().subscribe(
-    //   (resOk) => {
-    //     this.listPosts = resOk.filter((m) => m.status === true);
-    //     console.log(resOk);
-    //   },
-    //   (resFail) => {
-    //     console.log('🟢🟢🟢');
-    //   }
-    // );
   }
 }

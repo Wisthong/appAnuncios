@@ -1,0 +1,35 @@
+<div [ngSwitch]="pathRoute">
+  <div *ngSwitchCase="'centro'">
+    <video class="w-screen h-screen" loop controls>
+      <source src="../../../../../assets/video/medios.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div *ngSwitchCase="'calima'">
+    <video class="w-screen h-screen" loop controls>
+      <source src="../../../../../assets/video/medios.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div *ngSwitchCase="'avsexta'">
+    <video class="w-screen h-screen" loop controls>
+      <source
+        src="../../../../../assets/video/medios.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+  <div *ngSwitchCase="'pasoancho'">
+    <video class="w-screen h-screen" loop controls>
+      <source src="../../../../../assets/video/medios.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div *ngSwitchCase="'cosmocentro'">
+    <video class="w-screen h-screen" loop controls>
+      <source src="../../../../../assets/video/medios.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div *ngSwitchDefault>
+    <video class="w-screen h-screen" loop controls>
+      <source src="../../../../../assets/video/medios.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>

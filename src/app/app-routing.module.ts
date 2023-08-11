@@ -5,19 +5,59 @@ import { MasterGuard } from './guard/master.guard';
 import { ErrorpageComponent } from './pages/errorpage/errorpage.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '',
-  //   pathMatch: 'full',
-  // },
-  //TODO: routes init
   {
     path: '',
+    redirectTo: 'centro',
+    pathMatch: 'full',
+  },
+  //TODO: routes init
+  // {
+  //   path: '',
+  //   loadComponent() {
+  //     return import('./modules/home/pages/carousel/carousel.component');
+  //   },
+  //   // component: CarouselComponent,
+  //   title: 'Carousel',
+  // },
+  {
+    path: 'centro',
     loadComponent() {
-      return import('./modules/home/pages/carousel/carousel.component');
+      return import('./modules/home/pages/inicio/inicio.component');
     },
     // component: CarouselComponent,
-    title: 'Carousel',
+    title: 'Bienvenida Centro',
+  },
+  {
+    path: 'calima',
+    loadComponent() {
+      return import('./modules/home/pages/inicio/inicio.component');
+    },
+    // component: CarouselComponent,
+    title: 'Bienvenida calima',
+  },
+  {
+    path: 'avsexta',
+    loadComponent() {
+      return import('./modules/home/pages/inicio/inicio.component');
+    },
+    // component: CarouselComponent,
+    title: 'Bienvenida avsexta',
+  },
+  {
+    path: 'pasoancho',
+    loadComponent() {
+      return import('./modules/home/pages/inicio/inicio.component');
+    },
+    // component: CarouselComponent,
+    title: 'Bienvenida pasoancho',
+  },
+  {
+    path: 'cosmocentro',
+    loadComponent() {
+      return import('./modules/home/pages/inicio/inicio.component');
+    },
+    // component: CarouselComponent,
+    title: 'Bienvenida cosmocentro',
   },
   {
     path: 'calima',
@@ -26,6 +66,14 @@ const routes: Routes = [
     },
     // component: CarouselComponent,
     title: 'Calima',
+  },
+  {
+    path: '14/promocion',
+    loadComponent() {
+      return import('./modules/home/pages/promocion/promocion.component');
+    },
+    // component: CarouselComponent,
+    title: '14 promocion',
   },
   //TODO: Ruote login
   {
@@ -38,12 +86,15 @@ const routes: Routes = [
   //TODO: Route asesor
   {
     path: 'asesor',
+    // pathMatch: 'full',
+
     loadComponent() {
       return import('./modules/home/components/nabvar/nabvar.component');
     },
     children: [
       {
         path: '',
+        // pathMatch: 'full',
         loadComponent() {
           return import('./modules/home/pages/asesor/asesor.component');
         },
@@ -184,7 +235,9 @@ const routes: Routes = [
         path: 'uploadinformation',
         title: 'Upload Informacion',
         loadComponent() {
-          return import('@master/components/informationupload/informationupload.component');
+          return import(
+            '@master/components/informationupload/informationupload.component'
+          );
         },
       },
       {
@@ -192,6 +245,26 @@ const routes: Routes = [
         title: 'Formulario',
         loadComponent() {
           return import('@master/components/status-post/status-post.component');
+          // return import('@master/components/forms/forms.component');
+        },
+      },
+      {
+        path: 'delete/storages',
+        title: 'Borrar imagenes',
+        loadComponent() {
+          return import(
+            '@master/components/delete/storages/storages.component'
+          );
+          // return import('@master/components/forms/forms.component');
+        },
+      },
+      {
+        path: 'delete/informationstorages',
+        title: 'Borrar información',
+        loadComponent() {
+          return import(
+            '@master/components/delete/information-storages/information-storages.component'
+          );
           // return import('@master/components/forms/forms.component');
         },
       },

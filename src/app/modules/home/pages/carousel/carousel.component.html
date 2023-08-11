@@ -68,16 +68,23 @@
                 <span class="font-bold"> Categoria:</span>
                 {{ itemPost.category }}
                 <br />
-                <span
+                <!-- <span
                   class="font-bold md:text-2xl ct:text-3xl lg:text-4xl font-roboto"
                 >
                   Precio:</span
                 >
                 <span
+                  *ngIf="pathRouter === 'calima'"
+                  class="bg-primary-universal md:text-3xl ct:text-4xl lg:text-4xl font-semibold"
+                >
+                  {{ "$ " + itemPost.price14 }}
+                </span>
+                <span
+                  *ngIf="pathRouter !== 'calima'"
                   class="bg-primary-universal md:text-3xl ct:text-4xl lg:text-4xl font-semibold"
                 >
                   {{ "$ " + itemPost.priceClient }}
-                </span>
+                </span> -->
               </p>
 
               <!-- ICONOS REDES -->

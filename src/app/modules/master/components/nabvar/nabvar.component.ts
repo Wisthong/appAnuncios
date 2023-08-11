@@ -47,6 +47,22 @@ export default class NavbarComponent {
         //   },
         // ],
       },
+      {
+        label: 'Eliminar',
+        icon: 'pi pi-fw pi-external-link',
+        items:[
+          {
+            label:'Información',
+            icon: 'pi pi-fw pi-external-link',
+            routerLink: 'delete/informationstorages',
+          },
+          {
+            label:'Producto',
+            icon: 'pi pi-fw pi-external-link',
+            routerLink: 'delete/storages',
+          },
+        ]
+      },
     ];
   }
 
