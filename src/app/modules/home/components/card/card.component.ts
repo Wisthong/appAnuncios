@@ -41,9 +41,9 @@ export default class CardComponent {
         case 'arte':
           this.productService.postArrayResponde().subscribe(
             (resOk) => {
-              this.listPosts = resOk.filter(
-                (m) => m.status === true && m.category === 'Arte'
-              );
+              this.listPosts = resOk
+                .filter((m) => m.status === true && m.category === 'Arte')
+                .reverse();
             },
             (resFail) => {
               console.log('🟢🟢🟢');
@@ -53,9 +53,9 @@ export default class CardComponent {
         case 'cacharro':
           this.productService.postArrayResponde().subscribe(
             (resOk) => {
-              this.listPosts = resOk.filter(
-                (m) => m.status === true && m.category === 'Cacharro'
-              );
+              this.listPosts = resOk
+                .filter((m) => m.status === true && m.category === 'Cacharro')
+                .reverse();
             },
             (resFail) => {
               console.log('🟢🟢🟢');
@@ -65,9 +65,9 @@ export default class CardComponent {
         case 'cosmeticos':
           this.productService.postArrayResponde().subscribe(
             (resOk) => {
-              this.listPosts = resOk.filter(
-                (m) => m.status === true && m.category === 'Cosmeticos'
-              );
+              this.listPosts = resOk
+                .filter((m) => m.status === true && m.category === 'Cosmeticos')
+                .reverse();
             },
             (resFail) => {
               console.log('🟢🟢🟢');
@@ -77,9 +77,11 @@ export default class CardComponent {
         case 'institucional':
           this.productService.postArrayResponde().subscribe(
             (resOk) => {
-              this.listPosts = resOk.filter(
-                (m) => m.status === true && m.category === 'Institucional'
-              );
+              this.listPosts = resOk
+                .filter(
+                  (m) => m.status === true && m.category === 'Institucional'
+                )
+                .reverse();
               console.log(resOk);
             },
             (resFail) => {
@@ -90,9 +92,9 @@ export default class CardComponent {
         case 'libros':
           this.productService.postArrayResponde().subscribe(
             (resOk) => {
-              this.listPosts = resOk.filter(
-                (m) => m.status === true && m.category === 'Libros'
-              );
+              this.listPosts = resOk
+                .filter((m) => m.status === true && m.category === 'Libros')
+                .reverse();
               console.log(resOk);
             },
             (resFail) => {
@@ -103,9 +105,9 @@ export default class CardComponent {
         case 'papeleria':
           this.productService.postArrayResponde().subscribe(
             (resOk) => {
-              this.listPosts = resOk.filter(
-                (m) => m.status === true && m.category === 'Papeleria'
-              );
+              this.listPosts = resOk
+                .filter((m) => m.status === true && m.category === 'Papeleria')
+                .reverse();
               console.log(resOk);
             },
             (resFail) => {
@@ -116,9 +118,9 @@ export default class CardComponent {
         case 'tecnologia':
           this.productService.postArrayResponde().subscribe(
             (resOk) => {
-              this.listPosts = resOk.filter(
-                (m) => m.status === true && m.category === 'Tecnologia'
-              );
+              this.listPosts = resOk
+                .filter((m) => m.status === true && m.category === 'Tecnologia')
+                .reverse();
               console.log(resOk);
             },
             (resFail) => {

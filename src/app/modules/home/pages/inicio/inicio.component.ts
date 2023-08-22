@@ -16,7 +16,5 @@ export default class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.pathRoute = this.route.snapshot.routeConfig?.path;
     console.log(this.pathRoute);
-
-    // throw new Error('Method not implemented.');
   }
 }

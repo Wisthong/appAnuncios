@@ -59,22 +59,48 @@ const routes: Routes = [
     // component: CarouselComponent,
     title: 'Bienvenida cosmocentro',
   },
+
   {
-    path: 'calima',
-    loadComponent() {
-      return import('./modules/home/pages/carousel/carousel.component');
-    },
-    // component: CarouselComponent,
-    title: 'Calima',
-  },
-  {
-    path: '14/promocion',
+    path: 'centro/promocion',
     loadComponent() {
       return import('./modules/home/pages/promocion/promocion.component');
     },
     // component: CarouselComponent,
-    title: '14 promocion',
+    title: 'Promocion Centro',
   },
+  {
+    path: 'calima/promocion',
+    loadComponent() {
+      return import('./modules/home/pages/promocion/promocion.component');
+    },
+    // component: CarouselComponent,
+    title: 'Promocion Calima',
+  },
+  {
+    path: 'avsexta/promocion',
+    loadComponent() {
+      return import('./modules/home/pages/promocion/promocion.component');
+    },
+    // component: CarouselComponent,
+    title: 'Promocion Avsexta',
+  },
+  {
+    path: 'pasoancho/promocion',
+    loadComponent() {
+      return import('./modules/home/pages/promocion/promocion.component');
+    },
+    // component: CarouselComponent,
+    title: 'Promocion Pasoancho',
+  },
+  {
+    path: 'cosmocentro/promocion',
+    loadComponent() {
+      return import('./modules/home/pages/promocion/promocion.component');
+    },
+    // component: CarouselComponent,
+    title: 'Promocion Cosmocentro',
+  },
+
   //TODO: Ruote login
   {
     path: 'login',
