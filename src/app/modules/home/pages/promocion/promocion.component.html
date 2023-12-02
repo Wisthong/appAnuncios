@@ -1,7 +1,74 @@
-<div class="">
-  <h1
-    class="text-center underline ct:text-4xl text-6xl font-roboto font-semibold text-white py-5"
-  >
-    Actualmente no hay ninguna promocion
-  </h1>
+<div class="grid grid-cols-7">
+  <div class="col-start-4 col-span-2">
+    <button class="py-8" (click)="onReload()">
+      <img
+        src="/assets/img/logo_sinfondo.png"
+        alt=""
+        class="text-center w-32"
+      />
+    </button>
+  </div>
+</div>
+
+<div [ngSwitch]="pathRoute">
+  <div *ngSwitchCase="'centro'">
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div *ngSwitchCase="'calima'">
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div *ngSwitchCase="'avsexta'">
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div *ngSwitchCase="'pasoancho'">
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div *ngSwitchCase="'cosmocentro'">
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div *ngSwitchDefault>
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
 </div>

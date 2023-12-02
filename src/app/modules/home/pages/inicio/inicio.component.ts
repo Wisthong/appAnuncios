@@ -17,4 +17,8 @@ export default class InicioComponent implements OnInit {
     this.pathRoute = this.route.snapshot.routeConfig?.path;
     console.log(this.pathRoute);
   }
+
+  onReload() {
+    location.reload();
+  }
 }

@@ -14,9 +14,11 @@ export default class PromocionComponent implements OnInit {
   pathRoute?: string | undefined;
 
   ngOnInit(): void {
-    console.log('123');
+    this.pathRoute = this.route.snapshot.routeConfig?.path;
+    console.log(this.pathRoute);
+  }
 
-    // this.pathRoute = this.route.snapshot.routeConfig?.path;
-    // console.log(this.pathRoute);
+  onReload() {
+    location.reload();
   }
 }

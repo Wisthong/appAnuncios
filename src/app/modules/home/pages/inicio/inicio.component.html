@@ -1,32 +1,74 @@
+<div class="grid grid-cols-7">
+  <div class="col-start-4 col-span-2">
+    <button class="py-8" (click)="onReload()">
+      <img
+        src="/assets/img/logo_sinfondo.png"
+        alt=""
+        class="text-center w-32"
+      />
+    </button>
+  </div>
+</div>
+
 <div [ngSwitch]="pathRoute">
   <div *ngSwitchCase="'centro'">
-    <video class="w-screen h-screen" controls muted autoplay loop>
-      <source src="../../../../../assets/video/centro.mp4" type="video/mp4" />
-    </video>
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
   </div>
   <div *ngSwitchCase="'calima'">
-    <video class="w-screen h-screen" controls muted autoplay loop>
-      <source src="../../../../../assets/video/14.mp4" type="video/mp4" />
-    </video>
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
   </div>
   <div *ngSwitchCase="'avsexta'">
-    <video class="w-screen h-screen" controls muted autoplay loop>
-      <source src="../../../../../assets/video/14.mp4" type="video/mp4" />
-    </video>
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
   </div>
   <div *ngSwitchCase="'pasoancho'">
-    <video class="w-screen h-screen" controls muted autoplay loop>
-      <source src="../../../../../assets/video/14.mp4" type="video/mp4" />
-    </video>
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
   </div>
   <div *ngSwitchCase="'cosmocentro'">
-    <video class="w-screen h-screen" controls muted autoplay loop>
-      <source src="../../../../../assets/video/14.mp4" type="video/mp4" />
-    </video>
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
   </div>
   <div *ngSwitchDefault>
-    <video class="w-screen h-screen" controls muted autoplay loop>
-      <source src="../../../../../assets/video/14.mp4" type="video/mp4" />
-    </video>
+    <iframe
+      class="w-full h-screen"
+      src="https://www.youtube.com/embed/vqlfROpKjWo?playlist=vqlfROpKjWo&amp;loop=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
   </div>
 </div>
